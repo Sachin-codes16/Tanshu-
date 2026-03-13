@@ -34,7 +34,7 @@ import ForgotPassword from '../ForgotPassword'
 import SettingCollection from '../SettingCollection';
 import ProductDetailPage from '../ProductDetailpage';
 import PrivacyPage from '../PrivacyPage';
-import BlaglistPage from '../blaglistPage';
+import BloglistPage from '../BloglistPage';
 import Blogdetailsspage from '../Blogdetailsspage';
 import ContactusPage from    '../ContactusPage';
 import AboutusPage from     '../AboutusPage';
@@ -81,7 +81,7 @@ const AllRoute = () => {
           <Route path='setting-collection' element={<SettingCollection/>} />
           <Route path='product-detail/:id' element={<ProductDetailPage/>} />
           <Route path='privacy-policy' element={<PrivacyPage/>} />
-          <Route path='blaglist' element={<BlaglistPage/>} />
+          <Route path='bloglist' element={<BloglistPage/>} />
            <Route path='blog-detailsspage/:id' element={<Blogdetailsspage/>} />
             <Route path='contact-usPage' element={<ContactusPage/>} />
 <Route path='about-usPage' element={<AboutusPage/>} />
