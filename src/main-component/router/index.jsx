@@ -81,7 +81,7 @@ const AllRoute = () => {
           <Route path='setting-collection' element={<SettingCollection/>} />
           <Route path='product-detail/:id' element={<ProductDetailPage/>} />
           <Route path='privacy-policy' element={<PrivacyPage/>} />
-          <Route path='bloglistpage' element={<BloglistPage/>} />
+          <Route path='BloglistPage' element={<BloglistPage/>} />
            <Route path='blog-detailsspage/:id' element={<Blogdetailsspage/>} />
             <Route path='contact-usPage' element={<ContactusPage/>} />
 <Route path='about-usPage' element={<AboutusPage/>} />
