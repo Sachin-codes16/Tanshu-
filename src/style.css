@@ -1,0 +1,15 @@
+p {
+  color: red;
+}
+/*# sourceMappingURL=style.css.map */
+.wpo-site-footer {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+.wpo-site-footer:before {
+  display: none !important;
+}
+ul {
+  list-style-type: disc !important;
+}
