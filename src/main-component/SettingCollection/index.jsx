@@ -3,36 +3,36 @@ import { Link } from "react-router-dom";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import WhiteSofa from "../../images/products/WhiteSofa.jpg";
- import BeigeSofa from "../../images/products/beigeSofa.jpg";
- import GrayeSofa from "../../images/products/GrayeSofa.jpg";
- import BrownSofa from "../../images/products/BrownSofa.jpg";
- import BlackSofa from "../../images/products/BlackSofa.jpg";
+import BeigeSofa from "../../images/products/BeigeSofa.jpg";
+import GrayeSofa from "../../images/products/GrayeSofa.jpg";
+import BrownSofa from "../../images/products/BrownSofa.jpg";
+import BlackSofa from "../../images/products/BlackSofa.jpg";
 
- import img6 from '../../images/products/set3_image_1.jpg'
- import img7 from '../../images/products/set3_image_2.jpg'
+import img6 from '../../images/products/set3_image_1.jpg'
+import img7 from '../../images/products/set3_image_2.jpg'
 
 
 const SeatingCollection = () => {
   const [gridView, setGridView] = useState('two');
 
   const products = [
-    { id: 1, image: WhiteSofa, title: "CLOUD MODULAR 3-PIECE SOFA", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$5,685", salePrice: "$6,900", regularPrice: "$8,130", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
-    { id: 2, image: WhiteSofa, title: "CLOUD MODULAR 3-PIECE SOFA", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$5,685", salePrice: "$6,900", regularPrice: "$8,130", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
-     { id: 3, image: WhiteSofa, title: "CLOUD MODULAR 3-PIECE SOFA", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$5,685", salePrice: "$6,900", regularPrice: "$8,130", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
-    { id: 4, image: BeigeSofa, title: "CLOUD MODULAR 4-PIECE CHAISE SECTIONAL", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$7,090", salePrice: "$8,605", regularPrice: "$10,140", saveText: "SAVE 35% - 40% ON SELECT ITEMS", onSale: true },
-     { id: 5, image: BeigeSofa, title: "CLOUD MODULAR 4-PIECE CHAISE SECTIONAL", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$7,090", salePrice: "$8,605", regularPrice: "$10,140", saveText: "SAVE 35% - 40% ON SELECT ITEMS", onSale: true },
-      { id: 6, image: BeigeSofa, title: "CLOUD MODULAR 4-PIECE CHAISE SECTIONAL", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$7,090", salePrice: "$8,605", regularPrice: "$10,140", saveText: "SAVE 35% - 40% ON SELECT ITEMS", onSale: true },
-    { id: 7, image: BrownSofa, title: "CLOUD MODULAR 4-PIECE SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$7,300", salePrice: "$8,860", regularPrice: "$10,440", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
-        { id: 8, image: BrownSofa, title: "CLOUD MODULAR 4-PIECE SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$7,300", salePrice: "$8,860", regularPrice: "$10,440", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
-    { id: 9, image: BrownSofa, title: "CLOUD MODULAR 4-PIECE SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448","#6b5a38","#4a3c28","#2a2018","#1a1208","#3a3028","#5a4a38"], memberSalePrice: "$7,300", salePrice: "$8,860", regularPrice: "$10,440", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 1, image: WhiteSofa, title: "CLOUD MODULAR 3-PIECE SOFA", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$5,685", salePrice: "$6,900", regularPrice: "$8,130", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 2, image: WhiteSofa, title: "CLOUD MODULAR 3-PIECE SOFA", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$5,685", salePrice: "$6,900", regularPrice: "$8,130", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 3, image: WhiteSofa, title: "CLOUD MODULAR 3-PIECE SOFA", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$5,685", salePrice: "$6,900", regularPrice: "$8,130", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 4, image: BeigeSofa, title: "CLOUD MODULAR 4-PIECE CHAISE SECTIONAL", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$7,090", salePrice: "$8,605", regularPrice: "$10,140", saveText: "SAVE 35% - 40% ON SELECT ITEMS", onSale: true },
+    { id: 5, image: BeigeSofa, title: "CLOUD MODULAR 4-PIECE CHAISE SECTIONAL", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$7,090", salePrice: "$8,605", regularPrice: "$10,140", saveText: "SAVE 35% - 40% ON SELECT ITEMS", onSale: true },
+    { id: 6, image: BeigeSofa, title: "CLOUD MODULAR 4-PIECE CHAISE SECTIONAL", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$7,090", salePrice: "$8,605", regularPrice: "$10,140", saveText: "SAVE 35% - 40% ON SELECT ITEMS", onSale: true },
+    { id: 7, image: BrownSofa, title: "CLOUD MODULAR 4-PIECE SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$7,300", salePrice: "$8,860", regularPrice: "$10,440", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 8, image: BrownSofa, title: "CLOUD MODULAR 4-PIECE SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$7,300", salePrice: "$8,860", regularPrice: "$10,440", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 9, image: BrownSofa, title: "CLOUD MODULAR 4-PIECE SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#8c7448", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208", "#3a3028", "#5a4a38"], memberSalePrice: "$7,300", salePrice: "$8,860", regularPrice: "$10,440", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
 
-    { id: 10, image: GrayeSofa, title: "CLOUD MODULAR 2-PIECE LOVESEAT", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#6b5a38","#4a3c28","#2a2018","#1a1208"], memberSalePrice: "$3,890", salePrice: "$4,720", regularPrice: "$5,580", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
-        { id: 11, image: GrayeSofa, title: "CLOUD MODULAR 2-PIECE LOVESEAT", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#6b5a38","#4a3c28","#2a2018","#1a1208"], memberSalePrice: "$3,890", salePrice: "$4,720", regularPrice: "$5,580", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
-    { id: 12, image: GrayeSofa, title: "CLOUD MODULAR 2-PIECE LOVESEAT", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#6b5a38","#4a3c28","#2a2018","#1a1208"], memberSalePrice: "$3,890", salePrice: "$4,720", regularPrice: "$5,580", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 10, image: GrayeSofa, title: "CLOUD MODULAR 2-PIECE LOVESEAT", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208"], memberSalePrice: "$3,890", salePrice: "$4,720", regularPrice: "$5,580", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 11, image: GrayeSofa, title: "CLOUD MODULAR 2-PIECE LOVESEAT", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208"], memberSalePrice: "$3,890", salePrice: "$4,720", regularPrice: "$5,580", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
+    { id: 12, image: GrayeSofa, title: "CLOUD MODULAR 2-PIECE LOVESEAT", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#6b5a38", "#4a3c28", "#2a2018", "#1a1208"], memberSalePrice: "$3,890", salePrice: "$4,720", regularPrice: "$5,580", saveText: "SAVE 40% ON SELECT ITEMS", onSale: true },
 
-    { id: 13, image: BlackSofa, title: "CLOUD TRACK ARM SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#8c7448","#4a3c28","#2a2018"], memberPrice: "$4,719", regularPrice: "$7,940", onSale: false },
-     { id: 14, image: img6, title: "CLOUD SQUARE ARM SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#6b5a38"], memberPrice: "$3,925", regularPrice: "$6,540", onSale: false },
-     { id: 15, image: img7, title: "MAXWELL DEEP SEAT SOFA", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#6b5a38","#4a3c28"], memberPrice: "$3,125", regularPrice: "$5,210", onSale: false },
+    { id: 13, image: BlackSofa, title: "CLOUD TRACK ARM SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#8c7448", "#4a3c28", "#2a2018"], memberPrice: "$4,719", regularPrice: "$7,940", onSale: false },
+    { id: 14, image: img6, title: "CLOUD SQUARE ARM SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#a89060", "#6b5a38"], memberPrice: "$3,925", regularPrice: "$6,540", onSale: false },
+    { id: 15, image: img7, title: "MAXWELL DEEP SEAT SOFA", subtitle: "Available in multiple depths & fabrics", colors: ["#e8e4dc", "#d4c9b8", "#c4b49a", "#b8a882", "#6b5a38", "#4a3c28"], memberPrice: "$3,125", regularPrice: "$5,210", onSale: false },
     // { id: 8, image: img8, title: "RESTORATION FABRIC SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060"], memberPrice: "$2,895", regularPrice: "$4,825", onSale: false },
     // { id: 9, image: img1, title: "CLOUD BENCH SEAT SOFA", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#a89060","#8c7448"], memberPrice: "$3,450", regularPrice: "$5,750", onSale: false },
     // { id: 10, image: img2, title: "CLOUD CHAISE SECTIONAL", subtitle: "Available in multiple fabrics", colors: ["#e8e4dc","#d4c9b8","#c4b49a","#b8a882","#8c7448","#4a3c28"], memberSalePrice: "$6,200", salePrice: "$7,500", regularPrice: "$9,100", saveText: "SAVE 35% ON SELECT ITEMS", onSale: true },
@@ -51,7 +51,7 @@ const SeatingCollection = () => {
 
           {/* PAGE TITLE */}
           <div style={{ marginBottom: "20px" }}>
-            <h1 style={{ fontSize: "30px", fontWeight: "300", letterSpacing: "4px", fontFamily: "Times New Roman", color: "#1a1a1a", marginBottom: "6px",color: "black" }}>
+            <h1 style={{ fontSize: "30px", fontWeight: "300", letterSpacing: "4px", fontFamily: "Times New Roman", marginBottom: "6px", color: "black" }}>
               THE ORIGINAL CLOUD
             </h1>
             <p style={{ color: "#b5282a", fontSize: "15px", letterSpacing: "1px", fontFamily: "Times New Roman" }}>
@@ -61,7 +61,7 @@ const SeatingCollection = () => {
 
           {/* FILTER BAR */}
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "14px 0", borderTop: "1px solid white", borderBottom: "1px solid white", marginBottom: "40px" }}>
-            
+
             {/* LEFT FILTERS */}
             <div style={{ display: "flex", alignItems: "center", gap: "28px" }}>
               <label style={{ display: "flex", alignItems: "center", gap: "7px", cursor: "pointer", fontSize: "15px", letterSpacing: "1px", fontFamily: "Times New Roman", color: "#b5282a" }}>
@@ -82,25 +82,25 @@ const SeatingCollection = () => {
               {/* 3-column toggle */}
               <button onClick={() => setGridView('three')} style={{ background: "none", border: "none", cursor: "pointer", padding: "2px", opacity: gridView === 'three' ? 1 : 0.4 }}>
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <rect x="0" y="0" width="6" height="6" fill="#1a1a1a"/>
-                  <rect x="8" y="0" width="6" height="6" fill="#1a1a1a"/>
-                  <rect x="16" y="0" width="6" height="6" fill="#1a1a1a"/>
-                  <rect x="0" y="8" width="6" height="6" fill="#1a1a1a"/>
-                  <rect x="8" y="8" width="6" height="6" fill="#1a1a1a"/>
-                  <rect x="16" y="8" width="6" height="6" fill="#1a1a1a"/>
-                  <rect x="0" y="16" width="6" height="6" fill="#1a1a1a"/>
-                  <rect x="8" y="16" width="6" height="6" fill="#1a1a1a"/>
-                  <rect x="16" y="16" width="6" height="6" fill="#1a1a1a"/>
+                  <rect x="0" y="0" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="8" y="0" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="16" y="0" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="0" y="8" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="8" y="8" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="16" y="8" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="0" y="16" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="8" y="16" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="16" y="16" width="6" height="6" fill="#1a1a1a" />
                 </svg>
               </button>
 
               {/* 2-column toggle */}
               <button onClick={() => setGridView('two')} style={{ background: "none", border: "none", cursor: "pointer", padding: "2px", opacity: gridView === 'two' ? 1 : 0.4 }}>
                 <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-                  <rect x="0" y="0" width="10" height="10" fill="#1a1a1a"/>
-                  <rect x="12" y="0" width="10" height="10" fill="#1a1a1a"/>
-                  <rect x="0" y="12" width="10" height="10" fill="#1a1a1a"/>
-                  <rect x="12" y="12" width="10" height="10" fill="#1a1a1a"/>
+                  <rect x="0" y="0" width="10" height="10" fill="#1a1a1a" />
+                  <rect x="12" y="0" width="10" height="10" fill="#1a1a1a" />
+                  <rect x="0" y="12" width="10" height="10" fill="#1a1a1a" />
+                  <rect x="12" y="12" width="10" height="10" fill="#1a1a1a" />
                 </svg>
               </button>
 
