@@ -9,7 +9,7 @@ const Banner = () => {
     axios.get("https://tanshu.checkour.work/api/banner/list")
       .then((res) => {
         console.log(res.data);
-        setBanners(res.data.data);
+        setBanners(res.data.data.data);   // FIX
       })
       .catch((error) => {
         console.log(error);
@@ -20,7 +20,7 @@ const Banner = () => {
     <div>
       {banners.map((item, index) => (
         <div key={index}>
-          <img src={item.image} alt="banner" width="100%" />
+          <img src={item.img} alt="banner" width="100%" />
         </div>
       ))}
     </div>

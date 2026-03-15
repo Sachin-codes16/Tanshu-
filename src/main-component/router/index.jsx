@@ -34,7 +34,7 @@ import ForgotPassword from '../ForgotPassword'
 import SettingCollection from '../SettingCollection';
 import ProductDetailPage from '../ProductDetailpage';
 import PrivacyPage from '../PrivacyPage';
-import BloglistPage from '../bloglistPage';
+import BloglistPage from '../BloglistPage';
 import Blogdetailsspage from '../Blogdetailsspage';
 import ContactusPage from    '../ContactusPage';
 import AboutusPage from     '../AboutusPage';
