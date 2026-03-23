@@ -36,7 +36,7 @@ import ProductDetailPage from '../ProductDetailpage';
 import PrivacyPage from '../PrivacyPage';
 import BloglistPage from '../BloglistPage';
 
-import Blogdetailsspage from '../blogdetailsspage';
+import Blogdetailsspage from '../Blogdetailsspage';
 import ContactusPage from    '../ContactusPage';
 import AboutusPage from     '../AboutusPage';
 
