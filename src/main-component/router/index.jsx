@@ -34,7 +34,7 @@ import ForgotPassword from '../ForgotPassword'
 import SettingCollection from '../SettingCollection';
 import ProductDetailPage from '../ProductDetailpage';
 import PrivacyPage from '../PrivacyPage';
-import BloglistPage from '../bloglistPage';
+import BloglistPage from '../BloglistPage';
 
 import Blogdetailsspage from '../blogdetailsspage';
 import ContactusPage from    '../ContactusPage';
@@ -79,8 +79,13 @@ const AllRoute = () => {
           <Route path='login' element={<LoginPage/>} />
           <Route path='register' element={<SignUpPage/>} />
           <Route path='forgot-password' element={<ForgotPassword/>} /> 
-          <Route path='setting-collection' element={<SettingCollection/>} />
-          <Route path='product-detail/:id' element={<ProductDetailPage/>} />
+          {/* <Route path='setting-collection/:id' element={<SettingCollection/>} /> */}
+          <Route path="setting-collection/:slug" element={<SettingCollection />} />
+          {/* <Route path='setting-collection' element={<SettingCollection/>} /> */}
+{/* <Route path='setting-collection/:catSlug' element={<SettingCollection/>} />
+<Route path='setting-collection/:catSlug/:subSlug' element={<SettingCollection/>} />
+<Route path='setting-collection/:catSlug/:subSlug/:lowerSlug' element={<SettingCollection/>} /> */}
+          <Route path='product-detail/:slug' element={<ProductDetailPage/>} />
           <Route path='privacy-policy' element={<PrivacyPage/>} />
           <Route path='BloglistPage' element={<BloglistPage/>} />
            <Route path='blog-detailsspage/:id' element={<Blogdetailsspage/>} />
