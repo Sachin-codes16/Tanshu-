@@ -512,13 +512,12 @@ useEffect(() => {
 
 // ===== USE EFFECT 2 - Related Products =====
 useEffect(() => {
+  if (!slug) return;
+  
   axios
-    .get(`https://tanshu.checkour.work/api/product/product-detail/${slug}`)
+    .get(`https://tanshu.checkour.work/api/product/related-product/${slug}`)
     .then((res) => {
-      const all = res.data?.data?.data || [];
-      const related = all
-        .filter(p => p.slug !== slug)
-        .slice(0, 3);
+      const related = res.data?.data?.data || [];
       setRelatedProducts(related);
     })
     .catch(err => console.log(err));
@@ -588,14 +587,14 @@ return (
             )}
 
             {/* DESCRIPTION */}
-            {product.shortDescription && (
+            {/* {product.shortDescription && (
               <div style={{ marginBottom: "20px", padding: "15px", background: "#fafafa", borderLeft: "3px solid #1a1a1a" }}>
                 <p style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "1px", fontFamily: "Times New Roman", marginBottom: "6px" }}>DESCRIPTION</p>
                 <p style={{ lineHeight: "26px", fontSize: "14px", color: "#444" }}>
                   {stripHtml(product.shortDescription)}
                 </p>
               </div>
-            )}
+            )} */}
 
             {/* STYLE, SIZE, QUALITY, MOQ */}
             <div style={{ marginBottom: "20px", display: "flex", flexDirection: "column", gap: "10px" }}>
@@ -633,7 +632,7 @@ return (
                 </div>
               )}
               {/* DETAILS */}
-              <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
+              {/* <div style={{ display: "flex", gap: "10px", alignItems: "flex-start" }}>
                 <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "1px", fontFamily: "Times New Roman", minWidth: "80px" }}>DETAILS :</span>
                 {/* <div style={{ fontSize: "14px", color: "#555", fontFamily: "Times New Roman" }}>
                   {product.categoryName && <p style={{ margin: "2px 0" }}>Ca {product.categoryName}</p>}
@@ -642,13 +641,13 @@ return (
                 </div> */}
               </div>
               {/* MOQ */}
-              <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+              {/* <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
                 <span style={{ fontSize: "13px", fontWeight: "600", letterSpacing: "1px", fontFamily: "Times New Roman", minWidth: "80px" }}>MOQ :</span>
                 <span style={{ fontSize: "14px", color: "#555", fontFamily: "Times New Roman" }}>
                   {product.moq || "1 Piece"}
                 </span>
               </div>
-            </div>
+            </div> */} 
 
             {/* COLORS */}
             {product.colors?.length > 0 && (
@@ -686,20 +685,20 @@ return (
 
             {/* ACCORDION */}
             <div style={{ marginTop: "20px" }}>
-              <div className="info-row">
-                <div className="info-title">VIEW IN STOCK ITEMS</div>
-                <div className="arrow">›</div>
-              </div>
+             
+<div className="info-row" onClick={() => toggleSection("description")}>
+  <div className="info-title">DESCRIPTION</div>
+  <div className="plus">
+    {openSection === "description" ? "−" : "+"}
+  </div>
+</div>
 
-              <div className="info-row" onClick={() => toggleSection("description")}>
-                <div className="info-title">DESCRIPTION</div>
-                <div className="plus">{openSection === "description" ? "−" : "+"}</div>
-              </div>
-              {openSection === "description" && (
-                <div className="info-content">
-                  <p>{stripHtml(product.description)}</p>
-                </div>
-              )}
+{openSection === "description" && (
+  <div
+    className="info-content"
+    dangerouslySetInnerHTML={{ __html: product.description }}
+  />
+)}
 
               <div className="info-row" onClick={() => toggleSection("details")}>
                 <div className="info-title">DETAILS</div>
@@ -713,7 +712,7 @@ return (
                     {product.categoryName && <li><strong>Category:</strong> {product.categoryName}</li>}
                     {product.subCategoryName && <li><strong>Sub Category:</strong> {product.subCategoryName}</li>}
                     {product.lowerCategoryName && <li><strong>Type:</strong> {product.lowerCategoryName}</li>}
-                    <li><strong>MOQ:</strong> {product.moq || "1 Piece"}</li>
+                    {/* <li><strong>MOQ:</strong> {product.moq || "1 Piece"}</li> */}
                   </ul>
                 </div>
               )}

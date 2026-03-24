@@ -39,6 +39,7 @@ import BloglistPage from '../BloglistPage';
 import Blogdetailsspage from '../Blogdetailsspage';
 import ContactusPage from    '../ContactusPage';
 import AboutusPage from     '../AboutusPage';
+import OurStory from '../OurStory';
 
 
 const AllRoute = () => {
@@ -86,10 +87,11 @@ const AllRoute = () => {
 <Route path='setting-collection/:catSlug/:subSlug' element={<SettingCollection/>} />
 <Route path='setting-collection/:catSlug/:subSlug/:lowerSlug' element={<SettingCollection/>} /> */}
           <Route path='product-detail/:slug' element={<ProductDetailPage/>} />
-          <Route path='privacy-policy' element={<PrivacyPage/>} />
+          <Route path='/privacy-policy' element={<PrivacyPage/>} />
           <Route path='BloglistPage' element={<BloglistPage/>} />
            <Route path='blog-detailsspage/:id' element={<Blogdetailsspage/>} />
             <Route path='contact-usPage' element={<ContactusPage/>} />
+            <Route path='our-story' element={<OurStory/>} />
 <Route path='about-usPage' element={<AboutusPage/>} />
 
         </Routes>

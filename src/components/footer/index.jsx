@@ -117,7 +117,7 @@ import { Link } from 'react-router-dom'
 const Footer = (props) => {
 
     const ClickHandler = () => {
-        window.scrollTo(10, 0);
+        
     }
 
     const [email, setEmail] = useState('')
@@ -150,19 +150,19 @@ const Footer = (props) => {
                         <div style={styles.col}>
                             <h4 style={styles.colHeading}>RESOURCES</h4>
                             <ul style={styles.linkList}>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>LOCATE A GALLERY</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>VIEW SOURCEBOOKS</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>REQUEST A SOURCEBOOK</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>Locate on Map</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>Site Map</Link></li>
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>REQUEST A SOURCEBOOK</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH MEMBERS PROGRAM</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH TRADE</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH CONTRACT</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH CREDIT CARD</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>SITE MAP</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>SITE MAP</Link></li> */}
                             </ul>
                         </div>
 
                         {/* Column 2 - Customer Experience */}
-                        <div style={styles.col}>
+                        {/* <div style={styles.col}>
                             <h4 style={styles.colHeading}>CUSTOMER EXPERIENCE</h4>
                             <ul style={styles.linkList}>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/contact" style={styles.link}>CONTACT US</Link></li>
@@ -175,17 +175,17 @@ const Footer = (props) => {
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>ACCESSIBILITY STATEMENT</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>FAQS</Link></li>
                             </ul>
-                        </div>
+                        </div> */}
 
                         {/* Column 3 - Our Company */}
                         <div style={styles.col}>
                             <h4 style={styles.colHeading}>OUR COMPANY</h4>
                             <ul style={styles.linkList}>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>LETTERS FROM THE CEO ↗</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>LEADERSHIP TEAM ↗</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>INVESTOR RELATIONS ↗</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRESS ↗</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>CAREERS ↗</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>About us  ↗</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>Contact us ↗</Link></li>
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}> ↗</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRESS ↗</Link></li> */}
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>Carrer ↗</Link></li>
                             </ul>
                         </div>
 
@@ -193,13 +193,21 @@ const Footer = (props) => {
                         <div style={styles.col}>
                             <h4 style={styles.colHeading}>LEGAL</h4>
                             <ul style={styles.linkList}>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRIVACY</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>TERMS OF USE</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>TEXT MESSAGING TERMS</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH IN CANADA</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>CPRA OPT-OUT ↗</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>SAFETY RECALLS</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRODUCT REGISTRATION</Link></li>
+                               <li style={styles.linkItem}>
+  <Link 
+    to="/privacy-policy" 
+    style={styles.link}
+    onClick={() => window.scrollTo(0,0)}
+  >
+    Privacy Policy
+  </Link>
+</li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/our-story" style={styles.link}>Terms and use</Link></li>
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>TEXT MESSAGING TERMS</Link></li> */}
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH IN CANADA</Link></li> */}
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>CPRA OPT-OUT ↗</Link></li> */}
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>SAFETY RECALLS</Link></li> */}
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRODUCT REGISTRATION</Link></li> */}
                             </ul>
                         </div>
 
@@ -225,28 +233,31 @@ const styles = {
         backgroundColor: '#f2ede8',
         color: '#444',
         fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
+
+        position: "relative",   // ✅ FIX
+        zIndex: 9999,           // ✅ FIX (important)
     },
+
     newsletterSection: {
         textAlign: 'center',
         padding: '80px 20px 50px',
+
+        position: "relative",   // ✅ FIX
+        zIndex: 9999,
     },
+
     newsletterTitle: {
-        fontSize: '42px',
-        fontWeight: '100',
+        fontSize: '30px',
         letterSpacing: '5px',
-        color: 'black',
         marginBottom: '12px',
-        fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
-        lineHeight: '1.2',
     },
+
     newsletterSubtitle: {
-        fontSize: '20px',
-        color: '#666',
-        marginBottom: '32px',
-        letterSpacing: '0.3px',
-        fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
-        fontWeight: '100',
+        fontSize: '18px',
+        marginBottom: '30px',
+        color: 'black',
     },
+
     emailRow: {
         display: 'flex',
         justifyContent: 'center',
@@ -254,79 +265,68 @@ const styles = {
         margin: '0 auto',
         border: '1px solid #c5bfb8',
         backgroundColor: '#ffffff',
+
+        position: "relative",   // ✅ FIX
+        zIndex: 9999,
     },
+
     emailInput: {
         flex: 1,
-        padding: '15px 20px',
+        padding: '15px',
         border: 'none',
         outline: 'none',
-        fontSize: '13px',
-        backgroundColor: 'transparent',
-        color: '#888',
-        letterSpacing: '0.3px',
-        fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
     },
+
     signupBtn: {
-        padding: '15px 22px',
-        backgroundColor: 'transparent',
+        padding: '15px 20px',
         border: 'none',
-        borderLeft: '1px solid #c5bfb8',
         cursor: 'pointer',
-        fontSize: '11px',
-        fontWeight: '200',
-        letterSpacing: '2px',
-        color: '#2a2a2a',
-        fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
     },
+
     linksSection: {
-        padding: '55px 0 60px',
+        padding: '50px 0',
+
+        position: "relative",   // ✅ FIX
+        zIndex: 9999,
     },
+
     container: {
-        maxWidth: '1400px',
+        maxWidth: '1200px',
         margin: '0 auto',
-        padding: '0 80px',
+        padding: '0 40px',
     },
+
     grid: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(4, 1fr)',
-        gap: '95px',
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        gap: '50px',
     },
-    col: {},
+
     colHeading: {
-        fontSize: '20px',
-        fontWeight: '100',
-        letterSpacing: '1px',
-        color: '#2a2a2a',
-        marginBottom: '25px',
-        fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
-        textTransform: 'uppercase',
+        marginBottom: '20px',
     },
+
     linkList: {
         listStyle: 'none',
         padding: 0,
-        margin: 0,
     },
-    linkItem: {
-        marginBottom: '14px',
-    },
+
     link: {
         color: '#6b6560',
         textDecoration: 'none',
-        fontSize: '16px',
-        letterSpacing: '0.8px',
-        fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
-        fontWeight: '200',
+        display: 'block',
+        marginBottom: '10px',
+
+        cursor: "pointer",   // ✅ FIX
     },
+
     lowerFooter: {
-        padding: '24px 0',
         textAlign: 'center',
+        padding: '20px',
     },
+
     copyright: {
         fontSize: '12px',
-        color: '#999',
-        letterSpacing: '0.5px',
-        margin: 0,
-        fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
     },
 }
 

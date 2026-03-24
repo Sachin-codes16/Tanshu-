@@ -488,25 +488,24 @@ const {  slug } = useParams();
                     <h3 style={{ fontSize: cols === 3 ? "15px" : "18px", fontWeight: "300", letterSpacing: "2px", fontFamily: "Times New Roman", color: "#1a1a1a", textAlign: "center", marginBottom: "6px" }}>
                       {product.title}
                     </h3>
-                    <p style={{ fontSize: "15px", color: "#666", textAlign: "center", marginBottom: "10px", fontFamily: "Times New Roman" }}>
+                    {/* <p style={{ fontSize: "15px", color: "#666", textAlign: "center", marginBottom: "10px", fontFamily: "Times New Roman" }}>
                       {product.subtitle}
-                    </p>
-                    <p style={{ textAlign: "center", fontSize: "13px", color: "#C9A84C", fontFamily: "Times New Roman" }}>
-                      <strong>view more</strong>
-                    </p>
+                    </p> */}
+                   
                     
-                    <p style={{ textAlign: "center", fontSize: "13px", color: "#333", fontFamily: "Times New Roman" }}>
+                    {/* <p style={{ textAlign: "center", fontSize: "13px", color: "#333", fontFamily: "Times New Roman" }}>
                       Starting at <strong>{product.memberPrice} Member</strong> / {product.regularPrice} Regular
-                    </p>
+                    </p> */}
                      <p style={{ textAlign: "center", fontSize: "13px", color: "#C9A84C", fontFamily: "Times New Roman" }}>
-                      <strong>Style</strong>
+                      <strong>Style/Material</strong>
                     </p>
                      <p style={{ textAlign: "center", fontSize: "13px", color: "#C9A84C", fontFamily: "Times New Roman" }}>
                       <strong>Quality</strong>
                     </p>
-                     <p style={{ textAlign: "center", fontSize: "13px", color: "#C9A84C", fontFamily: "Times New Roman" }}>
-                      <strong>Description</strong>
+                      <p style={{ textAlign: "center", fontSize: "13px", color: "#C9A84C", fontFamily: "Times New Roman" }}>
+                      <strong>view more</strong>
                     </p>
+
                   </div>
                 </Link>
               ))}

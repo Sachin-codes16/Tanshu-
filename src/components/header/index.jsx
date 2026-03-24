@@ -1594,11 +1594,32 @@ const Header = (props) => {
   const [categories, setCategories] = useState([]);
   const [subCategories, setSubCategories] = useState({});
   const [lowerCategories, setLowerCategories] = useState({});
+  const [searchTerm, setSearchTerm] = useState("");
+const [searchResults, setSearchResults] = useState([]);
+  const handleSearch = async (Bsearch) => {
+    setSearchTerm(Bsearch);
+
+    if (!Bsearch) {
+      setSearchResults([]);
+      return;
+    }
+
+    try {
+      const res = await axios.get(
+        `https://tanshu.checkour.work/api/search-product/${Bsearch}`
+      );
+
+      
+      setSearchResults(res.data.data || []);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   // 1) FETCH CATEGORIES
   useEffect(() => {
     axios
-      .get("https://tanshu.checkour.work/api/product/category-list")
+      .get("https://tanshu.checkour.work/api/menu/product-category")
       .then((res) => {
         setCategories(res.data.data.data);
       })
@@ -1611,7 +1632,7 @@ const Header = (props) => {
     setActiveSub(null);
     if (!subCategories[cat.slug]) {
       axios
-        .get(`https://tanshu.checkour.work/api/product/sub-category-list/${cat.slug}`)
+        .get(`https://tanshu.checkour.work/api/menu/product-sub-category/${cat.slug}`)
         .then((res) => {
           setSubCategories((prev) => ({
             ...prev,
@@ -1627,7 +1648,7 @@ const Header = (props) => {
     setActiveSub(sub.id);
     if (!lowerCategories[sub.slug]) {
       axios
-        .get(`https://tanshu.checkour.work/api/product/lowercategory-list/${sub.slug}`)
+        .get(`https://tanshu.checkour.work/api/menu/produt-lower-category/${sub.slug}`)
         .then((res) => {
           setLowerCategories((prev) => ({
             ...prev,
@@ -1637,6 +1658,8 @@ const Header = (props) => {
         .catch((err) => console.log(err));
     }
   };
+  
+
 
   const getActiveSubSlug = (catSlug) => {
     return subCategories[catSlug]?.find(s => s.id === activeSub)?.slug;
@@ -1650,14 +1673,28 @@ const Header = (props) => {
           {/* TOP BAR */}
           <div className="rh-topbar">
             <div className="rh-left">
-              <i className="ti-menu rh-icon"></i>
+              <i className=""></i>
               <div className="search-wrap">
                 <i className="ti-search rh-icon" onClick={() => setSearchOpen(!searchOpen)}></i>
-                <input
-                  className={`rh-search-input ${searchOpen ? "open" : ""}`}
-                  type="text"
-                  placeholder="Search..."
-                />
+               <input
+  className={`rh-search-input ${searchOpen ? "open" : ""}`}
+  type="text"
+  placeholder="Search..."
+  value={searchTerm}
+  onChange={(e) => handleSearch(e.target.value)}
+/>
+ {searchResults.length > 0 && (
+    <div className="search-results">
+      {searchResults.map((item, index) => (
+        <Link key={index} to={`/product/${item.slug}`}>
+          <div className="search-item">
+            {item.name || item.title}
+          </div>
+        </Link>
+      ))}
+    </div>
+  )}
+
               </div>
             </div>
 
@@ -1757,16 +1794,18 @@ const Header = (props) => {
                   )}
                 </li>
               ))}
-
+ <li>
+  <Link to="/">SWATCHES</Link>
+</li> <li>
+  <Link to="/our-story">OUR STORY</Link>
+</li>
              <li>
   <Link to="/contact-usPage">CONTACT US</Link>
 </li>
                 <li>
                 <Link to="/BloglistPage">BLOG'S</Link>
               </li>
-               <li>
-                <Link to="/privacy-policy">PRIVACY</Link>
-              </li>
+              
             </ul>
           </div>
 
@@ -2006,6 +2045,29 @@ const Header = (props) => {
           .rh-navbar { padding: 12px 20px; }
           .logo-rh { font-size: 48px; }
         }
+          // yha sa 
+          .search-wrap {
+  position: relative;
+}
+
+.search-results {
+  position: absolute;
+  top: 35px;
+  left: 0;
+  width: 220px;
+  background: white;
+  border: 1px solid #ddd;
+  z-index: 9999;
+}
+
+.search-item {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-item:hover {
+  background: #f5f5f5;
+}
       `}</style>
     </>
   );
