@@ -510,7 +510,7 @@
 // //           letter-spacing: 2px;
 // //           font-family: 'Times New Roman', serif;
 // //           font-weight: 400;
-          
+
 // //         }
 
 // //         .rh-menu > ul > li > a:hover {
@@ -604,7 +604,6 @@
 //   const [searchOpen, setSearchOpen] = useState(false);
 //   const [activeMenu, setActiveMenu] = useState(null);
 //   const [activeSub, setActiveSub] = useState(null);
-  
 
 //   const menuData = {
 //     LIVING: {
@@ -796,9 +795,9 @@
 
 //   return (
 //     <>
-    
+
 //       <header style={{ position: "sticky", top: 0, zIndex: 1000 }}>
-        
+
 //         <nav className="rh-navbar">
 
 //           {/* TOP BAR */}
@@ -824,7 +823,6 @@
 //                 </div>
 //               </Link>
 //             </div>
-            
 
 //             <div className="rh-right">
 //               <span className="country">USA &#9662;</span>
@@ -1262,8 +1260,6 @@
 //     </a>
 //   </div>
 
- 
-  
 // </div>
 //           </div>
 
@@ -1595,7 +1591,7 @@ const Header = (props) => {
   const [subCategories, setSubCategories] = useState({});
   const [lowerCategories, setLowerCategories] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-const [searchResults, setSearchResults] = useState([]);
+  const [searchResults, setSearchResults] = useState([]);
   const handleSearch = async (Bsearch) => {
     setSearchTerm(Bsearch);
 
@@ -1606,10 +1602,9 @@ const [searchResults, setSearchResults] = useState([]);
 
     try {
       const res = await axios.get(
-        `https://tanshu.checkour.work/api/search-product/${Bsearch}`
+        `https://tanshu.checkour.work/api/search-product/${Bsearch}`,
       );
 
-      
       setSearchResults(res.data.data || []);
     } catch (error) {
       console.log(error);
@@ -1632,11 +1627,13 @@ const [searchResults, setSearchResults] = useState([]);
     setActiveSub(null);
     if (!subCategories[cat.slug]) {
       axios
-        .get(`https://tanshu.checkour.work/api/menu/product-sub-category/${cat.slug}`)
+        .get(
+          `https://tanshu.checkour.work/api/menu/product-sub-category/${cat.slug}`,
+        )
         .then((res) => {
           setSubCategories((prev) => ({
             ...prev,
-            [cat.slug]: res.data.data.data
+            [cat.slug]: res.data.data.data,
           }));
         })
         .catch((err) => console.log(err));
@@ -1648,61 +1645,67 @@ const [searchResults, setSearchResults] = useState([]);
     setActiveSub(sub.id);
     if (!lowerCategories[sub.slug]) {
       axios
-        .get(`https://tanshu.checkour.work/api/menu/produt-lower-category/${sub.slug}`)
+        .get(
+          `https://tanshu.checkour.work/api/menu/produt-lower-category/${sub.slug}`,
+        )
         .then((res) => {
           setLowerCategories((prev) => ({
             ...prev,
-            [sub.slug]: res.data.data.data
+            [sub.slug]: res.data.data.data,
           }));
         })
         .catch((err) => console.log(err));
     }
   };
-  
-
 
   const getActiveSubSlug = (catSlug) => {
-    return subCategories[catSlug]?.find(s => s.id === activeSub)?.slug;
+    return subCategories[catSlug]?.find((s) => s.id === activeSub)?.slug;
   };
 
   return (
     <>
       <header style={{ position: "sticky", top: 0, zIndex: 1000 }}>
         <nav className="rh-navbar">
-
           {/* TOP BAR */}
           <div className="rh-topbar">
             <div className="rh-left">
               <i className=""></i>
               <div className="search-wrap">
-                <i className="ti-search rh-icon" onClick={() => setSearchOpen(!searchOpen)}></i>
-               <input
-  className={`rh-search-input ${searchOpen ? "open" : ""}`}
-  type="text"
-  placeholder="Search..."
-  value={searchTerm}
-  onChange={(e) => handleSearch(e.target.value)}
-/>
- {searchResults.length > 0 && (
-    <div className="search-results">
-      {searchResults.map((item, index) => (
-        <Link key={index} to={`/product/${item.slug}`}>
-          <div className="search-item">
-            {item.name || item.title}
-          </div>
-        </Link>
-      ))}
-    </div>
-  )}
-
+                <i
+                  className="ti-search rh-icon"
+                  onClick={() => setSearchOpen(!searchOpen)}
+                ></i>
+                <input
+                  className={`rh-search-input ${searchOpen ? "open" : ""}`}
+                  type="text"
+                  placeholder="Search..."
+                  value={searchTerm}
+                  onChange={(e) => handleSearch(e.target.value)}
+                />
+                {searchResults.length > 0 && (
+                  <div className="search-results">
+                    {searchResults.map((item, index) => (
+                      <Link key={index} to={`/product/${item.slug}`}>
+                        <div className="search-item">
+                          {item.name || item.title}
+                        </div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
 
             <div className="rh-logo">
-              <Link to="/home" style={{ textDecoration: "none", color: "inherit" }}>
+              <Link
+                to="/home"
+                style={{ textDecoration: "none", color: "inherit" }}
+              >
                 <div className="rh-text-logo">
                   <span className="logo-the">The</span>
-                  <span className="logo-world">WORLD <em>of</em></span>
+                  <span className="logo-world">
+                    WORLD <em>of</em>
+                  </span>
                   <span className="logo-rh">TANSHU</span>
                 </div>
               </Link>
@@ -1711,28 +1714,63 @@ const [searchResults, setSearchResults] = useState([]);
             <div className="rh-right">
               <div className="social-icons">
                 <a href="https://facebook.com" target="_blank" rel="noreferrer">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#2a2a2a">
-                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#2a2a2a"
+                  >
+                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
                   </svg>
                 </a>
-                <a href="https://instagram.com" target="_blank" rel="noreferrer">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#2a2a2a" strokeWidth="2">
-                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                    <circle cx="12" cy="12" r="4"/>
-                    <circle cx="17.5" cy="6.5" r="1" fill="#2a2a2a" stroke="none"/>
+                <a
+                  href="https://instagram.com"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#2a2a2a"
+                    strokeWidth="2"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <circle cx="12" cy="12" r="4" />
+                    <circle
+                      cx="17.5"
+                      cy="6.5"
+                      r="1"
+                      fill="#2a2a2a"
+                      stroke="none"
+                    />
                   </svg>
                 </a>
                 <a href="https://youtube.com" target="_blank" rel="noreferrer">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#2a2a2a">
-                    <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58a2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/>
-                    <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#2a2a2a"
+                  >
+                    <path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58a2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                    <polygon
+                      points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"
+                      fill="white"
+                    />
                   </svg>
                 </a>
                 <a href="https://linkedin.com" target="_blank" rel="noreferrer">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="#2a2a2a">
-                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/>
-                    <rect x="2" y="9" width="4" height="12"/>
-                    <circle cx="4" cy="4" r="2"/>
+                  <svg
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="#2a2a2a"
+                  >
+                    <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                    <rect x="2" y="9" width="4" height="12" />
+                    <circle cx="4" cy="4" r="2" />
                   </svg>
                 </a>
               </div>
@@ -1746,69 +1784,77 @@ const [searchResults, setSearchResults] = useState([]);
                 <li
                   key={cat.id}
                   onMouseEnter={() => handleCatHover(cat)}
-                  onMouseLeave={() => { setActiveMenu(null); setActiveSub(null); }}
+                  onMouseLeave={() => {
+                    setActiveMenu(null);
+                    setActiveSub(null);
+                  }}
                 >
-                  <Link to={`/setting-collection?cat=${cat.slug}`}>
+                  <span className="menu-text">
                     {cat.categoryName.toUpperCase()}
-                  </Link>
+                  </span>
 
                   {/* DROPDOWN */}
-                  {activeMenu === cat.id && subCategories[cat.slug]?.length > 0 && (
-                    <div className="rh-dropdown">
-
-                      {/* LEFT - SUBCATEGORIES */}
-                      <div className="rh-dropdown-left">
-                        {subCategories[cat.slug].map((sub) => (
-                          <div
-                            key={sub.id}
-                            className={`rh-sub-item ${activeSub === sub.id ? "active" : ""}`}
-                            onMouseEnter={() => handleSubHover(sub)}
-                          >
-                            <Link to={`/setting-collection?cat=${cat.slug}&sub=${sub.slug}`}>
-                              {sub.title}
-                            </Link>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* RIGHT - LOWER CATEGORIES */}
-                      {activeSub && lowerCategories[getActiveSubSlug(cat.slug)]?.length > 0 && (
-                        <div className="rh-dropdown-right">
-                          {lowerCategories[getActiveSubSlug(cat.slug)].map((lower) => (
-                            <div key={lower.id} className="rh-sub2-item">
-                              {/* <Link to={`/setting-collection?cat=${cat.slug}&sub=${getActiveSubSlug(cat.slug)}&lower=${lower.slug}`}>
-                                {lower.title}
-                              </Link> */}
-                                {/* <Link to={'/setting-collection/${getActiveSubSlug(cat.slug)}'}>
-                                {lower.title}
-                              </Link> */}
-                                <Link to={`/setting-collection/${lower.slug}`}>
-                              {lower.title}
-                            </Link>
+                  {activeMenu === cat.id &&
+                    subCategories[cat.slug]?.length > 0 && (
+                      <div className="rh-dropdown">
+                        {/* LEFT - SUBCATEGORIES */}
+                        <div className="rh-dropdown-left">
+                          {subCategories[cat.slug].map((sub) => (
+                            <div
+                              key={sub.id}
+                              className={`rh-sub-item ${activeSub === sub.id ? "active" : ""}`}
+                              onMouseEnter={() => handleSubHover(sub)}
+                            >
+                              <span className="sub-menu-text">
+                              
+                                {sub.title}
+                              </span>
                             </div>
                           ))}
                         </div>
-                      )}
 
-                    </div>
-                  )}
+                        {/* RIGHT - LOWER CATEGORIES */}
+                        {activeSub &&
+                          lowerCategories[getActiveSubSlug(cat.slug)]?.length >
+                            0 && (
+                            <div className="rh-dropdown-right">
+                              {lowerCategories[getActiveSubSlug(cat.slug)].map(
+                                (lower) => (
+                                  <div key={lower.id} className="rh-sub2-item">
+                                    {/* <Link to={`/setting-collection?cat=${cat.slug}&sub=${getActiveSubSlug(cat.slug)}&lower=${lower.slug}`}>
+                                {lower.title}
+                              </Link> */}
+                                    {/* <Link to={'/setting-collection/${getActiveSubSlug(cat.slug)}'}>
+                                {lower.title}
+                              </Link> */}
+                                    <Link
+                                      to={`/setting-collection/${getActiveSubSlug(cat.slug)}/${lower.slug}`}
+                                    >
+                                      {lower.title}
+                                    </Link>
+                                  </div>
+                                ),
+                              )}
+                            </div>
+                          )}
+                      </div>
+                    )}
                 </li>
               ))}
- <li>
-  <Link to="/">SWATCHES</Link>
-</li> <li>
-  <Link to="/our-story">OUR STORY</Link>
-</li>
-             <li>
-  <Link to="/contact-usPage">CONTACT US</Link>
-</li>
-                <li>
+              <li>
+                <Link to="/">SWATCHES</Link>
+              </li>{" "}
+              <li>
+                <Link to="/our-story">OUR STORY</Link>
+              </li>
+              <li>
+                <Link to="/contact-usPage">CONTACT US</Link>
+              </li>
+              <li>
                 <Link to="/BloglistPage">BLOG'S</Link>
               </li>
-              
             </ul>
           </div>
-
         </nav>
       </header>
 
@@ -1847,6 +1893,16 @@ const [searchResults, setSearchResults] = useState([]);
           display: flex;
           align-items: center;
           gap: 8px;
+        }
+
+        .menu-text:hover {
+          font-weight: 400;   /* makes it bold */
+          color: #000;        /* optional: darker color */
+        }
+
+        .sub-menu-text:hover {
+          font-weight: 400;   /* makes it bold */
+          color: #000;        /* optional: darker color */
         }
 
         .rh-search-input {

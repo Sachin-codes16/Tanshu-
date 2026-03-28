@@ -81,7 +81,7 @@ const AllRoute = () => {
           <Route path='register' element={<SignUpPage/>} />
           <Route path='forgot-password' element={<ForgotPassword/>} /> 
           {/* <Route path='setting-collection/:id' element={<SettingCollection/>} /> */}
-          <Route path="setting-collection/:slug" element={<SettingCollection />} />
+          <Route path="setting-collection/:sub/:slug" element={<SettingCollection />} />
           {/* <Route path='setting-collection' element={<SettingCollection/>} /> */}
 {/* <Route path='setting-collection/:catSlug' element={<SettingCollection/>} />
 <Route path='setting-collection/:catSlug/:subSlug' element={<SettingCollection/>} />
