@@ -471,7 +471,7 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/footer";
 import Scrollbar from "../../components/scrollbar";
 import Logo from "../../images/logo.svg";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import axios from "axios";
 
 const ProductDetailPage = () => {
@@ -774,7 +774,7 @@ return (
         </h2>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "40px" }}>
           {relatedProducts.length > 0 ? relatedProducts.map((rp) => (
-            <Link key={rp.productID} to={`/product-detail/${rp.productID}`}
+            <Link key={rp.productID} to={`/product-detail/${rp.slug}`}
               style={{ textDecoration: "none", color: "inherit" }}
               onClick={() => window.scrollTo(0, 0)}
             >
