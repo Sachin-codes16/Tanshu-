@@ -408,6 +408,8 @@ const {  slug } = useParams();
         memberPrice: "$3,200",
         regularPrice: "$5,000",
         slug: item.slug,
+        materialName: item.materialName, 
+        qualityName: item.qualityName 
       }));
 
       setProducts(apiProducts);
@@ -497,10 +499,10 @@ const {  slug } = useParams();
                       Starting at <strong>{product.memberPrice} Member</strong> / {product.regularPrice} Regular
                     </p> */}
                      <p style={{ textAlign: "center", fontSize: "13px", color: "#C9A84C", fontFamily: "Times New Roman" }}>
-                      <strong>Style/Material</strong>
+                      <strong>Style/Material : {product.materialName}</strong>
                     </p>
                      <p style={{ textAlign: "center", fontSize: "13px", color: "#C9A84C", fontFamily: "Times New Roman" }}>
-                      <strong>Quality</strong>
+                      <strong>Quality : {product.qualityName}</strong>
                     </p>
                       <p style={{ textAlign: "center", fontSize: "13px", color: "#C9A84C", fontFamily: "Times New Roman" }}>
                       <strong>view more</strong>
