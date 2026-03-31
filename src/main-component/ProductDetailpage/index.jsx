@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 // import React, { useState, Fragment } from "react";
 // import Navbar from "../../components/Navbar";
 // import Footer from "../../components/footer";
@@ -466,7 +464,6 @@
 //     </Fragment>
 //   );
 // };
->>>>>>> 610515b429affa2d59303e656d3d392ade5f8ae1
 
 import React, { useState, Fragment, useEffect } from "react";
 import Navbar from "../../components/Navbar";
@@ -979,106 +976,60 @@ const ProductDetailPage = () => {
 
       {/* ===== RELATED PRODUCTS ===== */}
       <section style={{ padding: "60px 80px", background: "white" }}>
-        <h2
-          style={{
-            fontSize: "28px",
-            fontWeight: "300",
-            letterSpacing: "3px",
-            fontFamily: "Times New Roman",
-            marginBottom: "40px",
-            color: "#1a1a1a",
-          }}
+  <h2
+    style={{
+      fontSize: "28px",
+      fontWeight: "300",
+      letterSpacing: "3px",
+      fontFamily: "Times New Roman",
+      marginBottom: "40px",
+      color: "#1a1a1a",
+    }}
+  >
+    RELATED PRODUCTS
+  </h2>
+
+  <div
+    style={{
+      display: "grid",
+      gridTemplateColumns: "repeat(3, 1fr)",
+      gap: "40px",
+    }}
+  >
+    {relatedProducts.length > 0 ? (
+      relatedProducts.map((rp) => (
+        <Link
+          key={rp.productID}
+          to={`/product-detail/${rp.slug}`}
+          style={{ textDecoration: "none", color: "inherit" }}
+          onClick={() => window.scrollTo(0, 0)}
         >
-          RELATED PRODUCTS
-        </h2>
-<<<<<<< HEAD
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "40px" }}>
-          {relatedProducts.length > 0 ? relatedProducts.map((rp) => (
-            <Link key={rp.productID} to={`/product-detail/${rp.slug}`}
-              style={{ textDecoration: "none", color: "inherit" }}
-              onClick={() => window.scrollTo(0, 0)}
-            >
-              <div>
-                <div style={{ overflow: "hidden", marginBottom: "14px" }}>
-                  <img
-                    src={rp.featureimg}
-                    alt={rp.productName}
-                    style={{  padding: "10px",
-  borderRadius: "6px",
-  boxShadow: "rgba(0, 0, 0, 0.09) 1px 4px 8px 1px",
-  background: "rgb(255, 255, 255)" }}
-                    onMouseEnter={e => e.currentTarget.style.transform = "scale(1.03)"}
-                    onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
-                  />
-=======
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(3, 1fr)",
-            gap: "40px",
-          }}
-        >
-          {relatedProducts.length > 0
-            ? relatedProducts.map((rp) => (
-                <Link
-                  key={rp.productID}
-                  to={`/product-detail/${rp.slug}`}
-                  style={{ textDecoration: "none", color: "inherit" }}
-                  onClick={() => window.scrollTo(0, 0)}
-                >
-                  <div>
-                    <div style={{ overflow: "hidden", marginBottom: "14px" }}>
-                      <img
-                        src={rp.featureimg}
-                        alt={rp.productName}
-                        style={{
-                          width: "100%",
-                          height: "280px",
-                          objectFit: "cover",
-                          transition: "transform 0.4s ease",
-                        }}
-                        onMouseEnter={(e) =>
-                          (e.currentTarget.style.transform = "scale(1.03)")
-                        }
-                        onMouseLeave={(e) =>
-                          (e.currentTarget.style.transform = "scale(1)")
-                        }
-                      />
-                    </div>
-                    <h3
-                      style={{
-                        fontSize: "16px",
-                        fontWeight: "300",
-                        letterSpacing: "1px",
-                        fontFamily: "Times New Roman",
-                        color: "#1a1a1a",
-                        textAlign: "center",
-                      }}
-                    >
-                      {rp.productName}
-                    </h3>
-                  </div>
-                </Link>
-              ))
-            : [1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  style={{
-                    background: "#eee",
-                    height: "280px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    color: "#aaa",
-                    fontFamily: "Times New Roman",
-                  }}
-                >
-                  No Related Product
->>>>>>> 610515b429affa2d59303e656d3d392ade5f8ae1
-                </div>
-              ))}
-        </div>
-      </section>
+          <div>
+            <div style={{ overflow: "hidden", marginBottom: "14px" }}>
+              <img
+                src={rp.featureimg}
+                alt={rp.productName}
+                style={{
+                  padding: "10px",
+                  borderRadius: "6px",
+                  boxShadow: "rgba(0, 0, 0, 0.09) 1px 4px 8px 1px",
+                  background: "#fff",
+                  width: "100%",
+                }}
+              />
+            </div>
+
+            <p style={{ fontSize: "14px", textAlign: "center" }}>
+              {rp.productName}
+            </p>
+          </div>
+        </Link>
+      ))
+    ) : (
+      <p>No related products found</p>
+    )}
+  </div>
+</section>
 
       <Footer />
       <Scrollbar />
