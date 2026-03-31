@@ -1580,6 +1580,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import logo from "../../images/blog/tanshu-vaidik-logo.png";
 
 const Header = (props) => {
   const carts = useSelector((state) => state.cart.cart);
@@ -1704,11 +1705,11 @@ const Header = (props) => {
                 style={{ textDecoration: "none", color: "inherit" }}
               >
                <div className="rh-text-logo">
-  <img 
-    src="/src/images/blog/tanshu vaidik logo.png" 
-    alt="Tanshu Vaidik Logo" 
-    style={{ height: '80px', width: 'auto', objectFit: 'contain' }} 
-  />
+ <img
+  src={logo}
+  alt="Tanshu Vaidik Logo"
+  style={{ height: '80px', width: 'auto', objectFit: 'contain' }}
+/>
 </div>
               </Link>
             </div>
