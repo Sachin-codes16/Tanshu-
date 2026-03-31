@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 // import React, { useState, Fragment } from "react";
 // import Navbar from "../../components/Navbar";
 // import Footer from "../../components/footer";
@@ -464,6 +466,7 @@
 //     </Fragment>
 //   );
 // };
+>>>>>>> 610515b429affa2d59303e656d3d392ade5f8ae1
 
 import React, { useState, Fragment, useEffect } from "react";
 import Navbar from "../../components/Navbar";
@@ -988,6 +991,26 @@ const ProductDetailPage = () => {
         >
           RELATED PRODUCTS
         </h2>
+<<<<<<< HEAD
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "40px" }}>
+          {relatedProducts.length > 0 ? relatedProducts.map((rp) => (
+            <Link key={rp.productID} to={`/product-detail/${rp.slug}`}
+              style={{ textDecoration: "none", color: "inherit" }}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              <div>
+                <div style={{ overflow: "hidden", marginBottom: "14px" }}>
+                  <img
+                    src={rp.featureimg}
+                    alt={rp.productName}
+                    style={{  padding: "10px",
+  borderRadius: "6px",
+  boxShadow: "rgba(0, 0, 0, 0.09) 1px 4px 8px 1px",
+  background: "rgb(255, 255, 255)" }}
+                    onMouseEnter={e => e.currentTarget.style.transform = "scale(1.03)"}
+                    onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                  />
+=======
         <div
           style={{
             display: "grid",
@@ -1051,6 +1074,7 @@ const ProductDetailPage = () => {
                   }}
                 >
                   No Related Product
+>>>>>>> 610515b429affa2d59303e656d3d392ade5f8ae1
                 </div>
               ))}
         </div>
