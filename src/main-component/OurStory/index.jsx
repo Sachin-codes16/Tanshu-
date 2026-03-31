@@ -64,7 +64,7 @@ const PrivacyPage = () => {
             <img
               src={heroImg2}
               alt="Naresh Kumar Kaushik"
-              style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "18px", boxShadow: "0 15px 35px rgba(0,0,0,0.12)" }}
+              style={{ width: "100%", height: "400px", objectFit: "cover", borderRadius: "10px", boxShadow: "0 15px 35px rgba(0,0,0,0.12)" }}
             />
           </div>
 
