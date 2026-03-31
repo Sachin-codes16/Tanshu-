@@ -1004,7 +1004,14 @@ const ProductDetailPage = () => {
           style={{ textDecoration: "none", color: "inherit" }}
           onClick={() => window.scrollTo(0, 0)}
         >
-          <div>
+          <div
+                    style={{
+                      padding: "10px",
+                      borderRadius: "6px",
+                      boxShadow: "1px 4px 8px 1px rgba(0,0,0,0.09)",
+                      background: "#fff",
+                    }}
+                  >
             <div style={{ overflow: "hidden", marginBottom: "14px" }}>
               <img
                 src={rp.featureimg}
@@ -1015,6 +1022,7 @@ const ProductDetailPage = () => {
                   boxShadow: "rgba(0, 0, 0, 0.09) 1px 4px 8px 1px",
                   background: "#fff",
                   width: "100%",
+                  height: "300px"
                 }}
               />
             </div>
