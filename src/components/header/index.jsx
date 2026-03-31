@@ -1592,17 +1592,18 @@ const Header = (props) => {
   const [lowerCategories, setLowerCategories] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-  const handleSearch = async (Bsearch) => {
-    setSearchTerm(Bsearch);
+  const handleSearch = async (Search) => {
+    
+    setSearchTerm(Search);
 
-    if (!Bsearch) {
+    if (!Search) {
       setSearchResults([]);
       return;
     }
 
     try {
       const res = await axios.get(
-        `https://tanshu.checkour.work/api/search-product/${Bsearch}`,
+        `https://tanshu.checkour.work/api/search-product/${Search}`,
       );
 
       setSearchResults(res.data.data || []);
@@ -1681,6 +1682,7 @@ const Header = (props) => {
                   placeholder="Search..."
                   value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
+                  
                 />
                 {searchResults.length > 0 && (
                   <div className="search-results">
@@ -1701,13 +1703,13 @@ const Header = (props) => {
                 to="/home"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <div className="rh-text-logo">
-                  <span className="logo-the">The</span>
-                  <span className="logo-world">
-                    WORLD <em>of</em>
-                  </span>
-                  <span className="logo-rh">TANSHU</span>
-                </div>
+               <div className="rh-text-logo">
+  <img 
+    src="/src/images/blog/tanshu vaidik logo.png" 
+    alt="Tanshu Vaidik Logo" 
+    style={{ height: '80px', width: 'auto', objectFit: 'contain' }} 
+  />
+</div>
               </Link>
             </div>
 
