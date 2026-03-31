@@ -229,17 +229,6 @@ const ContactUs = () => {
     <Fragment>
       <Header />
 
-      {/* FLOATING LOGO */}
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          padding: "20px 20px",
-        }}
-      >
-        <img src={logo} alt="Company Logo" style={{ width: "160px" }} />
-      </div>
-
       {/* HERO SECTION */}
       <div
         style={{
@@ -263,7 +252,7 @@ const ContactUs = () => {
               color: "#1a1a2e",
             }}
           >
-            Contact <br /> Us
+            Contact Us
           </h1>
 
           {/* DESCRIPTION */}
@@ -275,84 +264,16 @@ const ContactUs = () => {
 
         {/* RIGHT SIDE IMAGE */}
         <div>
-          <a
-            href="https://www.instagram.com/p/C24GD3aSPFr/?utm_source=ig_web_copy_link&igsh=NTc4MTIwNjQ2YQ=="
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img
-              src={heroImg}
-              alt="contact"
-              style={{
-                width: "600px",
-                maxWidth: "100%",
-                borderRadius: "8px",
-                cursor: "pointer", // 👈 important
-              }}
-            />
-          </a>
-        </div>
-      </div>
-
-      {/* Map address Imframe and address Text left-right*/}
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1.2fr 1fr",
-          minHeight: "500px",
-          fontFamily: "Times New Roman",
-          marginTop: "100px",
-        }}
-      >
-        {/* LEFT SIDE - MAP */}
-        <div style={{ width: "100%", height: "100%" }}>
-          <iframe
-            src="https://www.google.com/maps?q=Industrial Area Phase 2, Hari Nagar, Panipat, Haryana 132103&output=embed"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            title="map"
-          ></iframe>
-        </div>
-
-        {/* RIGHT SIDE - TEXT */}
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            paddingLeft: "100px",
-          }}
-        >
-          <h1
+          <img
+            src={heroImg}
+            alt="contact"
             style={{
-              fontSize: "56px",
-              fontWeight: "600",
-              color: "#1e2a4a",
-              marginBottom: "30px",
+              width: "600px",
+              maxWidth: "100%",
+              borderRadius: "8px",
+              cursor: "pointer", // 👈 important
             }}
-          >
-            Visit Us
-          </h1>
-
-          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
-            <strong>Address:</strong> Industrial Area Phase 2, Hari Nagar,
-            Panipat, Haryana 132103
-          </p>
-
-          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
-            <strong>Hours:</strong> Mon–Sat 9:00AM – 6:00PM
-          </p>
-
-          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
-            <strong>Phone:</strong> +91-8930009468
-          </p>
-
-          <p style={{ fontSize: "16px", color: "#444" }}>
-            <strong>Email:</strong> info@tanshuvaidik.com
-          </p>
+          />
         </div>
       </div>
 
@@ -372,18 +293,18 @@ const ContactUs = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            padding: "60px 80px",
+            padding: "60px 60px",
           }}
         >
           <h1
             style={{
-              fontSize: "56px",
+              fontSize: "45px",
               fontWeight: "600",
               color: "#1e2a4a",
               marginBottom: "30px",
             }}
           >
-            Visit Us
+            Corporate Office
           </h1>
 
           {/* ADDRESS */}
@@ -438,9 +359,9 @@ const ContactUs = () => {
         </div>
 
         {/* RIGHT SIDE - MAP */}
-        <div style={{ width: "100%", height: "100%" }}>
+        <div style={{ width: "100%", height: "100%" ,paddingRight: "40px", }}>
           <iframe
-            src="https://www.google.com/maps?q=Industrial Area Phase 2, Hari Nagar, Panipat, Haryana 132103&output=embed"
+            src="https://www.google.com/maps?q=49A+Purcell+Road,+Londonderry+NSW+2753,+Australia&output=embed"
             width="100%"
             height="100%"
             style={{ border: 0 }}
@@ -451,63 +372,69 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* CALL & FIND GALLERY SECTION */}
+      {/* Map address Imframe and address Text left-right*/}
       <div
         style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "60px",
-          padding: "40px 80px",
-          flexWrap: "wrap",
+          display: "grid",
+          gridTemplateColumns: "1.2fr 1fr",
+          minHeight: "500px",
+          fontFamily: "Times New Roman",
+          marginTop: "100px",
         }}
       >
-        <div
-          style={{
-            border: "1px solid #ccc",
-            padding: "60px",
-            width: "500px",
-            textAlign: "center",
-          }}
-        >
-          <h3 style={{ fontWeight: "400", marginBottom: "30px" }}>CALL</h3>
-          <p style={{ color: "#666", marginBottom: "20px" }}>
-            United States 800.762.1005
-          </p>
-          <p style={{ color: "#666", lineHeight: "1.8" }}>
-            Monday-Friday 6AM-8PM PT <br />
-            Saturday 6AM-6PM PT <br />
-            Sunday 7AM-6PM PT
-          </p>
+        {/* LEFT SIDE - MAP */}
+        <div style={{ width: "100%", height: "100%", marginLeft: "40px" }}>
+          <iframe
+            src="https://www.google.com/maps?q=Industrial Area Phase 2, Hari Nagar, Panipat, Haryana 132103&output=embed"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            title="map"
+          ></iframe>
         </div>
 
+        {/* RIGHT SIDE - TEXT */}
         <div
           style={{
-            border: "1px solid #ccc",
-            padding: "60px",
-            width: "500px",
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            paddingLeft: "100px",
           }}
         >
-          <h3 style={{ fontWeight: "400", marginBottom: "30px" }}>
-            FIND A GALLERY
-          </h3>
-          <p style={{ color: "#666", lineHeight: "1.8", marginBottom: "30px" }}>
-            Our architecturally inspiring galleries blur the lines between
-            residential and retail, indoors and outdoors, home and hospitality.
-          </p>
-          <a
-            href="#"
+          <h1
             style={{
-              textDecoration: "underline",
-              color: "#888",
-              letterSpacing: "1px",
+              fontSize: "45px",
+              fontWeight: "600",
+              color: "#1e2a4a",
+              marginBottom: "30px",
             }}
           >
-            EXPLORE
-          </a>
+            Factory Office
+          </h1>
+
+          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
+            <strong>Address:</strong> Industrial Area Phase 2, Hari Nagar,
+            Panipat, Haryana 132103
+          </p>
+
+          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
+            <strong>Hours:</strong> Mon–Sat 9:00AM – 6:00PM
+          </p>
+
+          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
+            <strong>Phone:</strong> +91-8930009468
+          </p>
+
+          <p style={{ fontSize: "16px", color: "#444" }}>
+            <strong>Email:</strong> info@tanshuvaidik.com
+          </p>
         </div>
       </div>
 
+   
       {/* EMAIL SECTION */}
       <div style={{ textAlign: "center", marginTop: "100px" }}>
         <h2
