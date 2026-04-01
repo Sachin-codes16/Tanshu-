@@ -46,7 +46,7 @@
 // export default About;
 import React from "react";
 import { Link } from 'react-router-dom'
-import himg from '../../images/blog/aalo1-lens.png'
+import himg from '../../images/blog/111.jpeg'
 
 const Hero = () => {
     return (

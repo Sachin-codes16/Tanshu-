@@ -1,5 +1,5 @@
 import React from "react";
-import himg from '../../images/blog/aalo-lens-LqGf5UvHCZ8-unsplash.jpg'
+import himg from '../../images/blog/111.jpeg'
 import himg2 from '../../images/blog/img-1.jpg'
 import himg3 from '../../images/blog/img-2.jpg'
 
