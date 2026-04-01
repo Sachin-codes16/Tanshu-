@@ -599,7 +599,7 @@ const SeatingCollection = () => {
                     {/* <p style={{ textAlign: "center", fontSize: "13px", color: "#333", fontFamily: "Times New Roman" }}>
                       Starting at <strong>{product.memberPrice} Member</strong> / {product.regularPrice} Regular
                     </p> */}
-                    <p
+                    {/* <p
                       style={{
                         textAlign: "center",
                         fontSize: "13px",
@@ -618,12 +618,12 @@ const SeatingCollection = () => {
                       }}
                     >
                       <strong>Quality : {product.qualityName}</strong>
-                    </p>
+                    </p> */}
                     <p
                       style={{
                         textAlign: "center",
                         fontSize: "13px",
-                        color: "#C9A84C",
+                        color: "#36627c",
                         fontFamily: "Times New Roman",
                       }}
                     >
