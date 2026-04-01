@@ -1594,7 +1594,6 @@ const Header = (props) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const handleSearch = async (Search) => {
-    
     setSearchTerm(Search);
 
     if (!Search) {
@@ -1683,7 +1682,6 @@ const Header = (props) => {
                   placeholder="Search..."
                   value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
-                  
                 />
                 {searchResults.length > 0 && (
                   <div className="search-results">
@@ -1704,13 +1702,17 @@ const Header = (props) => {
                 to="/home"
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-               <div className="rh-text-logo">
- <img
-  src={logo}
-  alt="Tanshu Vaidik Logo"
-  style={{ height: '80px', width: 'auto', objectFit: 'contain' }}
-/>
-</div>
+                <div className="rh-text-logo">
+                  <img
+                    src={logo}
+                    alt="Tanshu Vaidik Logo"
+                    style={{
+                      height: "80px",
+                      width: "auto",
+                      objectFit: "contain",
+                    }}
+                  />
+                </div>
               </Link>
             </div>
 
@@ -1808,10 +1810,7 @@ const Header = (props) => {
                               className={`rh-sub-item ${activeSub === sub.id ? "active" : ""}`}
                               onMouseEnter={() => handleSubHover(sub)}
                             >
-                              <span className="sub-menu-text">
-                              
-                                {sub.title}
-                              </span>
+                              <span className="sub-menu-text">{sub.title}</span>
                             </div>
                           ))}
                         </div>

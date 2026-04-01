@@ -382,7 +382,7 @@ const SeatingCollection = () => {
 
   useEffect(() => {
     setLoading(true);
-
+    setProducts([]);
     let url = `https://tanshu.checkour.work/api/product/product-list/${slug}`;
 
     // if (lowerSlug && lowerSlug !== "lower-category") {
@@ -416,6 +416,7 @@ const SeatingCollection = () => {
       })
       .catch((error) => {
         console.log(error);
+        setProducts([]);
         setLoading(false);
       });
   }, [slug]);
@@ -581,7 +582,7 @@ const SeatingCollection = () => {
                     </div>
                     <h3
                       style={{
-                        fontSize: cols === 3 ? "15px" : "18px",
+                        fontSize: cols === 3 ? "18px" : "20px",
                         fontWeight: "300",
                         letterSpacing: "2px",
                         fontFamily: "Times New Roman",
@@ -622,8 +623,8 @@ const SeatingCollection = () => {
                     <p
                       style={{
                         textAlign: "center",
-                        fontSize: "13px",
-                        color: "#36627c",
+                        fontSize: "15px",
+                        color: "#3e4a8b",
                         fontFamily: "Times New Roman",
                       }}
                     >
