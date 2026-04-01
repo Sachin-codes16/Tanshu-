@@ -382,7 +382,7 @@ const SeatingCollection = () => {
 
   useEffect(() => {
     setLoading(true);
-
+    setProducts([]);
     let url = `https://tanshu.checkour.work/api/product/product-list/${slug}`;
 
     // if (lowerSlug && lowerSlug !== "lower-category") {
@@ -416,6 +416,7 @@ const SeatingCollection = () => {
       })
       .catch((error) => {
         console.log(error);
+        setProducts([]);
         setLoading(false);
       });
   }, [slug]);
@@ -581,7 +582,7 @@ const SeatingCollection = () => {
                     </div>
                     <h3
                       style={{
-                        fontSize: cols === 3 ? "15px" : "18px",
+                        fontSize: cols === 3 ? "18px" : "20px",
                         fontWeight: "300",
                         letterSpacing: "2px",
                         fontFamily: "Times New Roman",
@@ -599,7 +600,7 @@ const SeatingCollection = () => {
                     {/* <p style={{ textAlign: "center", fontSize: "13px", color: "#333", fontFamily: "Times New Roman" }}>
                       Starting at <strong>{product.memberPrice} Member</strong> / {product.regularPrice} Regular
                     </p> */}
-                    <p
+                    {/* <p
                       style={{
                         textAlign: "center",
                         fontSize: "13px",
@@ -618,12 +619,12 @@ const SeatingCollection = () => {
                       }}
                     >
                       <strong>Quality : {product.qualityName}</strong>
-                    </p>
+                    </p> */}
                     <p
                       style={{
                         textAlign: "center",
-                        fontSize: "13px",
-                        color: "#C9A84C",
+                        fontSize: "15px",
+                        color: "#3e4a8b",
                         fontFamily: "Times New Roman",
                       }}
                     >

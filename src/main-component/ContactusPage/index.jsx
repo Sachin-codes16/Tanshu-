@@ -233,26 +233,38 @@ const ContactUs = () => {
       <div
         style={{
           display: "flex",
-          alignItems: "center",
+          alignItems: "center", // 👈 THIS centers vertically
           justifyContent: "space-between",
-          padding: "0px 80px ",
-          margin: "10px 0px 10px 100px",
+          padding: "40px",
+          gap: "50px",
           flexWrap: "wrap",
-          gap: "40px",
+          minHeight: "80vh", // 👈 IMPORTANT
         }}
       >
         {/* LEFT SIDE */}
-        <div style={{ maxWidth: "500px" }}>
+        <div
+          style={{
+            flex: "1",
+            minWidth: "300px",
+            height: "100%",
+            display: "flex",
+            paddingLeft: " 100px",
+            flexDirection: "column",
+            justifyContent: "center",
+          }}
+        >
           {/* TITLE */}
           <h1
             style={{
-              fontSize: "64px",
+              fontSize: "45px",
               fontWeight: "600",
               margin: "0",
               color: "#1a1a2e",
             }}
           >
-            Contact Us
+            Let's Build Something
+            <br />
+            Amazing Together
           </h1>
 
           {/* DESCRIPTION */}
@@ -263,7 +275,7 @@ const ContactUs = () => {
         </div>
 
         {/* RIGHT SIDE IMAGE */}
-        <div>
+        {/* <div>
           <img
             src={heroImg}
             alt="contact"
@@ -271,13 +283,159 @@ const ContactUs = () => {
               width: "600px",
               maxWidth: "100%",
               borderRadius: "8px",
-              cursor: "pointer", // 👈 important
+              cursor: "pointer", // 
             }}
           />
+        </div> */}
+
+        <div style={{ flex: "1", minWidth: "300px" }}>
+          <div style={{ textAlign: "center", marginBottom: "2px" }}>
+            <h2
+              style={{
+                fontSize: "30px",
+                fontWeight: "250px",
+                fontFamily: "Times New Roman",
+              }}
+            >
+              EMAIL US
+            </h2>
+
+            <p style={{ color: "#666", marginTop: "5px" }}>
+              Please submit your questions or comments via the form below.
+              <br />
+              and we'll respond within 24 hours.
+            </p>
+            {/* <p>
+              You may also consult our Frequently Asked Questions (FAQ) page<br/> for
+              a more immediate answer.
+            </p> */}
+          </div>
+          {/* SUCCESS MESSAGE */}
+          {success && (
+            <div
+              style={{
+                textAlign: "center",
+                margin: "30px auto",
+                padding: "16px 40px",
+                background: "#f0fff0",
+                border: "1px solid #aaa",
+                width: "fit-content",
+                color: "#2a7a2a",
+                fontSize: "15px",
+                letterSpacing: "1px",
+              }}
+            >
+              ✅ Message sent successfully! We'll respond within 24 hours.
+            </div>
+          )}
+
+          {/* ERROR MESSAGE */}
+          {error && (
+            <div
+              style={{
+                textAlign: "center",
+                margin: "20px auto",
+                padding: "14px 40px",
+                background: "#fff0f0",
+                border: "1px solid #eaa",
+                width: "fit-content",
+                color: "#a00",
+                fontSize: "14px",
+              }}
+            >
+              ⚠️ {error}
+            </div>
+          )}
+
+          {/* FORM SECTION */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              gap: "30px",
+              padding: "20px 30px",
+              flexWrap: "wrap",
+            }}
+          >
+            {/* LEFT INPUTS */}
+            <div
+              style={{
+                width: "400px",
+                display: "flex",
+                flexDirection: "column",
+                gap: "20px",
+              }}
+            >
+              <input
+                name="Name"
+                value={formData.Name}
+                onChange={handleChange}
+                placeholder="Full Name *"
+                style={inputStyle}
+              />
+              <input
+                name="Email"
+                value={formData.Email}
+                onChange={handleChange}
+                placeholder="Email *"
+                style={inputStyle}
+              />
+              <input
+                name="Subject"
+                value={formData.Subject}
+                onChange={handleChange}
+                placeholder="Subject *"
+                style={inputStyle}
+              />
+              <input placeholder="Order Number (Optional)" style={inputStyle} />
+            </div>
+
+            {/* MESSAGE BOX */}
+            <div>
+              <textarea
+                name="Message"
+                value={formData.Message}
+                onChange={handleChange}
+                placeholder="Message *"
+                style={{
+                  ...inputStyle,
+                  width: "400px",
+                  height: "100px",
+                  resize: "none",
+                }}
+              />
+            </div>
+
+            {/* SUBMIT BUTTON */}
+            <div
+              style={{
+                width: "400px",
+                textAlign: "center",
+                marginBottom: "10px",
+              }}
+            >
+              <button
+                onClick={handleSubmit}
+                disabled={loading}
+                style={{
+                  background: loading ? "#888" : "#000",
+                  color: "#fff",
+                  padding: "20px 165px",
+                  border: "none",
+                  letterSpacing: "2px",
+                  cursor: loading ? "not-allowed" : "pointer",
+                  fontSize: "14px",
+                }}
+              >
+                {loading ? "SENDING..." : "SUBMIT"}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Map address Imframe and address Text right-left*/}
+      {/* Map address Iframe and address Text right-left*/}
+      
       <div
         style={{
           display: "grid",
@@ -304,7 +462,7 @@ const ContactUs = () => {
               marginBottom: "30px",
             }}
           >
-            Corporate Office
+            Australian Gallery
           </h1>
 
           {/* ADDRESS */}
@@ -329,7 +487,7 @@ const ContactUs = () => {
               lineHeight: "1.6",
             }}
           >
-            <span style={{ fontWeight: "550" }}>Hours:</span> Mon–Fri 9:00AM –
+            <span style={{ fontWeight: "550" }}>Hours:</span> Mon–Fri,  9:00AM –
             5:00PM
           </p>
 
@@ -358,12 +516,11 @@ const ContactUs = () => {
           </p>
         </div>
 
-        {/* RIGHT SIDE - MAP */}
-        <div style={{ width: "100%", height: "100%" ,paddingRight: "40px", }}>
+        <div style={{ width: "100%", height: "100%", paddingRight: "40px" }}>
           <iframe
             src="https://www.google.com/maps?q=49A+Purcell+Road,+Londonderry+NSW+2753,+Australia&output=embed"
-            width="100%"
-            height="100%"
+            width="90%"
+            height="90%"
             style={{ border: 0 }}
             allowFullScreen=""
             loading="lazy"
@@ -372,36 +529,23 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* Map address Imframe and address Text left-right*/}
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1.2fr 1fr",
+          gridTemplateColumns: "1fr 1.2fr",
           minHeight: "500px",
-          fontFamily: "Times New Roman",
+          fontFamily: "'Times New Roman', serif",
           marginTop: "100px",
+          marginBottom: "80px",
         }}
       >
-        {/* LEFT SIDE - MAP */}
-        <div style={{ width: "100%", height: "100%", marginLeft: "40px" }}>
-          <iframe
-            src="https://www.google.com/maps?q=Industrial Area Phase 2, Hari Nagar, Panipat, Haryana 132103&output=embed"
-            width="100%"
-            height="100%"
-            style={{ border: 0 }}
-            allowFullScreen=""
-            loading="lazy"
-            title="map"
-          ></iframe>
-        </div>
-
-        {/* RIGHT SIDE - TEXT */}
+        {/* LEFT SIDE - TEXT */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
-            paddingLeft: "100px",
+            padding: "60px 60px",
           }}
         >
           <h1
@@ -412,165 +556,75 @@ const ContactUs = () => {
               marginBottom: "30px",
             }}
           >
-            Factory Office
+            Indian Gallery Manufacturing
           </h1>
 
-          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
-            <strong>Address:</strong> Industrial Area Phase 2, Hari Nagar,
-            Panipat, Haryana 132103
-          </p>
-
-          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
-            <strong>Hours:</strong> Mon–Sat 9:00AM – 6:00PM
-          </p>
-
-          <p style={{ fontSize: "16px", marginBottom: "15px", color: "#444" }}>
-            <strong>Phone:</strong> +91-8930009468
-          </p>
-
-          <p style={{ fontSize: "16px", color: "#444" }}>
-            <strong>Email:</strong> info@tanshuvaidik.com
-          </p>
-        </div>
-      </div>
-
-   
-      {/* EMAIL SECTION */}
-      <div style={{ textAlign: "center", marginTop: "100px" }}>
-        <h2
-          style={{
-            fontSize: "40px",
-            fontWeight: "300",
-            fontFamily: "Times New Roman",
-          }}
-        >
-          EMAIL US
-        </h2>
-        <p style={{ color: "#666", marginTop: "15px" }}>
-          Please submit your questions or comments via the form below, and we'll
-          respond within 24 hours.
-        </p>
-        <p>
-          You may also consult our Frequently Asked Questions (FAQ) page for a
-          more immediate answer.
-        </p>
-      </div>
-
-      {/* SUCCESS MESSAGE */}
-      {success && (
-        <div
-          style={{
-            textAlign: "center",
-            margin: "30px auto",
-            padding: "16px 40px",
-            background: "#f0fff0",
-            border: "1px solid #aaa",
-            width: "fit-content",
-            color: "#2a7a2a",
-            fontSize: "15px",
-            letterSpacing: "1px",
-          }}
-        >
-          ✅ Message sent successfully! We'll respond within 24 hours.
-        </div>
-      )}
-
-      {/* ERROR MESSAGE */}
-      {error && (
-        <div
-          style={{
-            textAlign: "center",
-            margin: "20px auto",
-            padding: "14px 40px",
-            background: "#fff0f0",
-            border: "1px solid #eaa",
-            width: "fit-content",
-            color: "#a00",
-            fontSize: "14px",
-          }}
-        >
-          ⚠️ {error}
-        </div>
-      )}
-
-      {/* FORM SECTION */}
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          gap: "40px",
-          padding: "60px 80px",
-          flexWrap: "wrap",
-        }}
-      >
-        {/* LEFT INPUTS */}
-        <div
-          style={{
-            width: "600px",
-            display: "flex",
-            flexDirection: "column",
-            gap: "20px",
-          }}
-        >
-          <input
-            name="Name"
-            value={formData.Name}
-            onChange={handleChange}
-            placeholder="Full Name *"
-            style={inputStyle}
-          />
-          <input
-            name="Email"
-            value={formData.Email}
-            onChange={handleChange}
-            placeholder="Email *"
-            style={inputStyle}
-          />
-          <input
-            name="Subject"
-            value={formData.Subject}
-            onChange={handleChange}
-            placeholder="Subject *"
-            style={inputStyle}
-          />
-          <input placeholder="Order Number (Optional)" style={inputStyle} />
-        </div>
-
-        {/* MESSAGE BOX */}
-        <div>
-          <textarea
-            name="Message"
-            value={formData.Message}
-            onChange={handleChange}
-            placeholder="Message *"
+          {/* ADDRESS */}
+          <p
             style={{
-              ...inputStyle,
-              width: "700px",
-              height: "300px",
-              resize: "none",
+              fontSize: "16px",
+              color: "#444",
+              marginBottom: "18px",
+              lineHeight: "1.6",
             }}
-          />
+          >
+            <span style={{ fontWeight: "550" }}>Address:</span> Industrial Area
+            Phase 2, Hari Nagar, Panipat, Haryana 132103
+          </p>
+
+          {/* HOURS */}
+          <p
+            style={{
+              fontSize: "16px",
+              color: "#444",
+              marginBottom: "18px",
+              lineHeight: "1.6",
+            }}
+          >
+            <span style={{ fontWeight: "550" }}>Hours:</span> Mon–Sat,  9:00AM –
+            6:00PM
+          </p>
+
+          {/* PHONE */}
+          <p
+            style={{
+              fontSize: "16px",
+              color: "#444",
+              marginBottom: "18px",
+              lineHeight: "1.6",
+            }}
+          >
+            <span style={{ fontWeight: "550" }}>Phone:</span> +91-8930009468
+          </p>
+
+          {/* EMAIL */}
+          <p
+            style={{
+              fontSize: "16px",
+              color: "#3d4a63",
+              lineHeight: "1.6",
+            }}
+          >
+            <span style={{ fontWeight: "550" }}>Email:</span>{" "}
+            info@tanshuvaidik.com
+          </p>
+        </div>
+
+        {/* RIGHT SIDE - MAP */}
+        <div style={{ width: "100%", height: "100%", paddingRight: "40px" }}>
+          <iframe
+            src="https://www.google.com/maps?q=Industrial Area Phase 2, Hari Nagar, Panipat, Haryana 132103&output=embed"
+            width="90%"
+            height="90%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            title="map"
+          ></iframe>
         </div>
       </div>
 
-      {/* SUBMIT BUTTON */}
-      <div style={{ textAlign: "center", marginBottom: "120px" }}>
-        <button
-          onClick={handleSubmit}
-          disabled={loading}
-          style={{
-            background: loading ? "#888" : "#000",
-            color: "#fff",
-            padding: "18px 120px",
-            border: "none",
-            letterSpacing: "2px",
-            cursor: loading ? "not-allowed" : "pointer",
-            fontSize: "14px",
-          }}
-        >
-          {loading ? "SENDING..." : "SUBMIT"}
-        </button>
-      </div>
+      
 
       <Footer />
       <Scrollbar />
