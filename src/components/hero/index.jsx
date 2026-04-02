@@ -7,7 +7,7 @@ const Hero = () => {
     return (
         <section style={{
             width: '100%',
-            height: '100vh',
+            // height: '100vh',
             padding: 0,
             margin: 0,
             position: 'relative',
@@ -19,7 +19,7 @@ const Hero = () => {
                                alt="hero"
                                style={{
                                    width: '100%',
-                                   height: '100%',
+                                //    height: '100%',
                                    objectFit: 'cover',
                                    objectPosition: 'center',
                                    display: 'block',

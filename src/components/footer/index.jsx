@@ -233,6 +233,8 @@ const styles = {
         backgroundColor: '#f2ede8',
         color: '#444',
         fontFamily: "'Gill Sans', 'Gill Sans MT', Calibri, sans-serif",
+        marginTop: 0,
+        paddingTop: 0,
 
         position: "relative",   // ✅ FIX
         zIndex: 9999,           // ✅ FIX (important)
@@ -240,7 +242,8 @@ const styles = {
 
     newsletterSection: {
         textAlign: 'center',
-        padding: '80px 20px 50px',
+        padding: '0 20px 50px',
+        marginTop: 0,
 
         position: "relative",   // ✅ FIX
         zIndex: 9999,
