@@ -139,9 +139,9 @@ import Footer from "../../components/footer";
 import axios from "axios";
 
 const BloglistPage = () => {
-
-  const [gridView, setGridView] = useState("two");
+  const [gridView, setGridView] = useState("three");
   const [products, setProducts] = useState([]);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
   useEffect(() => {
     axios
@@ -153,17 +153,32 @@ const BloglistPage = () => {
       .catch((error) => {
         console.log(error);
       });
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const cols = gridView === "three" ? 3 : gridView === "two" ? 2 : 1;
-
+  const cols = isMobile ? 2 : gridView === "three" ? 3 : 2;
   return (
     <Fragment>
       <Header />
 
-      <section style={{ background: "white", minHeight: "100vh", paddingBottom: "80px" }}>
-        <div style={{ padding: "40px 60px 0" }}>
-
+      <section
+        style={{
+          background: "white",
+          minHeight: "100vh",
+          paddingBottom: "80px",
+        }}
+      >
+        <div
+          style={{
+            padding: window.innerWidth < 768 ? "20px 15px 0" : "40px 60px 0",
+          }}
+        >
           {/* FILTER BAR */}
           <div
             style={{
@@ -176,51 +191,48 @@ const BloglistPage = () => {
               marginBottom: "40px",
             }}
           >
-           <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+              <button
+                onClick={() => setGridView("three")}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "2px",
+                  opacity: gridView === "three" ? 1 : 0.4,
+                }}
+              >
+                <svg width="22" height="22" viewBox="0 0 22 22">
+                  <rect x="0" y="0" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="8" y="0" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="16" y="0" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="0" y="8" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="8" y="8" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="16" y="8" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="0" y="16" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="8" y="16" width="6" height="6" fill="#1a1a1a" />
+                  <rect x="16" y="16" width="6" height="6" fill="#1a1a1a" />
+                </svg>
+              </button>
 
-<button
-  onClick={() => setGridView("three")}
-  style={{
-    background: "none",
-    border: "none",
-    cursor: "pointer",
-    padding: "2px",
-    opacity: gridView === "three" ? 1 : 0.4
-  }}
->
-<svg width="22" height="22" viewBox="0 0 22 22">
-<rect x="0" y="0" width="6" height="6" fill="#1a1a1a"/>
-<rect x="8" y="0" width="6" height="6" fill="#1a1a1a"/>
-<rect x="16" y="0" width="6" height="6" fill="#1a1a1a"/>
-<rect x="0" y="8" width="6" height="6" fill="#1a1a1a"/>
-<rect x="8" y="8" width="6" height="6" fill="#1a1a1a"/>
-<rect x="16" y="8" width="6" height="6" fill="#1a1a1a"/>
-<rect x="0" y="16" width="6" height="6" fill="#1a1a1a"/>
-<rect x="8" y="16" width="6" height="6" fill="#1a1a1a"/>
-<rect x="16" y="16" width="6" height="6" fill="#1a1a1a"/>
-</svg>
-</button>
-
-
-<button
-  onClick={() => setGridView("two")}
-  style={{
-    background: "none",
-    border: "none",
-    cursor: "pointer",
-    padding: "2px",
-    opacity: gridView === "two" ? 1 : 0.4
-  }}
->
-<svg width="22" height="22" viewBox="0 0 22 22">
-<rect x="0" y="0" width="10" height="10" fill="#1a1a1a"/>
-<rect x="12" y="0" width="10" height="10" fill="#1a1a1a"/>
-<rect x="0" y="12" width="10" height="10" fill="#1a1a1a"/>
-<rect x="12" y="12" width="10" height="10" fill="#1a1a1a"/>
-</svg>
-</button>
-
-</div>
+              <button
+                onClick={() => setGridView("two")}
+                style={{
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                  padding: "2px",
+                  opacity: gridView === "two" ? 1 : 0.4,
+                }}
+              >
+                <svg width="22" height="22" viewBox="0 0 22 22">
+                  <rect x="0" y="0" width="10" height="10" fill="#1a1a1a" />
+                  <rect x="12" y="0" width="10" height="10" fill="#1a1a1a" />
+                  <rect x="0" y="12" width="10" height="10" fill="#1a1a1a" />
+                  <rect x="12" y="12" width="10" height="10" fill="#1a1a1a" />
+                </svg>
+              </button>
+            </div>
           </div>
 
           {/* BLOG GRID */}
@@ -229,7 +241,11 @@ const BloglistPage = () => {
             style={{
               display: "grid",
               gridTemplateColumns: `repeat(${cols}, 1fr)`,
-              gap: cols === 3 ? "50px 30px" : "60px 40px",
+              gap: isMobile
+                ? "25px 15px"
+                : cols === 3
+                  ? "50px 30px"
+                  : "60px 40px",
             }}
           >
             {products.map((product) => (
@@ -238,7 +254,15 @@ const BloglistPage = () => {
                 key={product.id}
                 style={{ textDecoration: "none", color: "inherit" }}
               >
-                <div>
+                <div
+                  style={{
+                    background: "#fff",
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                    borderRadius: "6px",
+                    padding: "10px",
+                    transition: "0.3s ease",
+                  }}
+                >
                   {/* IMAGE */}
 
                   <div
@@ -253,7 +277,13 @@ const BloglistPage = () => {
                       alt={product.title}
                       style={{
                         width: "100%",
-                        height: cols === 3 ? "320px" : cols === 2 ? "460px" : "600px",
+                        height: isMobile
+                          ? "200px"
+                          : cols === 3
+                            ? "320px"
+                            : cols === 2
+                              ? "460px"
+                              : "600px",
                         objectFit: "cover",
                       }}
                     />
@@ -263,7 +293,11 @@ const BloglistPage = () => {
 
                   <h3
                     style={{
-                      fontSize: cols === 3 ? "20px" : "30px",
+                      fontSize: isMobile
+                        ? "16px"
+                        : cols === 3
+                          ? "20px"
+                          : "30px",
                       fontWeight: "300",
                       fontFamily: "Times New Roman",
                       color: "#1a1a1a",
@@ -277,7 +311,7 @@ const BloglistPage = () => {
 
                   <p
                     style={{
-                      fontSize: "18px",
+                      fontSize: isMobile ? "14px" : "18px",
                       color: "#666",
                       fontFamily: "Times New Roman",
                     }}
