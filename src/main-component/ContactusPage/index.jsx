@@ -649,8 +649,9 @@ const ContactUs = () => {
           <h1
             style={{
               display: "flex",
-              justifyContent: "center",
+              justifyContent: "flex-start",
               paddingTop: "8px",
+              paddingLeft:"12px",
               fontSize: "26px",
               fontWeight: "600",
               color: "#1e2a4a",
