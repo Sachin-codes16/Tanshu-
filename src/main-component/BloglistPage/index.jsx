@@ -142,6 +142,7 @@ const BloglistPage = () => {
   const [gridView, setGridView] = useState("three");
   const [products, setProducts] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  
 
   useEffect(() => {
     axios
@@ -277,13 +278,6 @@ const BloglistPage = () => {
                       alt={product.title}
                       style={{
                         width: "100%",
-                        height: isMobile
-                          ? "200px"
-                          : cols === 3
-                            ? "320px"
-                            : cols === 2
-                              ? "460px"
-                              : "600px",
                         objectFit: "cover",
                       }}
                     />
@@ -306,18 +300,6 @@ const BloglistPage = () => {
                   >
                     {product.title}
                   </h3>
-
-                  {/* SLUG */}
-
-                  <p
-                    style={{
-                      fontSize: isMobile ? "14px" : "18px",
-                      color: "#666",
-                      fontFamily: "Times New Roman",
-                    }}
-                  >
-                    {product.slug}
-                  </p>
 
                   <span
                     style={{
