@@ -65,6 +65,11 @@ const PrivacyPage = () => {
   const cardImageHeight = isMobile ? "280px" : "380px";
   const modalPadding = isMobile ? "24px 18px" : isTablet ? "36px 28px" : "60px";
   const modalGap = isMobile ? "24px" : isTablet ? "32px" : "60px";
+  const gridTemplateColumns = isMobile
+    ? "repeat(auto-fit, minmax(min(100%, 220px), 1fr))"
+    : isTablet
+      ? "repeat(2, minmax(0, 1fr))"
+      : "repeat(4, minmax(0, 1fr))";
 
   return (
     <div
@@ -86,7 +91,7 @@ const PrivacyPage = () => {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
+            gridTemplateColumns,
             gap: gridGap,
           }}
         >
@@ -96,6 +101,9 @@ const PrivacyPage = () => {
               onClick={() => setSelectedMember(member)}
               style={{
                 cursor: "pointer",
+                display: "flex",
+                flexDirection: "column",
+                height: "100%",
                 borderRadius: "16px",
                 border: "2.5px solid #e8a020",
                 overflow: "hidden",
@@ -136,6 +144,7 @@ const PrivacyPage = () => {
                   justifyContent: "space-between",
                   gap: "12px",
                   flexWrap: isMobile ? "wrap" : "nowrap",
+                  flex: 1,
                 }}
               >
                 <div style={{ minWidth: 0, flex: 1 }}>
@@ -172,10 +181,11 @@ const PrivacyPage = () => {
                     fontSize: "20px",
                     color: "#fff",
                     fontWeight: "bold",
+                    lineHeight: 1,
                     flexShrink: 0,
                   }}
                 >
-                  ->
+                  {">"}
                 </div>
               </div>
             </div>

@@ -111,7 +111,7 @@
 
 // export default Footer;
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 const Footer = (props) => {
@@ -121,30 +121,96 @@ const Footer = (props) => {
     }
 
     const [email, setEmail] = useState('')
+    const [windowWidth, setWindowWidth] = useState(
+        typeof window !== 'undefined' ? window.innerWidth : 1200
+    )
+
+    useEffect(() => {
+        if (typeof window === 'undefined') {
+            return undefined
+        }
+
+        const handleResize = () => setWindowWidth(window.innerWidth)
+
+        window.addEventListener('resize', handleResize)
+        return () => window.removeEventListener('resize', handleResize)
+    }, [])
+
+    const isMobile = windowWidth <= 767
+    const isTablet = windowWidth <= 1024
+    const containerStyle = {
+        ...styles.container,
+        padding: isMobile ? '0 18px' : isTablet ? '0 24px' : styles.container.padding,
+    }
+    const newsletterSectionStyle = {
+        ...styles.newsletterSection,
+        padding: isMobile ? '24px 16px 36px' : styles.newsletterSection.padding,
+    }
+    const newsletterTitleStyle = {
+        ...styles.newsletterTitle,
+        fontSize: isMobile ? '24px' : styles.newsletterTitle.fontSize,
+        letterSpacing: isMobile ? '2px' : styles.newsletterTitle.letterSpacing,
+    }
+    const newsletterSubtitleStyle = {
+        ...styles.newsletterSubtitle,
+        fontSize: isMobile ? '15px' : styles.newsletterSubtitle.fontSize,
+        marginBottom: isMobile ? '20px' : styles.newsletterSubtitle.marginBottom,
+    }
+    const emailRowStyle = {
+        ...styles.emailRow,
+        flexDirection: isMobile ? 'column' : 'row',
+        maxWidth: isMobile ? '100%' : styles.emailRow.maxWidth,
+    }
+    const emailInputStyle = {
+        ...styles.emailInput,
+        width: isMobile ? '100%' : 'auto',
+        borderBottom: isMobile ? '1px solid #c5bfb8' : 'none',
+    }
+    const signupBtnStyle = {
+        ...styles.signupBtn,
+        width: isMobile ? '100%' : 'auto',
+    }
+    const linksSectionStyle = {
+        ...styles.linksSection,
+        padding: isMobile ? '36px 0' : styles.linksSection.padding,
+    }
+    const gridStyle = {
+        ...styles.grid,
+        gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : styles.grid.gridTemplateColumns,
+        gap: isMobile ? '28px' : isTablet ? '36px' : styles.grid.gap,
+    }
+    const lowerFooterStyle = {
+        ...styles.lowerFooter,
+        padding: isMobile ? '18px 12px 28px' : styles.lowerFooter.padding,
+    }
+    const copyrightStyle = {
+        ...styles.copyright,
+        fontSize: isMobile ? '11px' : styles.copyright.fontSize,
+    }
 
     return (
         <footer className={`wpo-site-footer ${props.ftClass}`} style={styles.footer}>
 
             {/* Newsletter Section */}
-            <div style={styles.newsletterSection}>
-                <h2 style={styles.newsletterTitle}>INSPIRATION, DELIVERED.</h2>
-                <p style={styles.newsletterSubtitle}>Discover our products, places, services and spaces.</p>
-                <div style={styles.emailRow}>
+            <div style={newsletterSectionStyle}>
+                <h2 style={newsletterTitleStyle}>INSPIRATION, DELIVERED.</h2>
+                <p style={newsletterSubtitleStyle}>Discover our products, places, services and spaces.</p>
+                <div style={emailRowStyle}>
                     <input
                         type="email"
                         placeholder="Enter your email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        style={styles.emailInput}
+                        style={emailInputStyle}
                     />
-                    <button style={styles.signupBtn}>SIGN UP</button>
+                    <button style={signupBtnStyle}>SIGN UP</button>
                 </div>
             </div>
 
             {/* Links Section */}
-            <div style={styles.linksSection}>
-                <div style={styles.container}>
-                    <div style={styles.grid}>
+            <div style={linksSectionStyle}>
+                <div style={containerStyle}>
+                    <div style={gridStyle}>
 
                         {/* Column 1 - Resources */}
                         <div style={styles.col}>
@@ -216,9 +282,9 @@ const Footer = (props) => {
             </div>
 
             {/* Lower Footer */}
-            <div style={styles.lowerFooter}>
-                <div style={styles.container}>
-                    <p style={styles.copyright}>
+            <div style={lowerFooterStyle}>
+                <div style={containerStyle}>
+                    <p style={copyrightStyle}>
                         &copy; {new Date().getFullYear()} Your Company. All Rights Reserved.
                     </p>
                 </div>
