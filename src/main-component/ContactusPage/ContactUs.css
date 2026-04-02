@@ -1,0 +1,80 @@
+/* MOBILE RESPONSIVE */
+@media (max-width: 768px) {
+  /* HERO SECTION */
+  .hero-container {
+    flex-direction: column !important;
+    padding: 20px !important;
+    gap: 20px !important;
+    text-align: center;
+  }
+
+  .hero-left {
+    padding-left: 0 !important;
+    align-items: center;
+  }
+
+  .hero-left h1 {
+    font-size: 28px !important;
+  }
+
+  .hero-left p {
+    font-size: 16px !important;
+  }
+
+  /* FORM */
+  .form-wrapper {
+    flex-direction: column !important;
+    padding: 10px !important;
+  }
+
+  .form-left,
+  .form-right,
+  .submit-btn {
+    width: 100% !important;
+  }
+
+  .submit-btn button {
+    width: 100% !important;
+    padding: 15px !important;
+    margin-bottom: 0
+  }
+
+  textarea {
+    width: 100% !important;
+  }
+
+  /* MAP SECTION */
+   /* .map-section {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 0;
+    padding-top: 0
+  }
+
+  .map-title {
+    order: 1;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  .map-iframe {
+    order: 2;
+    width: 100% !important;
+    padding: 0 25px !important;
+    display: flex;
+    justify-content: center;
+
+  }
+  
+
+  .map-text {
+    order: 3;
+    padding: 5px !important;
+    text-align: center;
+  }
+
+  iframe {
+    width: 100% !important;
+    height: 250px !important;
+  } */
+}

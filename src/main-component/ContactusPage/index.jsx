@@ -1,3 +1,4 @@
+import "./ContactUs.css";
 // import React, { Fragment } from "react";
 // import Header from "../../components/header";
 // import Footer from "../../components/footer";
@@ -231,18 +232,20 @@ const ContactUs = () => {
 
       {/* HERO SECTION */}
       <div
+        className="hero-container"
         style={{
           display: "flex",
-          alignItems: "center", // 👈 THIS centers vertically
+          alignItems: "center",
           justifyContent: "space-between",
           padding: "40px",
           gap: "50px",
           flexWrap: "wrap",
-          minHeight: "80vh", // 👈 IMPORTANT
+          minHeight: "80vh",
         }}
       >
         {/* LEFT SIDE */}
         <div
+          className="hero-left"
           style={{
             flex: "1",
             minWidth: "300px",
@@ -256,15 +259,13 @@ const ContactUs = () => {
           {/* TITLE */}
           <h1
             style={{
-              fontSize: "45px",
+              fontSize: "28px",
               fontWeight: "600",
               margin: "0",
               color: "#1a1a2e",
             }}
           >
-            Let's Build Something
-            <br />
-            Amazing Together
+            Let's Build Something Amazing Together
           </h1>
 
           {/* DESCRIPTION */}
@@ -349,6 +350,7 @@ const ContactUs = () => {
 
           {/* FORM SECTION */}
           <div
+            className="form-wrapper"
             style={{
               display: "flex",
               justifyContent: "center",
@@ -359,6 +361,7 @@ const ContactUs = () => {
           >
             {/* LEFT INPUTS */}
             <div
+              className="form-left"
               style={{
                 width: "400px",
                 display: "flex",
@@ -391,7 +394,7 @@ const ContactUs = () => {
             </div>
 
             {/* MESSAGE BOX */}
-            <div>
+            <div className="form-right">
               <textarea
                 name="Message"
                 value={formData.Message}
@@ -408,6 +411,7 @@ const ContactUs = () => {
 
             {/* SUBMIT BUTTON */}
             <div
+              className="submit-btn"
               style={{
                 width: "400px",
                 textAlign: "center",
@@ -434,197 +438,227 @@ const ContactUs = () => {
         </div>
       </div>
 
-      {/* Map address Iframe and address Text right-left*/}
-      
+      {/* MAP SECTION 1 - AUSTRALIA */}
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.2fr",
-          minHeight: "500px",
-          fontFamily: "'Times New Roman', serif",
-          marginTop: "100px",
-        }}
+        className="map-section"
+        style={{ marginTop: "100px", fontFamily: "'Times New Roman', serif" }}
       >
-        {/* LEFT SIDE - TEXT */}
+        {/* 🖥️ DESKTOP */}
         <div
+          className="d-none d-md-grid"
+          style={{
+            gridTemplateColumns: "1fr 1.2fr",
+            minHeight: "500px",
+          }}
+        >
+          {/* LEFT */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              padding: "100px",
+            }}
+          >
+            <h1
+              style={{ fontSize: "45px", fontWeight: "600", color: "#1e2a4a" }}
+            >
+              Australian Gallery
+            </h1>
+
+            <p>
+              <b>Address:</b> 49A Purcell Road Londonderry NSW-2753
+            </p>
+            <p>
+              <b>Hours:</b> Mon–Fri, 9:00AM – 5:00PM
+            </p>
+            <p>
+              <b>Phone:</b> +61 423 471 255
+            </p>
+            <p>
+              <b>Email:</b> info@tanshuvaidik.com
+            </p>
+          </div>
+
+          {/* RIGHT MAP */}
+          <div
+            style={{
+              paddingRight: "40px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <iframe
+              src="https://www.google.com/maps?q=49A+Purcell+Road,+Londonderry+NSW+2753,+Australia&output=embed"
+              width="90%"
+              height="400"
+              style={{ border: 0 }}
+              loading="lazy"
+              title="map"
+            />
+          </div>
+        </div>
+
+        {/* 📱 MOBILE (FIXED ORDER) */}
+        <div
+          className="d-block d-md-none"
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
-            padding: "60px 60px",
+            gap: "2px",
+            padding: "0 20px",
           }}
         >
+          {/* 1️⃣ TITLE */}
           <h1
             style={{
-              fontSize: "45px",
+              display: "flex",
+              justifyContent: "center",
+              fontSize: "35px",
               fontWeight: "600",
               color: "#1e2a4a",
-              marginBottom: "30px",
+              marginBottom: "5px",
             }}
           >
             Australian Gallery
           </h1>
 
-          {/* ADDRESS */}
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#444",
-              marginBottom: "18px",
-              lineHeight: "1.6",
-            }}
-          >
-            <span style={{ fontWeight: "550" }}>Address:</span> 49A Purcell Road
-            Londonderry Nsw-2753
-          </p>
-
-          {/* HOURS */}
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#444",
-              marginBottom: "18px",
-              lineHeight: "1.6",
-            }}
-          >
-            <span style={{ fontWeight: "550" }}>Hours:</span> Mon–Fri,  9:00AM –
-            5:00PM
-          </p>
-
-          {/* PHONE */}
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#444",
-              marginBottom: "18px",
-              lineHeight: "1.6",
-            }}
-          >
-            <span style={{ fontWeight: "550" }}>Phone:</span> +61 423 471 255
-          </p>
-
-          {/* EMAIL */}
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#3d4a63",
-              lineHeight: "1.6",
-            }}
-          >
-            <span style={{ fontWeight: "550" }}>Email:</span>{" "}
-            info@tanshuvaidik.com
-          </p>
-        </div>
-
-        <div style={{ width: "100%", height: "100%", paddingRight: "40px" }}>
+          {/* 2️⃣ MAP */}
           <iframe
             src="https://www.google.com/maps?q=49A+Purcell+Road,+Londonderry+NSW+2753,+Australia&output=embed"
-            width="90%"
-            height="90%"
+            width="100%"
+            height="250"
             style={{ border: 0 }}
-            allowFullScreen=""
             loading="lazy"
             title="map"
-          ></iframe>
+          />
+
+          {/* 3️⃣ TEXT */}
+          <div style={{ paddingBottom: "2px", marginBottom: "2px" }}>
+            <p>
+              <b>Address:</b> 49A Purcell Road Londonderry NSW-2753
+            </p>
+            <p>
+              <b>Hours:</b> Mon–Fri, 9:00AM – 5:00PM
+            </p>
+            <p>
+              <b>Phone:</b> +61 423 471 255
+            </p>
+            <p>
+              <b>Email:</b> info@tanshuvaidik.com
+            </p>
+          </div>
         </div>
       </div>
 
+      {/* MAP SECTION 2 - INDIA */}
       <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "1fr 1.2fr",
-          minHeight: "500px",
-          fontFamily: "'Times New Roman', serif",
-          marginTop: "100px",
-          marginBottom: "80px",
-        }}
+        className="map-section"
+        style={{ marginTop: "100px", fontFamily: "'Times New Roman', serif" }}
       >
-        {/* LEFT SIDE - TEXT */}
+        {/* 🖥️ DESKTOP */}
         <div
+          className="d-none d-md-grid"
+          style={{
+            gridTemplateColumns: "1fr 1.2fr",
+            minHeight: "500px",
+          }}
+        >
+          {/* LEFT */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              padding: "60px",
+            }}
+          >
+            <h1
+              style={{
+                fontSize: "35px",
+                fontWeight: "600",
+                color: "#1e2a4a",
+                textAlign: "center",
+              }}
+            >
+              Indian Gallery Manufacturing
+            </h1>
+
+            <p>
+              <b>Address:</b> Industrial Area Phase 2, Hari Nagar, Panipat
+            </p>
+            <p>
+              <b>Hours:</b> Mon–Sat, 9:00AM – 6:00PM
+            </p>
+            <p>
+              <b>Phone:</b> +91-8930009468
+            </p>
+            <p>
+              <b>Email:</b> info@tanshuvaidik.com
+            </p>
+          </div>
+
+          {/* RIGHT MAP */}
+          <div
+            style={{
+              paddingRight: "40px",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <iframe
+              src="https://www.google.com/maps?q=Industrial+Area+Phase+2,+Hari+Nagar,+Panipat,+Haryana+132103&output=embed"
+              width="90%"
+              height="400"
+              style={{ border: 0 }}
+              loading="lazy"
+              title="map"
+            />
+          </div>
+        </div>
+
+        {/* 📱 MOBILE (FIXED ORDER) */}
+        <div
+          className="d-block d-md-none"
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "center",
-            padding: "60px 60px",
+            gap: "15px",
+            padding: "20px",
           }}
         >
-          <h1
-            style={{
-              fontSize: "45px",
-              fontWeight: "600",
-              color: "#1e2a4a",
-              marginBottom: "30px",
-            }}
-          >
+          {/* 1️⃣ TITLE */}
+          <h1 style={{ fontSize: "28px", fontWeight: "600", color: "#1e2a4a" }}>
             Indian Gallery Manufacturing
           </h1>
 
-          {/* ADDRESS */}
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#444",
-              marginBottom: "18px",
-              lineHeight: "1.6",
-            }}
-          >
-            <span style={{ fontWeight: "550" }}>Address:</span> Industrial Area
-            Phase 2, Hari Nagar, Panipat, Haryana 132103
-          </p>
-
-          {/* HOURS */}
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#444",
-              marginBottom: "18px",
-              lineHeight: "1.6",
-            }}
-          >
-            <span style={{ fontWeight: "550" }}>Hours:</span> Mon–Sat,  9:00AM –
-            6:00PM
-          </p>
-
-          {/* PHONE */}
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#444",
-              marginBottom: "18px",
-              lineHeight: "1.6",
-            }}
-          >
-            <span style={{ fontWeight: "550" }}>Phone:</span> +91-8930009468
-          </p>
-
-          {/* EMAIL */}
-          <p
-            style={{
-              fontSize: "16px",
-              color: "#3d4a63",
-              lineHeight: "1.6",
-            }}
-          >
-            <span style={{ fontWeight: "550" }}>Email:</span>{" "}
-            info@tanshuvaidik.com
-          </p>
-        </div>
-
-        {/* RIGHT SIDE - MAP */}
-        <div style={{ width: "100%", height: "100%", paddingRight: "40px" }}>
+          {/* 2️⃣ MAP */}
           <iframe
-            src="https://www.google.com/maps?q=Industrial Area Phase 2, Hari Nagar, Panipat, Haryana 132103&output=embed"
-            width="90%"
-            height="90%"
+            src="https://www.google.com/maps?q=Industrial+Area+Phase+2,+Hari+Nagar,+Panipat,+Haryana+132103&output=embed"
+            width="100%"
+            height="250"
             style={{ border: 0 }}
-            allowFullScreen=""
             loading="lazy"
             title="map"
-          ></iframe>
+          />
+
+          {/* 3️⃣ TEXT */}
+          <div>
+            <p>
+              <b>Address:</b> Industrial Area Phase 2, Hari Nagar, Panipat
+            </p>
+            <p>
+              <b>Hours:</b> Mon–Sat, 9:00AM – 6:00PM
+            </p>
+            <p>
+              <b>Phone:</b> +91-8930009468
+            </p>
+            <p>
+              <b>Email:</b> info@tanshuvaidik.com
+            </p>
+          </div>
         </div>
       </div>
-
-      
 
       <Footer />
       <Scrollbar />
