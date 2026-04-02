@@ -461,7 +461,7 @@ const ContactUs = () => {
             }}
           >
             <h1
-              style={{ fontSize: "45px", fontWeight: "600", color: "#1e2a4a" }}
+              style={{ fontSize: "36px", fontWeight: "600", color: "#1e2a4a" }}
             >
               Australian Gallery
             </h1>
@@ -509,20 +509,6 @@ const ContactUs = () => {
             padding: "0 20px",
           }}
         >
-          {/* 1️⃣ TITLE */}
-          <h1
-            style={{
-              display: "flex",
-              justifyContent: "center",
-              fontSize: "35px",
-              fontWeight: "600",
-              color: "#1e2a4a",
-              marginBottom: "5px",
-            }}
-          >
-            Australian Gallery
-          </h1>
-
           {/* 2️⃣ MAP */}
           <iframe
             src="https://www.google.com/maps?q=49A+Purcell+Road,+Londonderry+NSW+2753,+Australia&output=embed"
@@ -533,8 +519,30 @@ const ContactUs = () => {
             title="map"
           />
 
+          {/* 1️⃣ TITLE */}
+          <h1
+            style={{
+              display: "flex",
+              justifyContent: "flex-start",
+              fontSize: "26px",
+              fontWeight: "600",
+              color: "#1e2a4a",
+              paddingLeft: "12px",
+              marginBottom: "5px",
+              marginTop: "8px",
+            }}
+          >
+            Australian Gallery
+          </h1>
+
           {/* 3️⃣ TEXT */}
-          <div style={{ paddingBottom: "2px", marginBottom: "2px" }}>
+          <div
+            style={{
+              paddingLeft: "12px",
+              paddingRight: "12px",
+            }}
+          >
+            {" "}
             <p>
               <b>Address:</b> 49A Purcell Road Londonderry NSW-2753
             </p>
@@ -575,13 +583,13 @@ const ContactUs = () => {
           >
             <h1
               style={{
-                fontSize: "35px",
+                fontSize: "34px",
                 fontWeight: "600",
                 color: "#1e2a4a",
-                textAlign: "center",
+                display: "flex",
               }}
             >
-              Indian Gallery Manufacturing
+              Indian Gallery & Manufacturing
             </h1>
 
             <p>
@@ -627,11 +635,6 @@ const ContactUs = () => {
             padding: "20px",
           }}
         >
-          {/* 1️⃣ TITLE */}
-          <h1 style={{ fontSize: "28px", fontWeight: "600", color: "#1e2a4a" }}>
-            Indian Gallery Manufacturing
-          </h1>
-
           {/* 2️⃣ MAP */}
           <iframe
             src="https://www.google.com/maps?q=Industrial+Area+Phase+2,+Hari+Nagar,+Panipat,+Haryana+132103&output=embed"
@@ -642,8 +645,22 @@ const ContactUs = () => {
             title="map"
           />
 
+          {/* 1️⃣ TITLE */}
+          <h1
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              paddingTop: "8px",
+              fontSize: "26px",
+              fontWeight: "600",
+              color: "#1e2a4a",
+            }}
+          >
+            Indian Gallery & Manufacturing
+          </h1>
+
           {/* 3️⃣ TEXT */}
-          <div>
+          <div style={{ paddingLeft: "12px" }}>
             <p>
               <b>Address:</b> Industrial Area Phase 2, Hari Nagar, Panipat
             </p>
