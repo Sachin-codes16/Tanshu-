@@ -339,14 +339,14 @@ const Header = (props) => {
                 <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee", padding: "12px 17px 12px 17px" }}>
                   <Link to="/">SWATCHES</Link>
                 </div>
-                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee" ,padding: "12px 17px 12px 17px 17px"  }}>
+                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee" ,padding: "12px 17px 12px 17px "  }}>
                   <Link to="/our-story">OUR STORY</Link>
                 </div>
-                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee" ,padding: "12px 17px 12px 17px 17px"  }}>
+                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee" ,padding: "12px 17px 12px 17px"  }}>
                   <Link to="/contact-usPage">CONTACT US</Link>
                 
                 </div>
-                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,padding: "12px 17px 12px 17px 17px"  }}>
+                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,padding: "12px 17px 12px 17px"  }}>
                   <Link to="/BloglistPage">BLOG'S</Link>
                 </div>
             </div>
