@@ -101,13 +101,13 @@ const PrivacyPage = () => {
                 e.currentTarget.style.boxShadow = "0 4px 18px rgba(0,0,0,0.09)";
               }}
             >
-             <div style={{ width: "100%", height: "380px", overflow: "hidden" }}>
+             <div style={{ width: "100%",  overflow: "hidden" }}>
   <img
     src={member.img}
     alt={member.name}
     style={{
       width: "100%",
-      height: "100%",
+      height: "380px",
       objectFit: "cover",
       objectPosition: "center"
     }}

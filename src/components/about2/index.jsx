@@ -9,53 +9,7 @@ const About2 = (props) => {
     const ClickHandler = () => {
         window.scrollTo(10, 0);
     }
-    // return (
-    //     <div className="wpo-about-area-s2 section-padding">
-    //         <div className="container">
-    //             <div className="row align-items-center">
-    //                 <div className="col-lg-6 col-md-12 col-sm-12">
-    //                     <div className="wpo-about-img">
-    //                         <div className="wpo-about-img-left">
-    //                             <img src={abimg} alt=""/>
-    //                                 <div className="wpo-about-img-text">
-    //                                     <h2></h2>
-    //                                     <p></p>
-    //                                 </div>
-    //                         </div>
-    //                         <div className="wpo-about-img-right">
-    //                             <img src={abimg2} alt=""/>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //                 <div className="col-lg-6 col-md-12 colsm-12">
-    //                     <div className="wpo-about-text">
-    //                         <div className="wpo-about-title">
-    //                             <span></span>
-    //                             <h2></h2>
-    //                         </div>
-    //                         <p></p>
-    //                         <ul className="ab-list">
-    //                             <li></li>
-    //                             <li></li>
-    //                             <li></li>
-    //                         </ul>
-    //                         <div className="btns">
-    //                             <Link to="/about" onClick={ClickHandler} className="theme-btn"></Link>
-    //                             <ul>
-    //                                 <li className="video-holder">
-    //                                     <VideoModal />
-    //                                 </li>
-    //                                 <li className="video-text">
-                                       
-    //                                 </li>
-    //                             </ul>
-    //                         </div>
-    //                     </div>
-    //                 </div>
-    //             </div>
-    //         </div>
-    //     </div>
-    // )
+    
 }
 
 export default About2;

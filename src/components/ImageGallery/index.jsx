@@ -23,7 +23,7 @@ const ImageGallery = () => {
                     key={index}
                     style={{
                         width: '100%',
-                        
+                        objectPosition: 'center',
                         overflow: 'hidden',
                     }}
                 >
@@ -32,7 +32,7 @@ const ImageGallery = () => {
                         alt={`gallery-${index + 1}`}
                         style={{
                             width: '100%',
-                            height: '100%',
+                            // height: '100%',
                             objectFit: 'cover',
                             objectPosition: 'center',
                             display: 'block',
