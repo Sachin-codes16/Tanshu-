@@ -242,7 +242,7 @@ const styles = {
 
     newsletterSection: {
         textAlign: 'center',
-        padding: '0 20px 50px',
+        padding: '28px 20px 50px',
         marginTop: 0,
 
         position: "relative",   // ✅ FIX

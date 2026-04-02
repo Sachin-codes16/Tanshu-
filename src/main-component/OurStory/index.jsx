@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
@@ -19,13 +19,12 @@ const team = [
     name: "Shubham Kaushik",
     role: "Director - Global Operations",
     img: heroImg,
-    bio: "Shubham Kaushik is a young businessman and one of the driving forces behind the Tanshu Group, where he serves as Director overseeing both executive strategy and day-to-day operations. As the second generation stepping into the business, Shubham brings a fresh perspective to a company built on strong foundations. Taking the reins of a family-owned enterprise, Shubham is focused on scaling the group's diverse portfolios. Shubham's vision is not just to continue the legacy but to evolve it—positioning Tanshu Group for long-term, sustainable growth in a rapidly changing global landscape.",
+    bio: "Shubham Kaushik is a young businessman and one of the driving forces behind the Tanshu Group, where he serves as Director overseeing both executive strategy and day-to-day operations. As the second generation stepping into the business, Shubham brings a fresh perspective to a company built on strong foundations. Taking the reins of a family-owned enterprise, Shubham is focused on scaling the group's diverse portfolios. Shubham's vision is not just to continue the legacy but to evolve it, positioning Tanshu Group for long-term, sustainable growth in a rapidly changing global landscape.",
   },
   {
     name: "Aditya Kaushik",
     role: "Director, Tanshu Vaidik India",
     img: heroImg3,
-
     bio: "As the Director of Tanshu Vaidik India Pvt. Ltd., I lead a dynamic team dedicated to manufacturing and exporting high-quality home textiles and pet utilities. With a commitment to excellence, innovation, and sustainability, our company has established itself as a trusted name in the industry.",
   },
   {
@@ -43,8 +42,29 @@ const team = [
 ];
 
 const PrivacyPage = () => {
-  const [ourCompanyOpen, setOurCompanyOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState(null);
+  const [windowWidth, setWindowWidth] = useState(
+    typeof window !== "undefined" ? window.innerWidth : 1200
+  );
+
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const isMobile = windowWidth <= 767;
+  const isTablet = windowWidth <= 1024;
+  const pagePadding = isMobile ? "32px 16px" : isTablet ? "48px 24px" : "60px 40px";
+  const gridGap = isMobile ? "20px" : "32px";
+  const cardImageHeight = isMobile ? "280px" : "380px";
+  const modalPadding = isMobile ? "24px 18px" : isTablet ? "36px 28px" : "60px";
+  const modalGap = isMobile ? "24px" : isTablet ? "32px" : "60px";
 
   return (
     <div
@@ -56,31 +76,23 @@ const PrivacyPage = () => {
     >
       <Header />
 
-      {/* TOP NAV */}
-      {/* <div style={{ display: "flex", justifyContent: "center", padding: "20px 0", borderBottom: "1px solid #eee" }}>
-        <div
-          style={{ display: "flex", alignItems: "center", gap: "8px", cursor: "pointer", fontSize: "20px", letterSpacing: "2px", color: "#333" }}
-          onClick={() => setOurCompanyOpen(!ourCompanyOpen)}
-        >
-          Our Company Team
-          <span style={{ fontSize: "16px" }}>{ourCompanyOpen ? "▲" : "▼"}</span>
-        </div>
-      </div> */}
-
-      {/* PAGE CONTENT */}
       <div
-        style={{ maxWidth: "1400px", margin: "0 auto", padding: "60px 40px" }}
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: pagePadding,
+        }}
       >
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(4, 1fr)",
-            gap: "32px",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 220px), 1fr))",
+            gap: gridGap,
           }}
         >
-          {team.map((member, i) => (
+          {team.map((member, index) => (
             <div
-              key={i}
+              key={index}
               onClick={() => setSelectedMember(member)}
               style={{
                 cursor: "pointer",
@@ -91,30 +103,30 @@ const PrivacyPage = () => {
                 boxShadow: "0 4px 18px rgba(0,0,0,0.09)",
                 transition: "transform 0.2s, box-shadow 0.2s",
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = "translateY(-6px)";
-                e.currentTarget.style.boxShadow =
+              onMouseEnter={(event) => {
+                event.currentTarget.style.transform = "translateY(-6px)";
+                event.currentTarget.style.boxShadow =
                   "0 16px 40px rgba(0,0,0,0.16)";
               }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = "translateY(0)";
-                e.currentTarget.style.boxShadow = "0 4px 18px rgba(0,0,0,0.09)";
+              onMouseLeave={(event) => {
+                event.currentTarget.style.transform = "translateY(0)";
+                event.currentTarget.style.boxShadow = "0 4px 18px rgba(0,0,0,0.09)";
               }}
             >
-             <div style={{ width: "100%",  overflow: "hidden" }}>
-  <img
-    src={member.img}
-    alt={member.name}
-    style={{
-      width: "100%",
-      height: "380px",
-      objectFit: "cover",
-      objectPosition: "center"
-    }}
-  />
-</div>
+              <div style={{ width: "100%", overflow: "hidden" }}>
+                <img
+                  src={member.img}
+                  alt={member.name}
+                  style={{
+                    width: "100%",
+                    height: cardImageHeight,
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    display: "block",
+                  }}
+                />
+              </div>
 
-              {/* NAME BAR */}
               <div
                 style={{
                   background: "#e8a020",
@@ -122,15 +134,16 @@ const PrivacyPage = () => {
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
-                  gap: "10px",
+                  gap: "12px",
+                  flexWrap: isMobile ? "wrap" : "nowrap",
                 }}
               >
-                <div>
+                <div style={{ minWidth: 0, flex: 1 }}>
                   <div
                     style={{
                       color: "#fff",
                       fontWeight: "700",
-                      fontSize: "17px",
+                      fontSize: isMobile ? "15px" : "17px",
                       marginBottom: "5px",
                     }}
                   >
@@ -139,7 +152,7 @@ const PrivacyPage = () => {
                   <div
                     style={{
                       color: "#fff",
-                      fontSize: "13px",
+                      fontSize: isMobile ? "12px" : "13px",
                       opacity: 0.93,
                       lineHeight: "1.4",
                     }}
@@ -152,7 +165,6 @@ const PrivacyPage = () => {
                     width: "40px",
                     height: "40px",
                     borderRadius: "50%",
-
                     background: "rgba(255,255,255,0.25)",
                     display: "flex",
                     alignItems: "center",
@@ -163,7 +175,7 @@ const PrivacyPage = () => {
                     flexShrink: 0,
                   }}
                 >
-                  →
+                  ->
                 </div>
               </div>
             </div>
@@ -171,7 +183,6 @@ const PrivacyPage = () => {
         </div>
       </div>
 
-      {/* ── MODAL POPUP - Full size jaise screenshot ── */}
       {selectedMember && (
         <div
           onClick={() => setSelectedMember(null)}
@@ -183,33 +194,33 @@ const PrivacyPage = () => {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            padding: "30px",
+            padding: isMobile ? "16px" : "30px",
           }}
         >
           <div
-            onClick={(e) => e.stopPropagation()}
+            onClick={(event) => event.stopPropagation()}
             style={{
               background: "#fff",
               borderRadius: "20px",
-              maxWidth: "1400px", // ← bahut bada
+              maxWidth: "1400px",
               width: "100%",
-              padding: "60px 60px", // ← zyada padding
+              padding: modalPadding,
               position: "relative",
               display: "flex",
-              gap: "60px", // ← bada gap
+              flexDirection: isMobile ? "column" : "row",
+              gap: modalGap,
               alignItems: "flex-start",
               maxHeight: "88vh",
               overflowY: "auto",
               boxShadow: "0 40px 100px rgba(0,0,0,0.25)",
             }}
           >
-            {/* CLOSE ✕ - orange circle jaise screenshot */}
             <button
               onClick={() => setSelectedMember(null)}
               style={{
                 position: "absolute",
-                top: "20px",
-                right: "20px",
+                top: isMobile ? "14px" : "20px",
+                right: isMobile ? "14px" : "20px",
                 width: "44px",
                 height: "44px",
                 borderRadius: "50%",
@@ -225,17 +236,21 @@ const PrivacyPage = () => {
                 boxShadow: "0 4px 12px rgba(232,160,32,0.4)",
               }}
             >
-              ✕
+              X
             </button>
 
-            {/* LEFT - PHOTO bada */}
-            <div style={{ flex: "0 0 340px" }}>
+            <div
+              style={{
+                flex: isMobile ? "1 1 auto" : "0 0 340px",
+                width: isMobile ? "100%" : "auto",
+              }}
+            >
               <img
                 src={selectedMember.img}
                 alt={selectedMember.name}
                 style={{
                   width: "100%",
-                  height: "400px",
+                  height: isMobile ? "280px" : "400px",
                   objectFit: "cover",
                   objectPosition: "top",
                   borderRadius: "16px",
@@ -244,11 +259,10 @@ const PrivacyPage = () => {
               />
             </div>
 
-            {/* RIGHT - DETAILS */}
-            <div style={{ flex: 1, paddingTop: "8px" }}>
+            <div style={{ flex: 1, paddingTop: isMobile ? "0" : "8px" }}>
               <h2
                 style={{
-                  fontSize: "45px",
+                  fontSize: isMobile ? "30px" : isTablet ? "38px" : "45px",
                   fontWeight: "700",
                   marginBottom: "8px",
                   color: "#1a1a1a",
@@ -261,7 +275,7 @@ const PrivacyPage = () => {
                 style={{
                   color: "#e8a020",
                   fontWeight: "700",
-                  fontSize: "20px",
+                  fontSize: isMobile ? "16px" : "20px",
                   marginBottom: "10px",
                   marginTop: 0,
                 }}
@@ -275,12 +289,12 @@ const PrivacyPage = () => {
                   background: "#e8a020",
                   marginBottom: "28px",
                 }}
-              ></div>
+              />
               <p
                 style={{
-                  fontSize: "18px",
+                  fontSize: isMobile ? "15px" : "18px",
                   color: "#333",
-                  lineHeight: "2",
+                  lineHeight: isMobile ? "1.8" : "2",
                   margin: 0,
                   textAlign: "justify",
                 }}
