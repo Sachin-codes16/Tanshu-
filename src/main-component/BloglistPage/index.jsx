@@ -257,7 +257,7 @@ const BloglistPage = () => {
                 <div
                   style={{
                     background: "#fff",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
+                    boxShadow: "3px 7px 12px rgba(0, 0, 0, 0.09)",
                     borderRadius: "6px",
                     padding: "10px",
                     transition: "0.3s ease",
