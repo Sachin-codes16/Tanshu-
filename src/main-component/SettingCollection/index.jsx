@@ -67,25 +67,44 @@ const SeatingCollection = () => {
   return (
     <Fragment>
       <Header />
-      <style>{`
-        .product-grid {
-          display: grid;
-          grid-template-columns: repeat(${cols}, 1fr);
-          gap: ${cols === 3 ? "50px 30px" : "60px 40px"};
-        }
+     <style>{`
+  .product-grid {
+    display: grid;
+    gap: 50px 30px;
+  }
 
-        @media (max-width: 992px) {
-          .product-grid {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
+  @media (min-width: 993px) {
+    .grid-three { grid-template-columns: repeat(3, 1fr); }
+    .grid-two   { grid-template-columns: repeat(2, 1fr); gap: 60px 40px; }
+    .grid-one   { grid-template-columns: repeat(1, 1fr); gap: 60px 40px; }
+  }
 
-        @media (max-width: 576px) {
-          .product-grid {
-            grid-template-columns: repeat(1, 1fr) !important;
-          }
-        }
-      `}</style>
+  @media (max-width: 992px) {
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr) !important;
+      gap: 40px 20px !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .product-grid {
+      grid-template-columns: repeat(1, 1fr) !important;
+      gap: 30px 0 !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .product-page-wrap {
+      padding: 20px 16px 0 !important;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .product-page-wrap {
+      padding: 30px 24px 0 !important;
+    }
+  }
+`}</style>
       <section
         style={{
           background: "white",
