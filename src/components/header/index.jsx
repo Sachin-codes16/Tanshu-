@@ -692,7 +692,7 @@ const Header = (props) => {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 195px;
+  width: 167px;
   height: 100%;
   background: white;
   z-index: 99999;
@@ -773,17 +773,17 @@ const Header = (props) => {
 
 /* COLUMN 1 FIXED WIDTH (NO SHRINK) */
 .mobile-col1 {
-  flex: 0 0 180px;
+  flex: 0 0 150px;
   width: 150px;
-  min-width: 180px;
+  min-width: 150px;
   background: #fff;
   border-right: 1px solid #eee;
 }
 
 /* COLUMN 2 */
 .mobile-col {
-  flex: 0 0 180px;
-  width: 180px;
+  flex: 0 0 150px;
+  width: 150px;
   background: #fff;
   border-left: 1px solid #eee;
   animation: fadeSlide 0.25s ease forwards;
