@@ -73,6 +73,42 @@ const SeatingCollection = () => {
     gap: 50px 30px;
   }
 
+  .product-page-wrap {
+    padding: 40px 60px 0;
+  }
+
+  .product-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 0;
+    border-top: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 40px;
+    gap: 16px;
+  }
+
+  .product-toolbar-actions {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+  }
+
+  .product-card {
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 1px 4px 8px 1px rgba(0,0,0,0.09);
+    background: #fff;
+    height: 100%;
+  }
+
+  .product-card-image {
+    width: 100%;
+    object-fit: contain;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+
   @media (min-width: 993px) {
     .grid-three { grid-template-columns: repeat(3, 1fr); }
     .grid-two   { grid-template-columns: repeat(2, 1fr); gap: 60px 40px; }
@@ -89,19 +125,46 @@ const SeatingCollection = () => {
   @media (max-width: 576px) {
     .product-grid {
       grid-template-columns: repeat(1, 1fr) !important;
-      gap: 30px 0 !important;
+      gap: 30px !important;
     }
-  }
 
-  @media (max-width: 576px) {
     .product-page-wrap {
       padding: 20px 16px 0 !important;
+    }
+
+    .product-toolbar {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-bottom: 28px;
+    }
+
+    .product-toolbar-actions {
+      width: 100%;
+      justify-content: flex-end;
+    }
+
+    .product-card {
+      padding: 12px;
+    }
+
+    .product-card-image {
+      height: 280px !important;
     }
   }
 
   @media (max-width: 992px) {
     .product-page-wrap {
       padding: 30px 24px 0 !important;
+    }
+
+    .product-card-image {
+      height: 320px !important;
+    }
+  }
+
+  @media (max-width: 400px) {
+    .product-card-image {
+      height: 240px !important;
     }
   }
 `}</style>
@@ -112,7 +175,7 @@ const SeatingCollection = () => {
           paddingBottom: "80px",
         }}
       >
-        <div style={{ padding: "40px 60px 0" }}>
+        <div className="product-page-wrap">
           <div style={{ marginBottom: "20px" }}>
             <h1
               style={{
@@ -127,17 +190,7 @@ const SeatingCollection = () => {
             </h1>
           </div>
 
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "space-between",
-              padding: "14px 0",
-              borderTop: "1px solid #eee",
-              borderBottom: "1px solid #eee",
-              marginBottom: "40px",
-            }}
-          >
+          <div className="product-toolbar">
             <span
               style={{
                 fontSize: "15px",
@@ -148,7 +201,7 @@ const SeatingCollection = () => {
             >
               RESULTS ({products.length})
             </span>
-            <div style={{ display: "flex", gap: "16px" }}>
+            <div className="product-toolbar-actions">
               <button
                 onClick={() => setGridView("three")}
                 style={{
@@ -215,8 +268,8 @@ const SeatingCollection = () => {
             </div>
           ) : (
             <div
+              className={`product-grid grid-${gridView}`}
               style={{
-                display: "grid",
                 gridTemplateColumns: `repeat(${cols}, 1fr)`,
                 gap: cols === 3 ? "50px 30px" : "60px 40px",
               }}
@@ -227,7 +280,7 @@ const SeatingCollection = () => {
                   to={`/product-detail/${product.slug}`}
                   style={{ textDecoration: "none", color: "inherit" }}
                 >
-                  <div
+                  <div className="product-card"
                     style={{
                       padding: "10px",
                       borderRadius: "6px",
@@ -237,6 +290,7 @@ const SeatingCollection = () => {
                   >
                     <div style={{ marginBottom: "18px" }}>
                       <img
+                        className="product-card-image"
                         src={product.image}
                         alt={product.title}
                         style={{
