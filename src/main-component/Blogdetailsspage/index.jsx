@@ -175,7 +175,6 @@ setBlog(blogData);
       <div
         style={{
           width: "100%",
-          height: "500px",
           overflow: "hidden"
         }}
       >
@@ -188,7 +187,6 @@ setBlog(blogData);
             objectFit: "contain",
             display: "flex",
             justifyContent: "center",
-            marginTop:"20px"
 
           }}
         />
@@ -198,9 +196,7 @@ setBlog(blogData);
 
       <div
         style={{
-          maxWidth: "900px",
-          margin: "80px auto",
-          padding: "0 20px"
+          padding: "20px"
         }}
       >
 

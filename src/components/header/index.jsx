@@ -1,5 +1,4 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
@@ -16,6 +15,11 @@ const Header = (props) => {
   const [lowerCategories, setLowerCategories] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [selectedCat, setSelectedCat] = useState(null);
+  const [selectedSub, setSelectedSub] = useState(null);
+  const menuRef = useRef(null);
+
   const handleSearch = async (Search) => {
     setSearchTerm(Search);
 
@@ -43,8 +47,27 @@ const Header = (props) => {
         setCategories(res.data.data.data);
       })
       .catch((err) => console.log(err));
-  }, []);
 
+    const handleClickOutside = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        // 👉 STEP 1: If submenus are open → close only them
+        if (selectedCat || selectedSub) {
+          setSelectedCat(null);
+          setSelectedSub(null);
+        }
+        // 👉 STEP 2: If already closed → close full menu
+        else {
+          setMobileMenuOpen(false);
+        }
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [selectedCat, selectedSub]);
   // 2) FETCH SUBCATEGORIES - slug se
   const handleCatHover = (cat) => {
     setActiveMenu(cat.id);
@@ -93,6 +116,12 @@ const Header = (props) => {
           {/* TOP BAR */}
           <div className="rh-topbar">
             <div className="rh-left">
+              <div
+                className="mobile-menu-icon"
+                onClick={() => setMobileMenuOpen((prev) => !prev)}
+              >
+                ☰
+              </div>
               <i className=""></i>
               <div className="search-wrap">
                 <i
@@ -281,10 +310,88 @@ const Header = (props) => {
             </ul>
           </div>
         </nav>
+
+        {/* MOBILE MENU DRAWER */}
+        <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
+          <div className="mobile-menu-header">
+            <span onClick={() => setMobileMenuOpen(false)}>✕</span>
+          </div>
+
+          <div className="mobile-columns" ref={menuRef}>
+            {" "}
+            {/* COLUMN 1 - Categories */}
+            <div className="mobile-col1">
+              {categories.map((cat) => (
+                <div
+                  key={cat.id}
+                  onClick={() => {
+                    setSelectedCat(cat);
+                    setSelectedSub(null);
+                    handleCatHover(cat);
+                  }}
+                  className="mobile-item"
+                  style={{ fontSize: "15px",marginLeft: "2px",fontWeight: 470, color: "#292929" ,borderBottom: "1px solid #eee"  }}
+                >
+                  {cat.categoryName.toUpperCase()}
+                </div>
+              ))}
+
+                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee", padding: "12px 17px 12px 17px" }}>
+                  <Link to="/">SWATCHES</Link>
+                </div>
+                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee" ,padding: "12px 17px 12px 17px "  }}>
+                  <Link to="/our-story">OUR STORY</Link>
+                </div>
+                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee" ,padding: "12px 17px 12px 17px"  }}>
+                  <Link to="/contact-usPage">CONTACT US</Link>
+                
+                </div>
+                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,padding: "12px 17px 12px 17px"  }}>
+                  <Link to="/BloglistPage">BLOG'S</Link>
+                </div>
+            </div>
+            {/* COLUMN 2 - Subcategories */}
+            {selectedCat && (
+              <div className="mobile-col">
+                {subCategories[selectedCat.slug]?.map((sub) => (
+                  <div
+                    key={sub.id}
+                    onClick={() => {
+                      setSelectedSub(sub);
+                      handleSubHover(sub);
+                    }}
+                    className="mobile-item"
+                  >
+                    {sub.title}
+                  </div>
+                ))}
+              </div>
+            )}
+            {/* COLUMN 3 - Lower Categories */}
+            {selectedSub && (
+              <div className="mobile-col">
+                {lowerCategories[selectedSub.slug]?.map((lower) => (
+                  <div key={lower.id} className="mobile-item">
+                    <Link
+                      to={`/setting-collection/${selectedSub.slug}/${lower.slug}`}
+                    >
+                      {lower.title}
+                    </Link>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </header>
 
       <style>{`
         * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        .mobile-menu {
+           display: none;  /* ✅ hide on desktop */
+        }
+
 
         .rh-navbar {
           background: #ffffff;
@@ -515,6 +622,64 @@ const Header = (props) => {
           color: #000;
           text-decoration: underline;
         }
+        /* HIDE hamburger on desktop */
+.mobile-menu-icon {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+/* MOBILE STYLES */
+@media (max-width: 991px) {
+
+  .mobile-menu-icon {
+    display: block;
+  }
+
+
+  /* SIDE DRAWER */
+  .mobile-menu {
+  display: block; /* ✅ only show on mobile */
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 200px;
+  height: 100%;
+  background: white;
+  z-index: 99999;
+  transition: left 0.3s ease;
+  padding: 16px;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.1);
+}
+
+  .mobile-menu.open {
+    left: 0;
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 22px;
+    margin-bottom: 20px;
+    cursor: pointer;
+  }
+
+  .mobile-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+
+  .mobile-menu li {
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mobile-menu a {
+    text-decoration: none;
+    color: #2a2a2a;
+    font-size: 15px;
+  }
+}
 
         @media (max-width: 1200px) {
           .rh-menu > ul > li { padding: 0 6px 14px; }
@@ -543,12 +708,63 @@ const Header = (props) => {
 
 .search-item {
   padding: 10px;
-  cursor: pointer;
+  cursor: pointer;g
 }
 
 .search-item:hover {
   background: #f5f5f5;
 }
+
+.mobile-columns {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;              /* ❗ remove extra gap */
+  position: relative;
+}
+  .mobile-col1 {
+  width: 200px;
+  background: #fff;
+  border-right: 1px solid #eee;
+  padding: 0;
+}
+
+
+/* EACH PANEL */
+.mobile-col {
+  min-width: 180px;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  padding: 1px 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+  /* ✨ smooth animation */
+  opacity: 0;
+  transform: translateX(10px);
+  animation: fadeSlide 0.25s ease forwards;
+}
+
+
+.mobile-item {
+  padding: 8px 14px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+
+.mobile-item:hover {
+  background: #f5f5f5;
+}
+.hi:hover {
+  background: #f5f5f5;
+}
+
+/* ✨ animation */
+@keyframes fadeSlide {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
       `}</style>
     </>
   );
