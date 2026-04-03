@@ -285,7 +285,20 @@ const Footer = (props) => {
             <div style={lowerFooterStyle}>
                 <div style={containerStyle}>
                     <p style={copyrightStyle}>
-                        &copy; {new Date().getFullYear()} Your Company. All Rights Reserved.
+                        &copy; {new Date().getFullYear()}{" "}
+                        <a
+                            href="https://techqrt.com/"
+                            target="_blank"
+                            rel="noreferrer"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                window.open('https://techqrt.com/', '_blank', 'noopener,noreferrer');
+                            }}
+                            style={styles.brandLink}
+                        >
+                            Techqrt
+                        </a>
+                        . All Rights Reserved.
                     </p>
                 </div>
             </div>
@@ -302,8 +315,8 @@ const styles = {
         marginTop: 0,
         paddingTop: 0,
 
-        position: "relative",   // ✅ FIX
-        zIndex: 9999,           // ✅ FIX (important)
+        position: "relative",   // 
+        zIndex: 9999,           //
     },
 
     newsletterSection: {
@@ -392,10 +405,23 @@ const styles = {
     lowerFooter: {
         textAlign: 'center',
         padding: '20px',
+        color: 'black',
+        fontSize: '12px',
     },
 
     copyright: {
         fontSize: '12px',
+        color: 'black',
+    },
+
+    brandLink: {
+        color: '#ff9900',
+        textDecoration: 'none',
+        cursor: 'pointer',
+        display: 'inline-block',
+        pointerEvents: 'auto',
+        position: 'relative',
+        zIndex: 10000,
     },
 }
 
