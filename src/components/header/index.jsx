@@ -314,7 +314,7 @@ const Header = (props) => {
         {/* MOBILE MENU DRAWER */}
         <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
           <div className="mobile-menu-header">
-            <span onClick={() => setMobileMenuOpen(false)}>✕</span>
+            <span style={{fontSize: "20px"}} onClick={() => setMobileMenuOpen(false)}>✕</span>
           </div>
 
           <div className="mobile-columns" ref={menuRef}>
@@ -332,7 +332,7 @@ const Header = (props) => {
                   className="mobile-item"
                   style={{
                     fontSize: "15px",
-                    marginLeft: "2px",
+                    paddingLeft: "16px",
                     fontWeight: 470,
                     color: "#292929",
                     borderBottom: "1px solid #eee",
@@ -414,7 +414,7 @@ const Header = (props) => {
 
                     {/* ✅ PRODUCTS BELOW */}
                     {selectedSub?.id === sub.id && (
-                      <div className="mobile-subitems">
+                      <div className={`mobile-subitems ${selectedSub?.id === sub.id ? "open" : ""}`}>
                         {lowerCategories[sub.slug]?.map((lower) => (
                           <div key={lower.id} className="mobile-subitem">
                             <Link
@@ -692,7 +692,7 @@ const Header = (props) => {
   position: fixed;
   top: 0;
   left: -100%;
-  width: 200px;
+  width: 167px;
   height: 100%;
   background: white;
   z-index: 99999;
@@ -767,80 +767,73 @@ const Header = (props) => {
 .mobile-columns {
   display: flex;
   align-items: flex-start;
-  gap: 0;             
+  gap: 0;
   position: relative;
 }
-  .mobile-col1 {
-  flex: 0 0 150px; 
-  width: 200px;
+
+/* COLUMN 1 FIXED WIDTH (NO SHRINK) */
+.mobile-col1 {
+  flex: 0 0 150px;
+  width: 150px;
+  min-width: 150px;
   background: #fff;
   border-right: 1px solid #eee;
-  padding: 0;
 }
 
-
-/* EACH PANEL */
+/* COLUMN 2 */
 .mobile-col {
-  flex: 0 0 200px; 
+  flex: 0 0 150px;
+  width: 150px;
   background: #fff;
-  border: 1px solid #eee;
-  border-radius: 6px;
-  padding: 1px 0;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-
-  /* ✨ smooth animation */
-  opacity: 0;
-  transform: translateX(10px);
+  border-left: 1px solid #eee;
   animation: fadeSlide 0.25s ease forwards;
 }
 
-
+/* ITEMS */
 .mobile-item {
-  padding: 8px 14px;
+  padding: 10px 14px;
   cursor: pointer;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-size: 14px;
 }
 
-
-.mobile-item:hover {
-  background: #f5f5f5;
-}
-.hi:hover {
-  background: #f5f5f5;
-}
-
-/* ✨ animation */
-@keyframes fadeSlide {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  .mobile-subitems {
-  overflow: hidden;
-  animation: dropdownOpen 0.3s ease;
-}
-
+/* PRODUCT LIST */
 .mobile-subitems {
-  max-height: 500px;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  max-height: 0;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+/* OPEN STATE */
+.mobile-subitems.open {
+  max-height: 280px;
+  opacity: 1;
+}
+
+/* PRODUCT ITEM */
+.mobile-subitem {
+  padding: 7px 14px 7px 32px;  
+  font-size: 8px;             
+  color: #a09e9e;                 /* 👉 lighter */
+  cursor: pointer;
 }
 
 .mobile-subitem:hover {
   background: #f5f5f5;
 }
 
-@keyframes dropdownOpen {
+/* ANIMATION */
+@keyframes fadeSlide {
   from {
     opacity: 0;
-    transform: translateY(-5px);
+    transform: translateX(10px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
       `}</style>
