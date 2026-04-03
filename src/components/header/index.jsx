@@ -330,53 +330,102 @@ const Header = (props) => {
                     handleCatHover(cat);
                   }}
                   className="mobile-item"
-                  style={{ fontSize: "15px",marginLeft: "2px",fontWeight: 470, color: "#292929" ,borderBottom: "1px solid #eee"  }}
+                  style={{
+                    fontSize: "15px",
+                    marginLeft: "2px",
+                    fontWeight: 470,
+                    color: "#292929",
+                    borderBottom: "1px solid #eee",
+                  }}
                 >
                   {cat.categoryName.toUpperCase()}
                 </div>
               ))}
 
-                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee", padding: "12px 17px 12px 17px" }}>
-                  <Link to="/">SWATCHES</Link>
-                </div>
-                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee" ,padding: "12px 17px 12px 17px "  }}>
-                  <Link to="/our-story">OUR STORY</Link>
-                </div>
-                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,borderBottom: "1px solid #eee" ,padding: "12px 17px 12px 17px"  }}>
-                  <Link to="/contact-usPage">CONTACT US</Link>
-                
-                </div>
-                <div className="hi" style={{ fontSize: "16px",fontWeight: 470, color: "#1d1c1c" ,padding: "12px 17px 12px 17px"  }}>
-                  <Link to="/BloglistPage">BLOG'S</Link>
-                </div>
+              <div
+                className="hi"
+                style={{
+                  fontSize: "16px",
+                  fontWeight: 470,
+                  color: "#1d1c1c",
+                  borderBottom: "1px solid #eee",
+                  padding: "12px 17px 12px 17px",
+                }}
+              >
+                <Link to="/">SWATCHES</Link>
+              </div>
+              <div
+                className="hi"
+                style={{
+                  fontSize: "16px",
+                  fontWeight: 470,
+                  color: "#1d1c1c",
+                  borderBottom: "1px solid #eee",
+                  padding: "12px 17px 12px 17px ",
+                }}
+              >
+                <Link to="/our-story">OUR STORY</Link>
+              </div>
+              <div
+                className="hi"
+                style={{
+                  fontSize: "16px",
+                  fontWeight: 470,
+                  color: "#1d1c1c",
+                  borderBottom: "1px solid #eee",
+                  padding: "12px 17px 12px 17px",
+                }}
+              >
+                <Link to="/contact-usPage">CONTACT US</Link>
+              </div>
+              <div
+                className="hi"
+                style={{
+                  fontSize: "16px",
+                  fontWeight: 470,
+                  color: "#1d1c1c",
+                  padding: "12px 17px 12px 17px",
+                }}
+              >
+                <Link to="/BloglistPage">BLOG'S</Link>
+              </div>
             </div>
             {/* COLUMN 2 - Subcategories */}
             {selectedCat && (
               <div className="mobile-col">
                 {subCategories[selectedCat.slug]?.map((sub) => (
-                  <div
-                    key={sub.id}
-                    onClick={() => {
-                      setSelectedSub(sub);
-                      handleSubHover(sub);
-                    }}
-                    className="mobile-item"
-                  >
-                    {sub.title}
-                  </div>
-                ))}
-              </div>
-            )}
-            {/* COLUMN 3 - Lower Categories */}
-            {selectedSub && (
-              <div className="mobile-col">
-                {lowerCategories[selectedSub.slug]?.map((lower) => (
-                  <div key={lower.id} className="mobile-item">
-                    <Link
-                      to={`/setting-collection/${selectedSub.slug}/${lower.slug}`}
+                  <div key={sub.id}>
+                    {/* SUBCATEGORY */}
+                    <div
+                      onClick={() => {
+                        if (selectedSub?.id === sub.id) {
+                          setSelectedSub(null); // toggle close
+                        } else {
+                          setSelectedSub(sub);
+                          handleSubHover(sub);
+                        }
+                      }}
+                      className={`mobile-item ${
+                        selectedSub?.id === sub.id ? "active" : ""
+                      }`}
                     >
-                      {lower.title}
-                    </Link>
+                      {sub.title}
+                    </div>
+
+                    {/* ✅ PRODUCTS BELOW */}
+                    {selectedSub?.id === sub.id && (
+                      <div className="mobile-subitems">
+                        {lowerCategories[sub.slug]?.map((lower) => (
+                          <div key={lower.id} className="mobile-subitem">
+                            <Link
+                              to={`/setting-collection/${sub.slug}/${lower.slug}`}
+                            >
+                              {lower.title}
+                            </Link>
+                          </div>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -718,10 +767,11 @@ const Header = (props) => {
 .mobile-columns {
   display: flex;
   align-items: flex-start;
-  gap: 0;              /* ❗ remove extra gap */
+  gap: 0;             
   position: relative;
 }
   .mobile-col1 {
+  flex: 0 0 150px; 
   width: 200px;
   background: #fff;
   border-right: 1px solid #eee;
@@ -731,7 +781,7 @@ const Header = (props) => {
 
 /* EACH PANEL */
 .mobile-col {
-  min-width: 180px;
+  flex: 0 0 200px; 
   background: #fff;
   border: 1px solid #eee;
   border-radius: 6px;
@@ -749,6 +799,8 @@ const Header = (props) => {
   padding: 8px 14px;
   cursor: pointer;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
@@ -765,6 +817,32 @@ const Header = (props) => {
     opacity: 1;
     transform: translateX(0);
   }
+
+  .mobile-subitems {
+  overflow: hidden;
+  animation: dropdownOpen 0.3s ease;
+}
+
+.mobile-subitems {
+  max-height: 500px;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.mobile-subitem:hover {
+  background: #f5f5f5;
+}
+
+@keyframes dropdownOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
       `}</style>
     </>
   );
