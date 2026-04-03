@@ -6,7 +6,7 @@ import heroImg from "../../images/ourStory/Shubham_kaushik.jpeg";
 import heroImg2 from "../../images/ourStory/Naresh_Kumar_kaushik.jpeg";
 import heroImg3 from "../../images/ourStory/Aditya.png";
 import heroImg4 from "../../images/ourStory/sachin2.jpeg";
-import heroImg5 from "../../images/ourStory/Shruthi.png";
+import heroImg5 from "../../images/ourStory/555.jpeg";
 
 const team = [
   {
@@ -60,7 +60,7 @@ const PrivacyPage = () => {
 
   const isMobile = windowWidth <= 767;
   const isTablet = windowWidth <= 1024;
-  const pagePadding = isMobile ? "32px 16px" : isTablet ? "48px 24px" : "60px 40px";
+  const pagePadding = isMobile ? "32px 16px" : isTablet ? "48px 24px" : "70px 40px";
   const gridGap = isMobile ? "20px" : "32px";
   const cardImageHeight = isMobile ? "280px" : "380px";
   const modalPadding = isMobile ? "24px 18px" : isTablet ? "36px 28px" : "60px";
@@ -138,7 +138,7 @@ const PrivacyPage = () => {
               <div
                 style={{
                   background: "#e8a020",
-                  padding: "18px 20px",
+                  padding: "40px 20px",
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "space-between",
