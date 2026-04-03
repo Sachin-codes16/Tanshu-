@@ -1,115 +1,4 @@
-// import React from 'react'
-// import {Link}  from 'react-router-dom'
-// import Logo from '../../images/logo-2.svg'
-// import Projects from '../../api/project'
 
-
-
-// const Footer = (props) =>{
-
-//     const ClickHandler = () =>{
-//         window.scrollTo(10, 0);
-//      }
-
-//   return(
-//     <footer className={`wpo-site-footer ${props.ftClass}`}>
-//         <div className="wpo-upper-footer">
-//             <div className="container">
-//                 <div className="row">
-//                     <div className="col col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
-//                         <div className="widget about-widget">
-//                             <div className="logo widget-title">
-//                                 <Link onClick={ClickHandler} className="logo" to="/"><img src={Logo} alt=""/></Link>
-//                             </div>
-//                             <p></p>
-//                             <ul>
-//                                 <li>
-//                                     <Link onClick={ClickHandler} to="/">
-//                                         <i className=""></i>
-//                                     </Link>
-//                                 </li>
-//                                 <li>
-//                                     <Link onClick={ClickHandler} to="/">
-//                                         <i className=""></i>
-//                                     </Link>
-//                                 </li>
-//                                 <li>
-//                                     <Link onClick={ClickHandler} to="/">
-//                                         <i className=""></i>
-//                                     </Link>
-//                                 </li>
-//                                 <li>
-//                                     <Link onClick={ClickHandler} to="/">
-//                                         <i className=""></i>
-//                                     </Link>
-//                                 </li>
-//                             </ul>
-//                         </div>
-//                     </div>
-//                     <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
-//                         <div className="widget link-widget">
-//                             <div className="widget-title">
-//                                 <h3></h3>
-//                             </div>
-//                             <ul>
-//                                 <li><Link onClick={ClickHandler} to="/service-single"></Link></li>
-//                                 <li><Link onClick={ClickHandler} to="/service-single"></Link></li>
-//                                 <li><Link onClick={ClickHandler} to="/service-single"></Link></li>
-//                                 <li><Link onClick={ClickHandler} to="/service-single"></Link></li>
-//                                 <li><Link onClick={ClickHandler} to="/service-single"></Link></li>
-//                             </ul>
-//                         </div>
-//                     </div>
-//                     <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
-//                         <div className="widget wpo-service-link-widget">
-//                             <div className="widget-title">
-//                                 <h3>Contact </h3>
-//                             </div>
-//                             <div className="contact-ft">
-//                                 <ul>
-//                                     <li><i className="fi flaticon-location"></i> <br/> 
-//                                        </li>
-//                                     <li><i className="fi flaticon-telephone"></i>  <br/>
-//                                        </li>
-//                                     <li><i className="fi flaticon-email"></i></li>
-//                                 </ul>
-//                             </div>
-//                         </div>
-//                     </div>
-
-//                     <div className="col col-xl-3  col-lg-4 col-md-6 col-sm-12 col-12">
-//                         <div className="widget instagram">
-//                             <div className="widget-title">
-//                                 <h3></h3>
-//                             </div>
-//                             <ul className="d-flex">
-//                                 {Projects.slice(0, 6).map((project, pot) => (
-//                                     <li key={pot}><Link onClick={ClickHandler} to={`/project-single/${project.Id}`}><img src={project.pImg} alt="" /></Link></li>
-//                                 ))}
-//                             </ul>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//         <div className="wpo-lower-footer">
-//             <div className="container">
-//                 <div className="row">
-//                     <div className="col col-xs-12">
-//                         <ul>
-//                             <li>&copy; <Link onClick={ClickHandler} to="/"></Link>
-//                                </li>
-//                             <li><Link onClick={ClickHandler} to="/"> |</Link> <Link onClick={ClickHandler} to="/"></Link></li>
-//                         </ul>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     </footer>
-//   )
-// } 
-
-// export default Footer;
 
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -231,7 +120,7 @@ const Footer = (props) => {
                         {/* <div style={styles.col}>
                             <h4 style={styles.colHeading}>CUSTOMER EXPERIENCE</h4>
                             <ul style={styles.linkList}>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/contact" style={styles.link}>CONTACT US</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/contact" style={styles.link}>Contact us {"\u2197"}</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PLACING AN ORDER</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>SHIPPING &amp; DELIVERY</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RETURNS &amp; EXCHANGES</Link></li>
@@ -247,11 +136,11 @@ const Footer = (props) => {
                         <div style={styles.col}>
                             <h4 style={styles.colHeading}>OUR COMPANY</h4>
                             <ul style={styles.linkList}>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>About us  ↗</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>Contact us ↗</Link></li>
-                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}> ↗</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRESS ↗</Link></li> */}
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>Carrer ↗</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/our-story" style={styles.link}>Our Story {"\u2197"}</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/contact-usPage" style={styles.link}>Contact us {"\u2197"}</Link></li>
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}> {"\u2197"}</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRESS {"\u2197"}</Link></li> */}
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/BloglistPage" style={styles.link}>Blogs {"\u2197"}</Link></li>
                             </ul>
                         </div>
 
@@ -271,7 +160,7 @@ const Footer = (props) => {
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/our-story" style={styles.link}>Terms and use</Link></li>
                                 {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>TEXT MESSAGING TERMS</Link></li> */}
                                 {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH IN CANADA</Link></li> */}
-                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>CPRA OPT-OUT ↗</Link></li> */}
+                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>CPRA OPT-OUT {"\u2197"}</Link></li> */}
                                 {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>SAFETY RECALLS</Link></li> */}
                                 {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRODUCT REGISTRATION</Link></li> */}
                             </ul>
@@ -324,7 +213,7 @@ const styles = {
         padding: '60px 20px 50px',
         marginTop: 0,
 
-        position: "relative",   // ✅ FIX
+        position: "relative",   // ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ FIX
         zIndex: 9999,
     },
 
@@ -348,7 +237,7 @@ const styles = {
         border: '1px solid #c5bfb8',
         backgroundColor: '#ffffff',
 
-        position: "relative",   // ✅ FIX
+        position: "relative",   // ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ FIX
         zIndex: 9999,
     },
 
@@ -368,7 +257,7 @@ const styles = {
     linksSection: {
         padding: '50px 0',
 
-        position: "relative",   // ✅ FIX
+        position: "relative",   // ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ FIX
         zIndex: 9999,
     },
 
@@ -399,7 +288,7 @@ const styles = {
         display: 'block',
         marginBottom: '10px',
 
-        cursor: "pointer",   // ✅ FIX
+        cursor: "pointer",   // ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ FIX
     },
 
     lowerFooter: {
