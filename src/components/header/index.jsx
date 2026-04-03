@@ -314,7 +314,7 @@ const Header = (props) => {
         {/* MOBILE MENU DRAWER */}
         <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
           <div className="mobile-menu-header">
-            <span onClick={() => setMobileMenuOpen(false)}>✕</span>
+            <span style={{fontSize: "20px"}} onClick={() => setMobileMenuOpen(false)}>✕</span>
           </div>
 
           <div className="mobile-columns" ref={menuRef}>
