@@ -11,13 +11,8 @@ const SeatingCollection = () => {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
-  // const params = new URLSearchParams(location.search);
-  // const catSlug = params.get("cat");
-  // const subSlug = params.get("sub");
-  // const lowerSlug = params.get("lower");
-
   const params = new URLSearchParams(location.search);
-  // const slug = params.get("slug"); // "living"
+  
 
   const { slug } = useParams();
 
@@ -26,12 +21,7 @@ const SeatingCollection = () => {
     setProducts([]);
     let url = `https://tanshu.checkour.work/api/product/product-list/${slug}`;
 
-    // if (lowerSlug && lowerSlug !== "lower-category") {
-    //   url += `/${lowerSlug}`;
-    // }
-    // else if (subSlug && subSlug !== "sub-category") {
-    //   url += `/${subSlug}`;
-    // }
+  
 
     console.log("API URL:", url);
 
