@@ -200,7 +200,7 @@ const BloglistPage = () => {
             <div
               className="blog-count"
               style={{
-                fontSize: isMobile?"18px":"22px",
+                fontSize: isMobile?"20px":"22px",
                 fontFamily: "Times New Roman",
                 color: "#888",
                 marginLeft: "15px"
