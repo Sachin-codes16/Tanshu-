@@ -21,23 +21,32 @@ const Header = (props) => {
   const menuRef = useRef(null);
 
   const handleSearch = async (Search) => {
-    setSearchTerm(Search);
+  setSearchTerm(Search);
 
-    if (!Search) {
-      setSearchResults([]);
-      return;
+  if (!Search) {
+    setSearchResults([]);
+    return;
+  }
+
+  try {
+    const res = await axios.get(
+      `https://tanshu.checkour.work/api/search-product/${Search}`
+    );
+
+    console.log(res.data);
+
+    const results = res.data?.data?.data;
+
+    if (Array.isArray(results)) {
+      setSearchResults(results);
+    } else {
+      setSearchResults([]); // ✅ handle null case
     }
-
-    try {
-      const res = await axios.get(
-        `https://tanshu.checkour.work/api/search-product/${Search}`,
-      );
-
-      setSearchResults(res.data.data || []);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  } catch (error) {
+    console.log("SEARCH ERROR:", error);
+    setSearchResults([]);
+  }
+};
 
   // 1) FETCH CATEGORIES
   useEffect(() => {
@@ -135,17 +144,21 @@ const Header = (props) => {
                   value={searchTerm}
                   onChange={(e) => handleSearch(e.target.value)}
                 />
-                {searchResults.length > 0 && (
-                  <div className="search-results">
-                    {searchResults.map((item, index) => (
-                      <Link key={index} to={`/product/${item.slug}`}>
-                        <div className="search-item">
-                          {item.name || item.title}
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                )}
+                {searchTerm && (
+  <div className="search-results">
+    {searchResults.length === 0 ? (
+      <div className="search-item">No products found.....</div>
+    ) : (
+      searchResults.map((item, index) => (
+        <Link key={index} to={`/product/${item.slug}`}>
+          <div className="search-item">
+            {item.name || item.title}
+          </div>
+        </Link>
+      ))
+    )}
+  </div>
+)}
               </div>
             </div>
 
@@ -314,7 +327,7 @@ const Header = (props) => {
         {/* MOBILE MENU DRAWER */}
         <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
           <div className="mobile-menu-header">
-            <span style={{fontSize: "20px"}} onClick={() => setMobileMenuOpen(false)}>✕</span>
+            <span style={{fontSize: "19px"}} onClick={() => setMobileMenuOpen(false)}>✕</span>
           </div>
 
           <div className="mobile-columns" ref={menuRef}>
@@ -747,17 +760,20 @@ const Header = (props) => {
 
 .search-results {
   position: absolute;
-  top: 35px;
+  top: calc(100% + 4px);  /* 👈 always just below input */
   left: 0;
   width: 220px;
   background: white;
   border: 1px solid #ddd;
+  border-radius: 4px;
+  
   z-index: 9999;
 }
 
 .search-item {
   padding: 10px;
-  cursor: pointer;g
+  cursor: pointer;
+  color: black;
 }
 
 .search-item:hover {
