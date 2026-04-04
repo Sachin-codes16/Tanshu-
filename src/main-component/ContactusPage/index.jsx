@@ -467,13 +467,14 @@ const ContactUs = () => {
             </h1>
 
             <p>
-              <b>Address:</b> 49A Purcell Road Londonderry NSW-2753
+              <b>Address:</b> 4&5/62 Argyle Street, South Windsor 2756, New South Wales, Sydney
+
             </p>
             <p>
               <b>Hours:</b> Mon–Fri, 9:00AM – 5:00PM
             </p>
             <p>
-              <b>Phone:</b> +61 423 471 255
+              <b>Phone:</b> +61-423471255
             </p>
             <p>
               <b>Email:</b> info@tanshuvaidik.com
@@ -489,8 +490,7 @@ const ContactUs = () => {
             }}
           >
             <iframe
-              src="https://www.google.com/maps?q=49A+Purcell+Road,+Londonderry+NSW+2753,+Australia&output=embed"
-              width="90%"
+src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+New+South+Wales,+Sydney&output=embed"              width="90%"
               height="400"
               style={{ border: 0 }}
               loading="lazy"

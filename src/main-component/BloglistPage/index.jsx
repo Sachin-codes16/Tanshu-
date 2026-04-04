@@ -142,7 +142,8 @@ const BloglistPage = () => {
   const [gridView, setGridView] = useState("three");
   const [products, setProducts] = useState([]);
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
-  
+  const [blogsData, setBlogsData] = useState([]);
+  const effectiveGrid = isMobile ? "one" : gridView;
 
   useEffect(() => {
     axios
@@ -163,7 +164,12 @@ const BloglistPage = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const cols = isMobile ? 2 : gridView === "three" ? 3 : 2;
+  const getColumns = () => {
+    if (isMobile) return 1;
+    return gridView === "three" ? 3 : 2;
+  };
+
+  const cols = getColumns();
   return (
     <Fragment>
       <Header />
@@ -185,55 +191,75 @@ const BloglistPage = () => {
             style={{
               display: "flex",
               alignItems: "center",
-              justifyContent: "flex-end",
               padding: "14px 0",
               borderTop: "1px solid #eee",
               borderBottom: "1px solid #eee",
               marginBottom: "40px",
             }}
           >
-            <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-              <button
-                onClick={() => setGridView("three")}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: "2px",
-                  opacity: gridView === "three" ? 1 : 0.4,
-                }}
-              >
-                <svg width="22" height="22" viewBox="0 0 22 22">
-                  <rect x="0" y="0" width="6" height="6" fill="#1a1a1a" />
-                  <rect x="8" y="0" width="6" height="6" fill="#1a1a1a" />
-                  <rect x="16" y="0" width="6" height="6" fill="#1a1a1a" />
-                  <rect x="0" y="8" width="6" height="6" fill="#1a1a1a" />
-                  <rect x="8" y="8" width="6" height="6" fill="#1a1a1a" />
-                  <rect x="16" y="8" width="6" height="6" fill="#1a1a1a" />
-                  <rect x="0" y="16" width="6" height="6" fill="#1a1a1a" />
-                  <rect x="8" y="16" width="6" height="6" fill="#1a1a1a" />
-                  <rect x="16" y="16" width="6" height="6" fill="#1a1a1a" />
-                </svg>
-              </button>
-
-              <button
-                onClick={() => setGridView("two")}
-                style={{
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  padding: "2px",
-                  opacity: gridView === "two" ? 1 : 0.4,
-                }}
-              >
-                <svg width="22" height="22" viewBox="0 0 22 22">
-                  <rect x="0" y="0" width="10" height="10" fill="#1a1a1a" />
-                  <rect x="12" y="0" width="10" height="10" fill="#1a1a1a" />
-                  <rect x="0" y="12" width="10" height="10" fill="#1a1a1a" />
-                  <rect x="12" y="12" width="10" height="10" fill="#1a1a1a" />
-                </svg>
-              </button>
+            <div
+              className="blog-count"
+              style={{
+                fontSize: "18px",
+                fontFamily: "Times New Roman",
+                color: "#888",
+                marginLeft: "15px"
+              }}
+            >
+              Blogs ({products?.length || 0})
             </div>
+            {!isMobile && (
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "16px",
+                  marginLeft: "auto",
+                  marginRight: "15px"
+                }}
+              >
+                <button
+                  onClick={() => setGridView("three")}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "2px",
+                    opacity: gridView === "three" ? 1 : 0.4,
+                  }}
+                >
+                  <svg width="22" height="22" viewBox="0 0 22 22">
+                    <rect x="0" y="0" width="6" height="6" fill="#1a1a1a" />
+                    <rect x="8" y="0" width="6" height="6" fill="#1a1a1a" />
+                    <rect x="16" y="0" width="6" height="6" fill="#1a1a1a" />
+                    <rect x="0" y="8" width="6" height="6" fill="#1a1a1a" />
+                    <rect x="8" y="8" width="6" height="6" fill="#1a1a1a" />
+                    <rect x="16" y="8" width="6" height="6" fill="#1a1a1a" />
+                    <rect x="0" y="16" width="6" height="6" fill="#1a1a1a" />
+                    <rect x="8" y="16" width="6" height="6" fill="#1a1a1a" />
+                    <rect x="16" y="16" width="6" height="6" fill="#1a1a1a" />
+                  </svg>
+                </button>
+
+                <button
+                  onClick={() => setGridView("two")}
+                  style={{
+                    background: "none",
+                    border: "none",
+                    cursor: "pointer",
+                    padding: "2px",
+                    opacity: gridView === "two" ? 1 : 0.4,
+                  }}
+                >
+                  <svg width="22" height="22" viewBox="0 0 22 22">
+                    <rect x="0" y="0" width="10" height="10" fill="#1a1a1a" />
+                    <rect x="12" y="0" width="10" height="10" fill="#1a1a1a" />
+                    <rect x="0" y="12" width="10" height="10" fill="#1a1a1a" />
+                    <rect x="12" y="12" width="10" height="10" fill="#1a1a1a" />
+                  </svg>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* BLOG GRID */}
