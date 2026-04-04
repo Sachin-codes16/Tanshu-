@@ -183,7 +183,7 @@ const Header = (props) => {
 
             <div className="rh-right">
               <div className="social-icons">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                <a href="https://www.facebook.com/people/Tanshu-Vaidik/pfbid02PgCKUtYxAfuJJE2Qww4SbJoURQVKnZsfibNtnwcagkQq9YeZwnQRe9cUSvtKf1jJl/" target="_blank" rel="noreferrer">
                   <svg
                     width="18"
                     height="18"
@@ -194,7 +194,7 @@ const Header = (props) => {
                   </svg>
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/tanshuvaidik/"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -231,7 +231,7 @@ const Header = (props) => {
                     />
                   </svg>
                 </a>
-                <a href="https://linkedin.com" target="_blank" rel="noreferrer">
+                <a href="https://www.linkedin.com/company/tanshu-vaidik-india-pvt-ltd/" target="_blank" rel="noreferrer">
                   <svg
                     width="18"
                     height="18"
