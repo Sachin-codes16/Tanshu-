@@ -1,19 +1,18 @@
 import React from "react";
-import img1 from '../../images/blog/444.jpeg'
-import img2 from '../../images/blog/111.jpeg'
-import img3 from '../../images/blog/555.jpeg'
-import img4 from '../../images/blog/666.jpeg'
-import img5 from '../../images/blog/777.jpeg'
+import img1 from '../../images/blog/Sachin1.png'
+import img2 from '../../images/blog/Sachin3.png'
+import img3 from '../../images/blog/Sachin4.png'
+import img4 from '../../images/blog/Sachin5.png'
+// import img5 from '../../images/blog/777.jpeg'
 
 
-import img7 from '../../images/blog/999.jpeg'
+// import img7 from '../../images/blog/999.jpeg'
 
 
 
 const ImageGallery = () => {
     const images = [
-        img1, img2, img3, img4, img5,
-         img7, 
+        img1, img2, img3, img4, 
     ];
 
     return (
