@@ -10,9 +10,34 @@ const Footer = (props) => {
     }
 
     const [email, setEmail] = useState('')
+    const [signupMessage, setSignupMessage] = useState('')
+    const [signupError, setSignupError] = useState('')
     const [windowWidth, setWindowWidth] = useState(
         typeof window !== 'undefined' ? window.innerWidth : 1200
     )
+
+    const handleSignup = () => {
+        const trimmedEmail = email.trim()
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+        if (!trimmedEmail) {
+            setSignupError('Please enter your email address.')
+            setSignupMessage('')
+            return
+        }
+
+        if (!emailPattern.test(trimmedEmail)) {
+            setSignupError('Please enter a valid email address.')
+            setSignupMessage('')
+            return
+        }
+
+        setSignupError('')
+        setSignupMessage('Thanks! Your signup request is ready.')
+        setEmail('')
+
+        window.location.href = `mailto:info@tanshuvaidik.com?subject=${encodeURIComponent('Newsletter Signup')}&body=${encodeURIComponent(`Please subscribe this email to updates: ${trimmedEmail}`)}`
+    }
 
     useEffect(() => {
         if (typeof window === 'undefined') {
@@ -67,6 +92,25 @@ const Footer = (props) => {
         ...styles.grid,
         gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : styles.grid.gridTemplateColumns,
         gap: isMobile ? '28px' : isTablet ? '36px' : styles.grid.gap,
+        maxWidth: isMobile ? '100%' : '1080px',
+        margin: '0 auto',
+        justifyContent: 'center',
+    }
+    const resourcesColStyle = {
+        ...styles.col,
+        justifySelf: isMobile ? 'stretch' : 'start',
+        textAlign: 'left',
+    }
+    const companyColStyle = {
+        ...styles.col,
+        justifySelf: isMobile ? 'stretch' : 'center',
+        textAlign: 'left',
+    }
+    const legalColStyle = {
+        ...styles.col,
+        justifySelf: isMobile ? 'stretch' : 'end',
+        textAlign: 'left',
+        paddingRight: isMobile ? 0 : '8px',
     }
     const lowerFooterStyle = {
         ...styles.lowerFooter,
@@ -89,11 +133,17 @@ const Footer = (props) => {
                         type="email"
                         placeholder="Enter your email"
                         value={email}
-                        onChange={(e) => setEmail(e.target.value)}
+                        onChange={(e) => {
+                            setEmail(e.target.value)
+                            setSignupError('')
+                            setSignupMessage('')
+                        }}
                         style={emailInputStyle}
                     />
-                    <button style={signupBtnStyle}>SIGN UP</button>
+                    <button style={signupBtnStyle} onClick={handleSignup}>SIGN UP</button>
                 </div>
+                {signupError && <p style={styles.signupError}>{signupError}</p>}
+                {signupMessage && <p style={styles.signupMessage}>{signupMessage}</p>}
             </div>
 
             {/* Links Section */}
@@ -102,11 +152,18 @@ const Footer = (props) => {
                     <div style={gridStyle}>
 
                         {/* Column 1 - Resources */}
-                        <div style={styles.col}>
+                        <div style={resourcesColStyle}>
                             <h4 style={styles.colHeading}>RESOURCES</h4>
                             <ul style={styles.linkList}>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>Locate on Map</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>Site Map</Link></li>
+                                <li style={styles.linkItem}>
+                                    <span style={styles.link}><b>Address:</b> Industrial Area Phase 2, Hari Nagar, Panipat</span>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <span style={styles.link}><b>Phone:</b> +91-8930009468</span>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <span style={styles.link}><b>Email:</b> info@tanshuvaidik.com</span>
+                                </li>
                                 {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>REQUEST A SOURCEBOOK</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH MEMBERS PROGRAM</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH TRADE</Link></li>
@@ -133,7 +190,7 @@ const Footer = (props) => {
                         </div> */}
 
                         {/* Column 3 - Our Company */}
-                        <div style={styles.col}>
+                        <div style={companyColStyle}>
                             <h4 style={styles.colHeading}>OUR COMPANY</h4>
                             <ul style={styles.linkList}>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/our-story" style={styles.link}>Our Story {"\u2197"}</Link></li>
@@ -145,7 +202,7 @@ const Footer = (props) => {
                         </div>
 
                         {/* Column 4 - Legal */}
-                        <div style={styles.col}>
+                        <div style={legalColStyle}>
                             <h4 style={styles.colHeading}>LEGAL</h4>
                             <ul style={styles.linkList}>
                                <li style={styles.linkItem}>
@@ -270,11 +327,12 @@ const styles = {
     grid: {
         display: 'grid',
         gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '50px',
+        gap: '24px',
     },
 
     colHeading: {
         marginBottom: '20px',
+        fontSize: '20px',
     },
 
     linkList: {
@@ -287,8 +345,24 @@ const styles = {
         textDecoration: 'none',
         display: 'block',
         marginBottom: '10px',
+        fontSize: '17px',
+        lineHeight: '1.8',
 
         cursor: "pointer",   // ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ FIX
+    },
+
+    signupError: {
+        color: '#b42318',
+        fontSize: '14px',
+        marginTop: '12px',
+        marginBottom: 0,
+    },
+
+    signupMessage: {
+        color: '#25643b',
+        fontSize: '14px',
+        marginTop: '12px',
+        marginBottom: 0,
     },
 
     lowerFooter: {
@@ -301,6 +375,8 @@ const styles = {
     copyright: {
         fontSize: '12px',
         color: 'black',
+        width: 'fit-content',
+        margin: '0 auto',
     },
 
     brandLink: {
