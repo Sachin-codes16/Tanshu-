@@ -21,32 +21,32 @@ const Header = (props) => {
   const menuRef = useRef(null);
 
   const handleSearch = async (Search) => {
-  setSearchTerm(Search);
+    setSearchTerm(Search);
 
-  if (!Search) {
-    setSearchResults([]);
-    return;
-  }
-
-  try {
-    const res = await axios.get(
-      `https://tanshu.checkour.work/api/search-product/${Search}`
-    );
-
-    console.log(res.data);
-
-    const results = res.data?.data?.data;
-
-    if (Array.isArray(results)) {
-      setSearchResults(results);
-    } else {
-      setSearchResults([]); // ✅ handle null case
+    if (!Search) {
+      setSearchResults([]);
+      return;
     }
-  } catch (error) {
-    console.log("SEARCH ERROR:", error);
-    setSearchResults([]);
-  }
-};
+
+    try {
+      const res = await axios.get(
+        `https://tanshu.checkour.work/api/search-product/${Search}`,
+      );
+
+      console.log(res.data);
+
+      const results = res.data?.data?.data;
+
+      if (Array.isArray(results)) {
+        setSearchResults(results);
+      } else {
+        setSearchResults([]); // ✅ handle null case
+      }
+    } catch (error) {
+      console.log("SEARCH ERROR:", error);
+      setSearchResults([]);
+    }
+  };
 
   // 1) FETCH CATEGORIES
   useEffect(() => {
@@ -145,20 +145,29 @@ const Header = (props) => {
                   onChange={(e) => handleSearch(e.target.value)}
                 />
                 {searchTerm && (
-  <div className="search-results">
-    {searchResults.length === 0 ? (
-      <div className="search-item">No products found.....</div>
-    ) : (
-      searchResults.map((item, index) => (
-        <Link key={index} to={`/product/${item.slug}`}>
-          <div className="search-item">
-            {item.name || item.title}
-          </div>
-        </Link>
-      ))
-    )}
-  </div>
-)}
+                  <div className="search-results">
+                    {searchResults.length === 0 ? (
+                      <div className="search-item">No products found.....</div>
+                    ) : (
+                      searchResults.map((item, index) => (
+                        <Link to={`/product-detail/${item.slug}`}>
+                          <div className="search-item">
+                            <img
+                              src={item.featureimg}
+                              alt={item.productName}
+                              style={{
+                                width: "40px",
+                                height: "40px",
+                                marginRight: "8px",
+                              }}
+                            />
+                            {item.productName || "Unnamed"}
+                          </div>
+                        </Link>
+                      ))
+                    )}
+                  </div>
+                )}
               </div>
             </div>
 
@@ -183,7 +192,11 @@ const Header = (props) => {
 
             <div className="rh-right">
               <div className="social-icons">
-                <a href="https://www.facebook.com/people/Tanshu-Vaidik/pfbid02PgCKUtYxAfuJJE2Qww4SbJoURQVKnZsfibNtnwcagkQq9YeZwnQRe9cUSvtKf1jJl/" target="_blank" rel="noreferrer">
+                <a
+                  href="https://www.facebook.com/people/Tanshu-Vaidik/pfbid02PgCKUtYxAfuJJE2Qww4SbJoURQVKnZsfibNtnwcagkQq9YeZwnQRe9cUSvtKf1jJl/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <svg
                     width="18"
                     height="18"
@@ -231,7 +244,11 @@ const Header = (props) => {
                     />
                   </svg>
                 </a>
-                <a href="https://www.linkedin.com/company/tanshu-vaidik-india-pvt-ltd/" target="_blank" rel="noreferrer">
+                <a
+                  href="https://www.linkedin.com/company/tanshu-vaidik-india-pvt-ltd/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <svg
                     width="18"
                     height="18"
@@ -327,7 +344,12 @@ const Header = (props) => {
         {/* MOBILE MENU DRAWER */}
         <div className={`mobile-menu ${mobileMenuOpen ? "open" : ""}`}>
           <div className="mobile-menu-header">
-            <span style={{fontSize: "19px"}} onClick={() => setMobileMenuOpen(false)}>✕</span>
+            <span
+              style={{ fontSize: "19px" }}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              ✕
+            </span>
           </div>
 
           <div className="mobile-columns" ref={menuRef}>
@@ -427,7 +449,9 @@ const Header = (props) => {
 
                     {/* ✅ PRODUCTS BELOW */}
                     {selectedSub?.id === sub.id && (
-                      <div className={`mobile-subitems ${selectedSub?.id === sub.id ? "open" : ""}`}>
+                      <div
+                        className={`mobile-subitems ${selectedSub?.id === sub.id ? "open" : ""}`}
+                      >
                         {lowerCategories[sub.slug]?.map((lower) => (
                           <div key={lower.id} className="mobile-subitem">
                             <Link
