@@ -44,7 +44,7 @@ const team = [
 const PrivacyPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [windowWidth, setWindowWidth] = useState(
-    typeof window !== "undefined" ? window.innerWidth : 1200
+    typeof window !== "undefined" ? window.innerWidth : 1200,
   );
 
   useEffect(() => {
@@ -60,7 +60,11 @@ const PrivacyPage = () => {
 
   const isMobile = windowWidth <= 767;
   const isTablet = windowWidth <= 1024;
-  const pagePadding = isMobile ? "32px 16px" : isTablet ? "48px 24px" : "70px 40px";
+  const pagePadding = isMobile
+    ? "32px 16px"
+    : isTablet
+      ? "48px 24px"
+      : "70px 40px";
   const gridGap = isMobile ? "20px" : "32px";
   const cardImageHeight = isMobile ? "280px" : "380px";
   const modalPadding = isMobile ? "24px 18px" : isTablet ? "36px 28px" : "60px";
@@ -80,7 +84,156 @@ const PrivacyPage = () => {
       }}
     >
       <Header />
-       hi
+
+      <div
+        className="hero-container"
+        style={{
+          maxWidth: "1000px",
+          margin: "0 auto",
+          padding: isMobile ? "30px 16px" : "60px 20px",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: isMobile ? "32px" : "44px",
+            fontWeight: "700",
+            textAlign: "center",
+            marginBottom: "10px",
+            color: "#0c4c77",
+          }}
+        >
+          About Us
+        </h1>
+
+        <p
+          style={{
+            fontSize: isMobile ? "15px" : "20px",
+            lineHeight: "1.9",
+            color: "#222121",
+            textAlign: "justify",
+          }}
+        >
+          <strong>Tanshu Vaidik India Pvt. Ltd.</strong> is where heritage meets
+          precision.
+          Born in <strong>Panipat—the heart of India’s textile legacy</strong>
+          —and shaped by the global vision of the Tanshu Group, we create
+          refined home furnishing solutions defined by{" "}
+          <strong>quiet luxury and enduring quality</strong>.
+          <br />
+          Our philosophy of <strong>Engineering Excellence</strong> is not a
+          statement—it is a discipline. Every texture, every weave, every detail
+          is considered, engineered, and perfected to meet the expectations of a
+          global audience.
+          <br />
+          We work at the intersection of{" "}
+          <strong>craftsmanship and innovation</strong>. Natural materials,
+          thoughtful design, and modern processes come together to create
+          products that feel effortless, yet are deeply intentional.
+          <br />
+          From concept to completion, our fully integrated approach ensures{" "}
+          <strong>precision, consistency, and seamless delivery</strong>
+          —supported by our international presence, including Tanshu Australia.
+          <br />
+          We believe true luxury is not loud. It is found in{" "}
+          <strong>
+            quality that lasts, design that feels natural, and trust that is
+            earned over time
+          </strong>
+          .
+          <br />
+          <strong>
+            Tanshu Vaidik <br />
+            Defined by detail. Driven by excellence.
+          </strong>
+        </p>
+      </div>
+
+      <div
+        style={{
+          maxWidth: "1000px",
+          margin: "0 auto",
+          padding: isMobile ? "20px 16px" : "40px 20px",
+        }}
+      >
+        <h1
+          style={{
+            fontSize: isMobile ? "30px" : "42px",
+            fontWeight: "700",
+            textAlign: "center",
+            marginBottom: "15px",
+            color: "#0c4c77",
+          }}
+        >
+          Our Story
+        </h1>
+
+        <p
+          style={{
+            fontSize: isMobile ? "15px" : "20px",
+            lineHeight: "1.9",
+            color: "#222121",
+            textAlign: "justify",
+          }}
+        >
+          Every journey begins with a vision.
+          Ours began when{" "}
+          <strong>Naresh Kumar founded Tanshu Group in Sydney</strong>—built on
+          precision, discipline, and a commitment to engineering excellence.
+          What started with a single laser cutter and CNC press brake soon
+          evolved into something far greater—a foundation for a global
+          enterprise.
+          <br />
+          With growth came clarity of purpose. Tanshu expanded into specialised
+          verticals—
+          <strong>
+            Metal Products, Machinery Solutions, and Robotics & Automation
+          </strong>
+          —each defined by expertise, innovation, and performance.
+          <br />
+          Over the years, the Group established a strong global footprint,
+          exporting machinery across continents and delivering solutions shaped
+          by international standards.
+          <strong>As the vision expanded, so did its horizons.</strong>
+          <br />
+          The establishment of <strong>
+            Tanshu Vaidik India Pvt. Ltd.
+          </strong>{" "}
+          marked a new chapter—bringing the Group’s engineering mindset into the
+          world of textiles and home furnishings.
+          <br />
+          Rooted in <strong>Panipat, India’s textile capital</strong>, Tanshu
+          Vaidik was created to merge traditional craftsmanship with modern
+          precision.
+          <br />
+          Today, with a corporate office and multiple manufacturing facilities,
+          Tanshu Vaidik delivers thoughtfully crafted products to markets across{" "}
+          <strong>Europe, the United States, Australia, and beyond</strong>.
+          <br />
+          Each piece reflects a balance of{" "}
+          <strong>design, durability, and detail</strong>—shaped for
+          contemporary living.
+          <br />
+          <strong>The journey did not stop there.</strong>
+          <br />
+          From expanding into renewable energy to building advanced
+          manufacturing capabilities in Northern India, and strengthening global
+          logistics through its freight forwarding network, the Tanshu Group
+          continues to evolve—quietly, confidently, and with purpose.
+          <br />
+          Yet, at its core, the philosophy remains unchanged:
+          <br/>
+          <strong>
+            To create with intention. <br />
+            To deliver with precision. <br />
+            To grow with integrity.
+          </strong>
+          <br />
+          We stand today as a reflection of this journey—where{" "}
+          <strong>heritage, engineering, and global vision</strong> come
+          together to shape the future of modern living.
+        </p>
+      </div>
+
       <div
         style={{
           maxWidth: "1400px",
@@ -118,7 +271,8 @@ const PrivacyPage = () => {
               }}
               onMouseLeave={(event) => {
                 event.currentTarget.style.transform = "translateY(0)";
-                event.currentTarget.style.boxShadow = "0 4px 18px rgba(0,0,0,0.09)";
+                event.currentTarget.style.boxShadow =
+                  "0 4px 18px rgba(0,0,0,0.09)";
               }}
             >
               <div style={{ width: "100%", overflow: "hidden" }}>
