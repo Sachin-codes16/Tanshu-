@@ -80,7 +80,7 @@ const PrivacyPage = () => {
       }}
     >
       <Header />
-
+       hi
       <div
         style={{
           maxWidth: "1400px",
