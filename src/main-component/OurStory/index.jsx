@@ -41,7 +41,7 @@ const team = [
   },
 ];
 
-const PrivacyPage = () => {
+const OurStoryPage = () => {
   const [selectedMember, setSelectedMember] = useState(null);
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
@@ -321,4 +321,4 @@ const PrivacyPage = () => {
   );
 };
 
-export default PrivacyPage;
+export default OurStoryPage;
