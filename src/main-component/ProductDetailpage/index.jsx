@@ -259,6 +259,7 @@ const ProductDetailPage = () => {
                   color: "#666",
                   marginBottom: "15px",
                   fontFamily: "Times New Roman",
+                  textAlign: "justify",
                 }}
               >
                 {stripHtml(product.subTitle)}
@@ -569,10 +570,11 @@ const ProductDetailPage = () => {
               .info-title { font-size: 16px; font-weight: 400; color: #1a1a1a; }
               .plus { font-size: 22px; font-weight: 300; color: #1a1a1a; }
               .arrow { font-size: 22px; color: #1a1a1a; }
-              .info-content { padding: 15px 0 30px 0; font-size: 15px; line-height: 1.8; color: #333; font-family: 'Times New Roman', serif; background: white; }
+              .info-content { padding: 15px 0 30px 0; font-size: 15px; line-height: 1.8; color: #333; font-family: 'Times New Roman', serif; background: white; text-align: justify; }
               .info-content ul { padding-left: 20px; }
               .info-content li { margin-bottom: 8px; }
               .info-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 8px; }
+              .info-content p { text-align: justify; }
               .link-style { text-decoration: underline; cursor: pointer; }
             `}</style>
 
