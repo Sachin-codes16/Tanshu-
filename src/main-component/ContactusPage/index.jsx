@@ -1,206 +1,87 @@
 import "./ContactUs.css";
-// import React, { Fragment } from "react";
-// import Header from "../../components/header";
-// import Footer from "../../components/footer";
-
-// import Scrollbar from "../../components/scrollbar";
-
-// const ContactUs = () => {
-//   return (
-//     <Fragment>
-//       <Header/>
-
-//       {/* PAGE TITLE */}
-//       <div style={{ textAlign: "center", padding: "60px 0 40px" }}>
-//         <p style={{ fontSize: "20px", letterSpacing: "2px", color: "#888" }}>
-//           CUSTOMER EXPERIENCE
-//         </p>
-//         <h1
-//           style={{
-//             fontSize: "48px",
-//             fontWeight: "50px",
-//             fontFamily: "Times New Roman",
-//             marginTop: "8px",
-//             color: "black",
-//           }}
-//         >
-//           CONTACT US
-//         </h1>
-//       </div>
-
-//       {/* CALL & FIND GALLERY SECTION */}
-//       <div
-//         style={{
-//           display: "flex",
-//           justifyContent: "center",
-//           gap: "60px",
-//           padding: "40px 80px",
-//           flexWrap: "wrap"
-//         }}
-//       >
-//         {/* CALL BOX */}
-//         <div
-//           style={{
-//             border: "1px solid #ccc",
-//             padding: "60px",
-//             width: "500px",
-//             textAlign: "center"
-//           }}
-//         >
-//           <h3 style={{ fontWeight: "400", marginBottom: "30px" }}>CALL</h3>
-//           <p style={{ color: "#666", marginBottom: "20px" }}>
-//             United States 800.762.1005
-//           </p>
-//           <p style={{ color: "#666", lineHeight: "1.8" }}>
-//             Monday-Friday 6AM-8PM PT <br />
-//             Saturday 6AM-6PM PT <br />
-//             Sunday 7AM-6PM PT
-//           </p>
-//         </div>
-
-//         {/* FIND GALLERY BOX */}
-//         <div
-//           style={{
-//             border: "1px solid #ccc",
-//             padding: "60px",
-//             width: "500px",
-//             textAlign: "center"
-//           }}
-//         >
-//           <h3 style={{ fontWeight: "400", marginBottom: "30px" }}>
-//             FIND A GALLERY
-//           </h3>
-//           <p style={{ color: "#666", lineHeight: "1.8", marginBottom: "30px" }}>
-//             Our architecturally inspiring galleries blur the lines between
-//             residential and retail, indoors and outdoors, home and hospitality.
-//           </p>
-//           <a
-//             href="#"
-//             style={{
-//               textDecoration: "underline",
-//               color: "#888",
-//               letterSpacing: "1px"
-//             }}
-//           >
-//             EXPLORE
-//           </a>
-//         </div>
-//       </div>
-
-//       {/* EMAIL SECTION */}
-//       <div style={{ textAlign: "center", marginTop: "100px" }}>
-//         <h2
-//           style={{
-//             fontSize: "40px",
-//             fontWeight: "300",
-//             fontFamily: "Times New Roman"
-
-//           }}
-//         >
-//           EMAIL US
-//         </h2>
-//         <p style={{ color: "#666", marginTop: "15px" }}>
-//           Please submit your questions or comments via the form below, and we’ll respond within 24 hours.
-
-//         </p>
-//         <p>You may also consult our Frequently Asked Questions (FAQ) page for a more immediate answer.</p>
-//       </div>
-
-//       {/* FORM SECTION */}
-//       <div
-//         style={{
-//           display: "flex",
-//           justifyContent: "center",
-//           gap: "40px",
-//           padding: "60px 80px",
-//           flexWrap: "wrap"
-//         }}
-//       >
-//         {/* LEFT INPUTS */}
-//         <div style={{ width: "600px", display: "flex", flexDirection: "column", gap: "20px" }}>
-//           <input placeholder="First Name" style={inputStyle} />
-//           <input placeholder="Last Name" style={inputStyle} />
-//           <input placeholder="Email" style={inputStyle} />
-//           <input placeholder="Order Number (Optional)" style={inputStyle} />
-//         </div>
-
-//         {/* MESSAGE BOX */}
-//         <div>
-//           <textarea
-//             placeholder="Message"
-//             style={{
-//               ...inputStyle,
-//               width: "700px",
-//               height: "300px",
-//               resize: "none"
-//             }}
-//           />
-//         </div>
-//       </div>
-
-//       {/* SUBMIT BUTTON */}
-//       <div style={{ textAlign: "center", marginBottom: "120px" }}>
-//         <button
-//           style={{
-//             background: "#000",
-//             color: "#fff",
-//             padding: "18px 120px",
-//             border: "none",
-//             letterSpacing: "2px",
-//             cursor: "pointer"
-//           }}
-//         >
-//           SUBMIT
-//         </button>
-//       </div>
-
-//       <Footer />
-//       <Scrollbar />
-//     </Fragment>
-//   );
-// };
-
-// const inputStyle = {
-//   padding: "18px",
-//   border: "1px solid #ddd",
-//   fontSize: "14px",
-//   outline: "none",
-//   width: "100%"
-// };
-
-// export default ContactUs;
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 import Scrollbar from "../../components/scrollbar";
 import axios from "axios";
-import logo from "../../images/contactus/tanshu_vaidik_logo.png";
-import heroImg from "../../images/contactus/heroimg.jpeg";
+
+const CAPTCHA_LETTERS = "ABCDEFGHJKLMNPQRSTUVWXYZ";
+const CAPTCHA_NUMBERS = "23456789";
+
+const pickRandomChar = (source) =>
+  source[Math.floor(Math.random() * source.length)];
+
+const createCaptcha = (length = 6) => {
+  const baseChars = [
+    pickRandomChar(CAPTCHA_LETTERS),
+    pickRandomChar(CAPTCHA_NUMBERS),
+  ];
+  const allChars = `${CAPTCHA_LETTERS}${CAPTCHA_NUMBERS}`;
+
+  while (baseChars.length < length) {
+    baseChars.push(pickRandomChar(allChars));
+  }
+
+  return baseChars.sort(() => Math.random() - 0.5).join("");
+};
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
     Name: "",
     Email: "",
     Subject: "",
+    OrderNumber: "",
     Message: "",
   });
+  const [captchaCode, setCaptchaCode] = useState("");
+  const [captchaInput, setCaptchaInput] = useState("");
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState("");
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  useEffect(() => {
+    setCaptchaCode(createCaptcha());
+  }, []);
+
+  const refreshCaptcha = () => {
+    setCaptchaCode(createCaptcha());
+    setCaptchaInput("");
   };
 
-  const handleSubmit = async () => {
-    // Validation
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+    setError("");
+    setSuccess(false);
+  };
+
+  const handleCaptchaChange = (e) => {
+    setCaptchaInput(e.target.value);
+    setError("");
+    setSuccess(false);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
     if (
-      !formData.Name ||
-      !formData.Email ||
-      !formData.Subject ||
-      !formData.Message
+      !formData.Name.trim() ||
+      !formData.Email.trim() ||
+      !formData.Subject.trim() ||
+      !formData.Message.trim()
     ) {
-      setError("Please fill in all fields.");
+      setError("Please fill in all required fields.");
+      return;
+    }
+
+    if (!captchaInput.trim()) {
+      setError("Please enter the captcha.");
+      return;
+    }
+
+    if (captchaInput.trim() !== captchaCode) {
+      setError("Captcha does not match. Please try again.");
+      refreshCaptcha();
       return;
     }
 
@@ -209,18 +90,35 @@ const ContactUs = () => {
     setSuccess(false);
 
     try {
+      const payload = {
+        Name: formData.Name.trim(),
+        Email: formData.Email.trim(),
+        Subject: formData.Subject.trim(),
+        Message: formData.Message.trim(),
+      };
+
       const res = await axios.post(
         "https://tanshu.checkour.work/api/insert-contactus",
-        formData,
+        payload,
       );
 
-      if (res.data.data.success) {
+      if (res?.data?.data?.success) {
         setSuccess(true);
-        setFormData({ Name: "", Email: "", Subject: "", Message: "" });
+        setFormData({
+          Name: "",
+          Email: "",
+          Subject: "",
+          OrderNumber: "",
+          Message: "",
+        });
+        refreshCaptcha();
+      } else {
+        setError("Message could not be sent. Please try again.");
       }
     } catch (err) {
       console.log(err);
       setError("Something went wrong. Please try again.");
+      refreshCaptcha();
     } finally {
       setLoading(false);
     }
@@ -230,7 +128,6 @@ const ContactUs = () => {
     <Fragment>
       <Header />
 
-      {/* HERO SECTION */}
       <div
         className="hero-container"
         style={{
@@ -243,7 +140,6 @@ const ContactUs = () => {
           minHeight: "80vh",
         }}
       >
-        {/* LEFT SIDE */}
         <div
           className="hero-left"
           style={{
@@ -251,12 +147,11 @@ const ContactUs = () => {
             minWidth: "300px",
             height: "100%",
             display: "flex",
-            paddingLeft: " 100px",
+            paddingLeft: "100px",
             flexDirection: "column",
             justifyContent: "center",
           }}
         >
-          {/* TITLE */}
           <h1
             style={{
               fontSize: "28px",
@@ -268,33 +163,19 @@ const ContactUs = () => {
             Let's Build Something Amazing Together
           </h1>
 
-          {/* DESCRIPTION */}
           <p style={{ color: "#666", marginTop: "20px", fontSize: "20px" }}>
-            We would love to hear from you. <br />
+            We would love to hear from you.
+            <br />
             Feel free to reach out using the below details.
           </p>
         </div>
-
-        {/* RIGHT SIDE IMAGE */}
-        {/* <div>
-          <img
-            src={heroImg}
-            alt="contact"
-            style={{
-              width: "600px",
-              maxWidth: "100%",
-              borderRadius: "8px",
-              cursor: "pointer", // 
-            }}
-          />
-        </div> */}
 
         <div style={{ flex: "1", minWidth: "300px" }}>
           <div style={{ textAlign: "center", marginBottom: "2px" }}>
             <h2
               style={{
                 fontSize: "30px",
-                fontWeight: "250px",
+                fontWeight: "250",
                 fontFamily: "Times New Roman",
               }}
             >
@@ -306,60 +187,29 @@ const ContactUs = () => {
               <br />
               and we'll respond within 24 hours.
             </p>
-            {/* <p>
-              You may also consult our Frequently Asked Questions (FAQ) page<br/> for
-              a more immediate answer.
-            </p> */}
           </div>
-          {/* SUCCESS MESSAGE */}
+
           {success && (
-            <div
-              style={{
-                textAlign: "center",
-                margin: "30px auto",
-                padding: "16px 40px",
-                background: "#f0fff0",
-                border: "1px solid #aaa",
-                width: "fit-content",
-                color: "#2a7a2a",
-                fontSize: "15px",
-                letterSpacing: "1px",
-              }}
-            >
-              ✅ Message sent successfully! We'll respond within 24 hours.
+            <div className="contact-feedback contact-feedback-success">
+              Message sent successfully! We'll respond within 24 hours.
             </div>
           )}
 
-          {/* ERROR MESSAGE */}
           {error && (
-            <div
-              style={{
-                textAlign: "center",
-                margin: "20px auto",
-                padding: "14px 40px",
-                background: "#fff0f0",
-                border: "1px solid #eaa",
-                width: "fit-content",
-                color: "#a00",
-                fontSize: "14px",
-              }}
-            >
-              ⚠️ {error}
-            </div>
+            <div className="contact-feedback contact-feedback-error">{error}</div>
           )}
 
-          {/* FORM SECTION */}
-          <div
+          <form
+            onSubmit={handleSubmit}
             className="form-wrapper"
             style={{
               display: "flex",
-              justifyContent: "center",
-              gap: "30px",
+              flexDirection: "column",
+              alignItems: "center",
+              gap: "20px",
               padding: "20px 30px",
-              flexWrap: "wrap",
             }}
           >
-            {/* LEFT INPUTS */}
             <div
               className="form-left"
               style={{
@@ -375,6 +225,7 @@ const ContactUs = () => {
                 onChange={handleChange}
                 placeholder="Full Name *"
                 style={inputStyle}
+                autoComplete="name"
               />
               <input
                 name="Email"
@@ -382,6 +233,7 @@ const ContactUs = () => {
                 onChange={handleChange}
                 placeholder="Email *"
                 style={inputStyle}
+                autoComplete="email"
               />
               <input
                 name="Subject"
@@ -390,10 +242,15 @@ const ContactUs = () => {
                 placeholder="Subject *"
                 style={inputStyle}
               />
-              <input placeholder="Order Number (Optional)" style={inputStyle} />
+              <input
+                name="OrderNumber"
+                value={formData.OrderNumber}
+                onChange={handleChange}
+                placeholder="Order Number (Optional)"
+                style={inputStyle}
+              />
             </div>
 
-            {/* MESSAGE BOX */}
             <div className="form-right">
               <textarea
                 name="Message"
@@ -402,24 +259,48 @@ const ContactUs = () => {
                 placeholder="Message *"
                 style={{
                   ...inputStyle,
-                  width: "400px",
-                  height: "100px",
+                  width: "100%",
+                  minHeight: "170px",
                   resize: "none",
                 }}
               />
             </div>
 
-            {/* SUBMIT BUTTON */}
+            <div className="captcha-block">
+              <div className="captcha-visual" aria-label="Generated captcha code">
+                <span className="captcha-line captcha-line-left" />
+                <span className="captcha-line captcha-line-right" />
+                <span className="captcha-text">{captchaCode}</span>
+              </div>
+              <div className="captcha-input-wrap">
+                <button
+                  type="button"
+                  className="captcha-refresh"
+                  onClick={refreshCaptcha}
+                  aria-label="Refresh captcha"
+                  title="Refresh captcha"
+                >
+                  {"\u21BB"}
+                </button>
+                <input
+                  type="text"
+                  value={captchaInput}
+                  onChange={handleCaptchaChange}
+                  placeholder="Enter Captcha"
+                  className="captcha-input"
+                />
+              </div>
+            </div>
+
             <div
               className="submit-btn"
               style={{
-                width: "400px",
                 textAlign: "center",
                 marginBottom: "10px",
               }}
             >
               <button
-                onClick={handleSubmit}
+                type="submit"
                 disabled={loading}
                 style={{
                   background: loading ? "#888" : "#000",
@@ -434,16 +315,14 @@ const ContactUs = () => {
                 {loading ? "SENDING..." : "SUBMIT"}
               </button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
 
-      {/* MAP SECTION 1 - AUSTRALIA */}
       <div
         className="map-section"
         style={{ marginTop: "100px", fontFamily: "'Times New Roman', serif" }}
       >
-        {/* 🖥️ DESKTOP */}
         <div
           className="d-none d-md-grid"
           style={{
@@ -451,7 +330,6 @@ const ContactUs = () => {
             minHeight: "500px",
           }}
         >
-          {/* LEFT */}
           <div
             style={{
               display: "flex",
@@ -467,21 +345,22 @@ const ContactUs = () => {
             </h1>
 
             <p>
-              <b>Address:</b> 4&5/62 Argyle Street, South Windsor 2756, New South Wales, Sydney
-
+              <b>Address:</b> 4&5/62 Argyle Street, South Windsor 2756, New South
+              Wales, Sydney
             </p>
             <p>
-              <b>Hours:</b> Mon–Fri, 9:00AM – 5:00PM
+              <b>Hours:</b> Mon-Fri, 9:00AM - 5:00PM
             </p>
             <p>
-              <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+61-423471255</span>
+              <b>Phone:</b>{" "}
+              <span style={{ color: "#0b5ed7" }}>+61-423471255</span>
             </p>
             <p>
-              <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
+              <b>Email:</b>{" "}
+              <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
             </p>
           </div>
 
-          {/* RIGHT MAP */}
           <div
             style={{
               paddingRight: "40px",
@@ -490,7 +369,8 @@ const ContactUs = () => {
             }}
           >
             <iframe
-src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+New+South+Wales,+Sydney&output=embed"              width="90%"
+              src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+New+South+Wales,+Sydney&output=embed"
+              width="90%"
               height="400"
               style={{ border: 0 }}
               loading="lazy"
@@ -499,7 +379,6 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
           </div>
         </div>
 
-        {/* 📱 MOBILE (FIXED ORDER) */}
         <div
           className="d-block d-md-none"
           style={{
@@ -509,7 +388,6 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
             padding: "0 20px",
           }}
         >
-          {/* 2️⃣ MAP */}
           <iframe
             src="https://www.google.com/maps?q=49A+Purcell+Road,+Londonderry+NSW+2753,+Australia&output=embed"
             width="100%"
@@ -519,7 +397,6 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
             title="map"
           />
 
-          {/* 1️⃣ TITLE */}
           <h1
             style={{
               display: "flex",
@@ -535,36 +412,34 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
             Australian Gallery
           </h1>
 
-          {/* 3️⃣ TEXT */}
           <div
             style={{
               paddingLeft: "12px",
               paddingRight: "12px",
             }}
           >
-            {" "}
             <p>
               <b>Address:</b> 49A Purcell Road Londonderry NSW-2753
             </p>
             <p>
-              <b>Hours:</b> Mon–Fri, 9:00AM – 5:00PM
+              <b>Hours:</b> Mon-Fri, 9:00AM - 5:00PM
             </p>
             <p>
-              <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+61 423 471 255</span>
+              <b>Phone:</b>{" "}
+              <span style={{ color: "#0b5ed7" }}>+61 423 471 255</span>
             </p>
             <p>
-              <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
+              <b>Email:</b>{" "}
+              <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
             </p>
           </div>
         </div>
       </div>
 
-      {/* MAP SECTION 2 - INDIA */}
       <div
         className="map-section"
         style={{ marginTop: "100px", fontFamily: "'Times New Roman', serif" }}
       >
-        {/* 🖥️ DESKTOP */}
         <div
           className="d-none d-md-grid"
           style={{
@@ -572,7 +447,6 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
             minHeight: "500px",
           }}
         >
-          {/* LEFT */}
           <div
             style={{
               display: "flex",
@@ -596,17 +470,18 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
               <b>Address:</b> Industrial Area Phase 2, Hari Nagar, Panipat
             </p>
             <p>
-              <b>Hours:</b> Mon–Sat, 9:00AM – 6:00PM
+              <b>Hours:</b> Mon-Sat, 9:00AM - 6:00PM
             </p>
             <p>
-              <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+91-8930009468</span>
+              <b>Phone:</b>{" "}
+              <span style={{ color: "#0b5ed7" }}>+91-8930009468</span>
             </p>
             <p>
-              <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
+              <b>Email:</b>{" "}
+              <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
             </p>
           </div>
 
-          {/* RIGHT MAP */}
           <div
             style={{
               paddingRight: "40px",
@@ -625,7 +500,6 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
           </div>
         </div>
 
-        {/* 📱 MOBILE (FIXED ORDER) */}
         <div
           className="d-block d-md-none"
           style={{
@@ -635,7 +509,6 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
             padding: "20px",
           }}
         >
-          {/* 2️⃣ MAP */}
           <iframe
             src="https://www.google.com/maps?q=Industrial+Area+Phase+2,+Hari+Nagar,+Panipat,+Haryana+132103&output=embed"
             width="100%"
@@ -645,13 +518,12 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
             title="map"
           />
 
-          {/* 1️⃣ TITLE */}
           <h1
             style={{
               display: "flex",
               justifyContent: "flex-start",
               paddingTop: "8px",
-              paddingLeft:"12px",
+              paddingLeft: "12px",
               fontSize: "26px",
               fontWeight: "600",
               color: "#1e2a4a",
@@ -660,19 +532,20 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
             Indian Gallery & Manufacturing
           </h1>
 
-          {/* 3️⃣ TEXT */}
           <div style={{ paddingLeft: "12px" }}>
             <p>
               <b>Address:</b> Industrial Area Phase 2, Hari Nagar, Panipat
             </p>
             <p>
-              <b>Hours:</b> Mon–Sat, 9:00AM – 6:00PM
+              <b>Hours:</b> Mon-Sat, 9:00AM - 6:00PM
             </p>
             <p>
-              <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+91-8930009468</span>
+              <b>Phone:</b>{" "}
+              <span style={{ color: "#0b5ed7" }}>+91-8930009468</span>
             </p>
             <p>
-              <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
+              <b>Email:</b>{" "}
+              <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
             </p>
           </div>
         </div>
