@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import logo from "../../images/blog/tanshu-vaidik-logo.png";
@@ -117,6 +117,8 @@ const Header = (props) => {
   const getActiveSubSlug = (catSlug) => {
     return subCategories[catSlug]?.find((s) => s.id === activeSub)?.slug;
   };
+
+  const location = useLocation();
 
   return (
     <>
@@ -328,8 +330,44 @@ const Header = (props) => {
               <li>
                 <Link to="/">SWATCHES</Link>
               </li>{" "}
-              <li>
-                <Link to="/our-story">OUR STORY</Link>
+              <li
+                onMouseEnter={() => setActiveMenu("about")}
+                onMouseLeave={() => setActiveMenu(null)}
+                style={{ position: "relative" }}
+              >
+                <span className="menu-text">ABOUT US</span>
+
+                {activeMenu === "about" && (
+                  <div className="about-dropdown">
+                     
+                    <Link
+                      to="/about-us"
+                      className={`about-item ${
+                        location.pathname === "/about-us" ? "active" : ""
+                      }`}
+                    >
+                      About Us
+                    </Link>
+
+                    <Link
+                      to="/our-story"
+                      className={`about-item ${
+                        location.pathname === "/our-story" ? "active" : ""
+                      }`}
+                    >
+                      Our Story
+                    </Link>
+
+                    <Link
+                      to="/our-team"
+                      className={`about-item ${
+                        location.pathname === "/our-team" ? "active" : ""
+                      }`}
+                    >
+                      Our Team
+                    </Link>
+                  </div>
+                )}
               </li>
               <li>
                 <Link to="/contact-usPage">CONTACT US</Link>
@@ -708,6 +746,34 @@ const Header = (props) => {
           color: #000;
           text-decoration: underline;
         }
+
+        .about-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 180px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+  padding: 10px 0;
+  z-index: 9999;
+}
+
+.about-item {
+  display: block;
+  padding: 10px 16px;
+  text-decoration: none;
+  color: #333;
+}
+
+.about-item:hover {
+  background: #f5f5f5;
+}
+
+/* active highlight */
+.about-item.active {
+  color: orange;
+  font-weight: 600;
+}
         /* HIDE hamburger on desktop */
 .mobile-menu-icon {
   display: none;
