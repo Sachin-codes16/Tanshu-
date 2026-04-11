@@ -2,7 +2,7 @@ import React from "react";
 import img1 from '../../images/blog/Sachin1.png'
 import img2 from '../../images/blog/Sachin3.png'
 import img3 from '../../images/blog/Sachin4.png'
-import img4 from '../../images/blog/Sachin5.png'
+// import img4 from '../../images/blog/Sachin5.png'
 // import img5 from '../../images/blog/777.jpeg'
 
 
@@ -12,7 +12,7 @@ import img4 from '../../images/blog/Sachin5.png'
 
 const ImageGallery = () => {
     const images = [
-        img1, img2, img3, img4, 
+        img1, img2, img3, 
     ];
 
     return (

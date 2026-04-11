@@ -280,6 +280,7 @@ const Header = (props) => {
                 >
                   <span className="menu-text">
                     {cat.categoryName.toUpperCase()}
+                    <span className="menu-arrow" aria-hidden="true"></span>
                   </span>
 
                   {/* DROPDOWN */}
@@ -335,7 +336,10 @@ const Header = (props) => {
                 onMouseLeave={() => setActiveMenu(null)}
                 style={{ position: "relative" }}
               >
-                <span className="menu-text">ABOUT US</span>
+                <span className="menu-text">
+                  ABOUT US
+                  <span className="menu-arrow" aria-hidden="true"></span>
+                </span>
 
                 {activeMenu === "about" && (
                   <div className="about-dropdown">
@@ -554,6 +558,22 @@ const Header = (props) => {
         .menu-text:hover {
           font-weight: 400;   /* makes it bold */
           color: #000;        /* optional: darker color */
+        }
+
+        .menu-text {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .menu-arrow {
+          width: 10px;
+          height: 10px;
+          display: inline-block;
+          border-right: 2px solid #6b6560;
+          border-bottom: 2px solid #6b6560;
+          transform: translateY(-1px) rotate(45deg);
+          margin-left: 2px;
         }
 
         .sub-menu-text:hover {
