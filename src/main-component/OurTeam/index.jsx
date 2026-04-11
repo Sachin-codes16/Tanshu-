@@ -86,25 +86,26 @@ const PrivacyPage = () => {
       <Header />
 
       <div
-  style={{
-    maxWidth: "1000px",
-    margin: "0 auto",
-    padding: isMobile ? "20px 16px" : "35px 20px",
-    textAlign: "center",   // ✅ IMPORTANT
-  }}
->
-  <h1
-    className="team-heading"
-    style={{
-      fontSize: isMobile ? "30px" : "42px",
-      fontWeight: "550",
-      marginBottom: "0",
-      color: "#022f4e",
-    }}
-  >
-    OUR TEAM
-  </h1>
-</div>
+        style={{
+          maxWidth: "1000px",
+          margin: "0 auto",
+          padding: isMobile ? "20px 16px" : "35px 20px",
+          textAlign: "center",
+        }}
+      >
+        <h1
+          className="team-heading"
+          style={{
+            fontSize: isMobile ? "30px" : "42px",
+            fontWeight: "550",
+            textAlign: "center",
+            marginBottom: "0",
+            color: "#022f4e",
+          }}
+        >
+          OUR TEAM
+        </h1>
+      </div>
 
       <div
         style={{
@@ -359,7 +360,7 @@ const PrivacyPage = () => {
   right: -10px;
   bottom: -6px;
   height: 3px;
-  background-color: #f4b400;
+  background-color: #e8a020;
   border-radius: 2px;
 }
       `}</style>

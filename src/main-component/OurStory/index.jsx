@@ -2,39 +2,6 @@ import React, { useEffect, useState } from "react";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
-const team = [
-  {
-    name: "Naresh Kumar Kaushik",
-    role: "Founder & Managing Director",
-    img: heroImg2,
-    bio: 'Naresh Kumar Kaushik is an entrepreneur who has successfully launched multiple leading businesses in Australia and overseas. As an influential leader and grounded businessman, Naresh Kumar Kaushik is driven by his passion for engineering and innovation. After establishing Tanshu Australia Pty Ltd in 2010 and maintaining the position of Founder and Managing Director of Tanshu Group. With over 25 years of experience and his robust engineering background, he leads the company with a commitment to "Engineering Excellence," ensuring unparalleled service for all Tanshu customers.',
-  },
-  {
-    name: "Shubham Kaushik",
-    role: "Director - Global Operations",
-    img: heroImg,
-    bio: "Shubham Kaushik is a young businessman and one of the driving forces behind the Tanshu Group, where he serves as Director overseeing both executive strategy and day-to-day operations. As the second generation stepping into the business, Shubham brings a fresh perspective to a company built on strong foundations. Taking the reins of a family-owned enterprise, Shubham is focused on scaling the group's diverse portfolios. Shubham's vision is not just to continue the legacy but to evolve it, positioning Tanshu Group for long-term, sustainable growth in a rapidly changing global landscape.",
-  },
-  {
-    name: "Aditya Kaushik",
-    role: "Director, Tanshu Vaidik India",
-    img: heroImg3,
-    bio: "As the Director of Tanshu Vaidik India Pvt. Ltd., I lead a dynamic team dedicated to manufacturing and exporting high-quality home textiles and pet utilities. With a commitment to excellence, innovation, and sustainability, our company has established itself as a trusted name in the industry.",
-  },
-  {
-    name: "Shruthi",
-    role: "Graphic Designer and Branding Lead",
-    img: heroImg5,
-    bio: "With hands-on experience in graphic design, I create designs for branding, presentations, social media, and other digital content. I take care of logos, layouts, posters, brochures, and all the visual materials needed for the company. I enjoy learning new techniques, finding creative ideas, and helping maintain a consistent and professional look for Tanshu.",
-  },
-  {
-    name: "Pranav Pathak",
-    role: "Marketing Manager",
-    img: heroImg4,
-    bio: "We believe that every corner of your home should reflect your unique journey and personality, including the spaces you share with your beloved pets. As your Career Counselor, I'm here to guide you in navigating the world of home decor and pet utilities.",
-  },
-];
-
 const PrivacyPage = () => {
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200,
