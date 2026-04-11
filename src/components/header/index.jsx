@@ -343,7 +343,6 @@ const Header = (props) => {
 
                 {activeMenu === "about" && (
                   <div className="about-dropdown">
-                     
                     <Link
                       to="/about-us"
                       className={`about-item ${
@@ -433,16 +432,77 @@ const Header = (props) => {
               </div>
               <div
                 className="hi"
+                onClick={() =>
+                  setSelectedCat(selectedCat === "about" ? null : "about")
+                }
                 style={{
                   fontSize: "16px",
                   fontWeight: 470,
-                  color: "#1d1c1c",
                   borderBottom: "1px solid #eee",
-                  padding: "12px 17px 12px 17px ",
+                  padding: "12px 17px",
+                  cursor: "pointer",
                 }}
               >
-                <Link to="/our-story">OUR STORY</Link>
+                ABOUT US
               </div>
+
+              {selectedCat === "about" && (
+                <div className="mobile-subitems open">
+                  <div className="mobile-subitem">
+                    <Link
+                      to="/about-us"
+                      style={{
+                        color:
+                          window.location.pathname === "/about-us"
+                            ? "#d4a017"
+                            : "#a09e9e",
+                        fontWeight:
+                          window.location.pathname === "/about-us"
+                            ? "600"
+                            : "normal",
+                      }}
+                    >
+                      About Us
+                    </Link>
+                  </div>
+
+                  <div className="mobile-subitem">
+                    <Link
+                      to="/our-story"
+                      style={{
+                        color:
+                          window.location.pathname === "/our-story"
+                            ? "#d4a017"
+                            : "#a09e9e",
+                        fontWeight:
+                          window.location.pathname === "/our-story"
+                            ? "600"
+                            : "normal",
+                      }}
+                    >
+                      Our Story
+                    </Link>
+                  </div>
+
+                  <div className="mobile-subitem">
+                    <Link
+                      to="/our-team"
+                      style={{
+                        color:
+                          window.location.pathname === "/our-team"
+                            ? "#d4a017"
+                            : "#a09e9e",
+                        fontWeight:
+                          window.location.pathname === "/our-team"
+                            ? "600"
+                            : "normal",
+                      }}
+                    >
+                      Our Team
+                    </Link>
+                  </div>
+                </div>
+              )}
               <div
                 className="hi"
                 style={{
