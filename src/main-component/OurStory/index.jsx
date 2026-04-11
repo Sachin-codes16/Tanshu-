@@ -7,9 +7,19 @@ const PrivacyPage = () => {
     typeof window !== "undefined" ? window.innerWidth : 1200,
   );
 
+  useEffect(() => {
+    if (typeof window === "undefined") {
+      return undefined;
+    }
+
+    const handleResize = () => setWindowWidth(window.innerWidth);
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const isMobile = windowWidth <= 767;
-  
+
   return (
     <div
       style={{
@@ -21,11 +31,12 @@ const PrivacyPage = () => {
       <Header />
 
       <div
+        className="hero-container"
         style={{
           maxWidth: "1000px",
           margin: "0 auto",
-          padding: isMobile ? "20px 16px" : "35px 20px",
-          textAlign: "center", // ✅ IMPORTANT
+          padding: isMobile ? "30px 16px" : "60px 20px",
+          textAlign: "center",
         }}
       >
         <h1
@@ -48,7 +59,8 @@ const PrivacyPage = () => {
             textAlign: "justify",
           }}
         >
-          Every journey begins with a vision. Ours began when{" "}
+          Every journey begins with a vision.
+          Ours began when{" "}
           <strong>Naresh Kumar founded Tanshu Group in Sydney</strong>—built on
           precision, discipline, and a commitment to engineering excellence.
           What started with a single laser cutter and CNC press brake soon
@@ -61,10 +73,10 @@ const PrivacyPage = () => {
             Metal Products, Machinery Solutions, and Robotics & Automation
           </strong>
           —each defined by expertise, innovation, and performance.
-          <br />
           Over the years, the Group established a strong global footprint,
           exporting machinery across continents and delivering solutions shaped
           by international standards.
+          <br />
           <strong>As the vision expanded, so did its horizons.</strong>
           <br />
           The establishment of <strong>
@@ -81,12 +93,13 @@ const PrivacyPage = () => {
           Tanshu Vaidik delivers thoughtfully crafted products to markets across{" "}
           <strong>Europe, the United States, Australia, and beyond</strong>.
           <br />
+
           Each piece reflects a balance of{" "}
           <strong>design, durability, and detail</strong>—shaped for
           contemporary living.
+
           <br />
           <strong>The journey did not stop there.</strong>
-          <br />
           From expanding into renewable energy to building advanced
           manufacturing capabilities in Northern India, and strengthening global
           logistics through its freight forwarding network, the Tanshu Group
@@ -120,7 +133,7 @@ const PrivacyPage = () => {
   right: -10px;
   bottom: -6px;
   height: 3px;
-  background-color: #e8a020;
+  background-color: #f4b400;
   border-radius: 2px;
 }
       `}</style>

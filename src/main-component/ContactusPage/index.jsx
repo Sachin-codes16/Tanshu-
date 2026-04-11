@@ -474,10 +474,10 @@ const ContactUs = () => {
               <b>Hours:</b> Mon–Fri, 9:00AM – 5:00PM
             </p>
             <p>
-              <b>Phone:</b> +61-423471255
+              <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+61-423471255</span>
             </p>
             <p>
-              <b>Email:</b> info@tanshuvaidik.com
+              <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
             </p>
           </div>
 
@@ -550,10 +550,10 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
               <b>Hours:</b> Mon–Fri, 9:00AM – 5:00PM
             </p>
             <p>
-              <b>Phone:</b> +61 423 471 255
+              <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+61 423 471 255</span>
             </p>
             <p>
-              <b>Email:</b> info@tanshuvaidik.com
+              <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
             </p>
           </div>
         </div>
@@ -599,10 +599,10 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
               <b>Hours:</b> Mon–Sat, 9:00AM – 6:00PM
             </p>
             <p>
-              <b>Phone:</b> +91-8930009468
+              <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+91-8930009468</span>
             </p>
             <p>
-              <b>Email:</b> info@tanshuvaidik.com
+              <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
             </p>
           </div>
 
@@ -669,10 +669,10 @@ src="https://www.google.com/maps?q=4%265/62+Argyle+Street,+South+Windsor+2756,+N
               <b>Hours:</b> Mon–Sat, 9:00AM – 6:00PM
             </p>
             <p>
-              <b>Phone:</b> +91-8930009468
+              <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+91-8930009468</span>
             </p>
             <p>
-              <b>Email:</b> info@tanshuvaidik.com
+              <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
             </p>
           </div>
         </div>

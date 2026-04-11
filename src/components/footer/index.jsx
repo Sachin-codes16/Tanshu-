@@ -9,35 +9,9 @@ const Footer = (props) => {
         
     }
 
-    const [email, setEmail] = useState('')
-    const [signupMessage, setSignupMessage] = useState('')
-    const [signupError, setSignupError] = useState('')
     const [windowWidth, setWindowWidth] = useState(
         typeof window !== 'undefined' ? window.innerWidth : 1200
     )
-
-    const handleSignup = () => {
-        const trimmedEmail = email.trim()
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-
-        if (!trimmedEmail) {
-            setSignupError('Please enter your email address.')
-            setSignupMessage('')
-            return
-        }
-
-        if (!emailPattern.test(trimmedEmail)) {
-            setSignupError('Please enter a valid email address.')
-            setSignupMessage('')
-            return
-        }
-
-        setSignupError('')
-        setSignupMessage('Thanks! Your signup request is ready.')
-        setEmail('')
-
-        window.location.href = `mailto:info@tanshuvaidik.com?subject=${encodeURIComponent('Newsletter Signup')}&body=${encodeURIComponent(`Please subscribe this email to updates: ${trimmedEmail}`)}`
-    }
 
     useEffect(() => {
         if (typeof window === 'undefined') {
@@ -70,20 +44,6 @@ const Footer = (props) => {
         fontSize: isMobile ? '15px' : styles.newsletterSubtitle.fontSize,
         marginBottom: isMobile ? '20px' : styles.newsletterSubtitle.marginBottom,
     }
-    const emailRowStyle = {
-        ...styles.emailRow,
-        flexDirection: isMobile ? 'column' : 'row',
-        maxWidth: isMobile ? '100%' : styles.emailRow.maxWidth,
-    }
-    const emailInputStyle = {
-        ...styles.emailInput,
-        width: isMobile ? '100%' : 'auto',
-        borderBottom: isMobile ? '1px solid #c5bfb8' : 'none',
-    }
-    const signupBtnStyle = {
-        ...styles.signupBtn,
-        width: isMobile ? '100%' : 'auto',
-    }
     const linksSectionStyle = {
         ...styles.linksSection,
         padding: isMobile ? '36px 0' : styles.linksSection.padding,
@@ -92,25 +52,29 @@ const Footer = (props) => {
         ...styles.grid,
         gridTemplateColumns: isMobile ? '1fr' : isTablet ? 'repeat(2, 1fr)' : styles.grid.gridTemplateColumns,
         gap: isMobile ? '28px' : isTablet ? '36px' : styles.grid.gap,
-        maxWidth: isMobile ? '100%' : '1080px',
+        maxWidth: isMobile ? '100%' : '1280px',
         margin: '0 auto',
-        justifyContent: 'center',
+        alignItems: 'start',
     }
     const resourcesColStyle = {
         ...styles.col,
-        justifySelf: isMobile ? 'stretch' : 'start',
+        justifySelf: 'stretch',
         textAlign: 'left',
     }
-    const companyColStyle = {
+    const australianColStyle = {
         ...styles.col,
-        justifySelf: isMobile ? 'stretch' : 'center',
+        justifySelf: 'stretch',
+        textAlign: 'left',
+    }
+    const companiesColStyle = {
+        ...styles.col,
+        justifySelf: 'stretch',
         textAlign: 'left',
     }
     const legalColStyle = {
         ...styles.col,
-        justifySelf: isMobile ? 'stretch' : 'end',
+        justifySelf: 'stretch',
         textAlign: 'left',
-        paddingRight: isMobile ? 0 : '8px',
     }
     const lowerFooterStyle = {
         ...styles.lowerFooter,
@@ -126,24 +90,7 @@ const Footer = (props) => {
 
             {/* Newsletter Section */}
             <div style={newsletterSectionStyle}>
-                <h2 style={newsletterTitleStyle}>INSPIRATION, DELIVERED.</h2>
-                <p style={newsletterSubtitleStyle}>Discover our products, places, services and spaces.</p>
-                <div style={emailRowStyle}>
-                    <input
-                        type="email"
-                        placeholder="Enter your email"
-                        value={email}
-                        onChange={(e) => {
-                            setEmail(e.target.value)
-                            setSignupError('')
-                            setSignupMessage('')
-                        }}
-                        style={emailInputStyle}
-                    />
-                    <button style={signupBtnStyle} onClick={handleSignup}>SIGN UP</button>
-                </div>
-                {signupError && <p style={styles.signupError}>{signupError}</p>}
-                {signupMessage && <p style={styles.signupMessage}>{signupMessage}</p>}
+                <h2 style={newsletterTitleStyle}>Defined by detail. Driven by excellence.</h2>
             </div>
 
             {/* Links Section */}
@@ -153,16 +100,20 @@ const Footer = (props) => {
 
                         {/* Column 1 - Resources */}
                         <div style={resourcesColStyle}>
-                            <h4 style={styles.colHeading}>RESOURCES</h4>
+                            <h4 style={styles.colHeading}>INDIAN GALLERY</h4>
                             <ul style={styles.linkList}>
                                 <li style={styles.linkItem}>
                                     <span style={styles.link}><b>Address:</b> Industrial Area Phase 2, Hari Nagar, Panipat</span>
                                 </li>
                                 <li style={styles.linkItem}>
-                                    <span style={styles.link}><b>Phone:</b> +91-8930009468</span>
+                                    <span style={styles.link}>
+                                        <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+91-8930009468</span>
+                                    </span>
                                 </li>
                                 <li style={styles.linkItem}>
-                                    <span style={styles.link}><b>Email:</b> info@tanshuvaidik.com</span>
+                                    <span style={styles.link}>
+                                        <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
+                                    </span>
                                 </li>
                                 {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>REQUEST A SOURCEBOOK</Link></li>
                                 <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>RH MEMBERS PROGRAM</Link></li>
@@ -173,7 +124,94 @@ const Footer = (props) => {
                             </ul>
                         </div>
 
-                        {/* Column 2 - Customer Experience */}
+                        {/* Column 2 - Australian Gallery */}
+                        <div style={australianColStyle}>
+                            <h4 style={styles.colHeading}>AUSTRALIAN GALLERY</h4>
+                            <ul style={styles.linkList}>
+                                <li style={styles.linkItem}>
+                                    <span style={styles.link}><b>Address:</b> 4&amp;5/62 Argyle Street, South Windsor 2756, New South Wales, Sydney</span>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <span style={styles.link}>
+                                        <b>Phone:</b> <span style={{ color: "#0b5ed7" }}>+61-423471255</span>
+                                    </span>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <span style={styles.link}>
+                                        <b>Email:</b> <span style={{ color: "#0b5ed7" }}>info@tanshuvaidik.com</span>
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Column 3 - Our Companies */}
+                        <div style={companiesColStyle}>
+                            <h4 style={styles.colHeading}>OUR COMPANIES</h4>
+                            <ul style={styles.linkList}>
+                                <li style={styles.linkItem}>
+                                    <a
+                                        href="https://metal.tanshuaustralia.com.au/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={styles.link}
+                                    >
+                                        Tanshu Metal Products
+                                    </a>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <a
+                                        href="https://machinery.tanshuaustralia.com.au/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={styles.link}
+                                    >
+                                        Tanshu Machinery Solutions
+                                    </a>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <a
+                                        href="https://robotics.tanshuaustralia.com.au/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={styles.link}
+                                    >
+                                        Tanshu Robotics and Automation
+                                    </a>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <a
+                                        href="https://www.tanshugreenenergy.com.au/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={styles.link}
+                                    >
+                                        Tanshu Green Energy
+                                    </a>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <a
+                                        href="https://tanshuvaidik.com/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={styles.link}
+                                    >
+                                        Tanshu Vaidik India Pvt Ltd
+                                    </a>
+                                </li>
+                                <li style={styles.linkItem}>
+                                    <a
+                                        href="https://www.navisyncfreight.com/"
+                                        target="_blank"
+                                        rel="noreferrer"
+                                        style={styles.link}
+                                    >
+                                        NaviSync Freight
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+
+                        {/* Column 4 - Customer Experience */}
                         {/* <div style={styles.col}>
                             <h4 style={styles.colHeading}>CUSTOMER EXPERIENCE</h4>
                             <ul style={styles.linkList}>
@@ -189,22 +227,13 @@ const Footer = (props) => {
                             </ul>
                         </div> */}
 
-                        {/* Column 3 - Our Company */}
-                        <div style={companyColStyle}>
-                            <h4 style={styles.colHeading}>OUR COMPANY</h4>
-                            <ul style={styles.linkList}>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/our-story" style={styles.link}>Our Story {"\u2197"}</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/contact-usPage" style={styles.link}>Contact us {"\u2197"}</Link></li>
-                                {/* <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}> {"\u2197"}</Link></li>
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/" style={styles.link}>PRESS {"\u2197"}</Link></li> */}
-                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/BloglistPage" style={styles.link}>Blogs {"\u2197"}</Link></li>
-                            </ul>
-                        </div>
-
-                        {/* Column 4 - Legal */}
+                        {/* Column 5 - Quick Links */}
                         <div style={legalColStyle}>
-                            <h4 style={styles.colHeading}>LEGAL</h4>
+                            <h4 style={styles.colHeading}>QUICK LINKS</h4>
                             <ul style={styles.linkList}>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/our-story" style={styles.link}>Our Story</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/contact-usPage" style={styles.link}>Contact us</Link></li>
+                                <li style={styles.linkItem}><Link onClick={ClickHandler} to="/BloglistPage" style={styles.link}>Blogs</Link></li>
                                <li style={styles.linkItem}>
   <Link 
     to="/privacy-policy" 
@@ -277,7 +306,7 @@ const styles = {
     newsletterTitle: {
         fontSize: '30px',
         letterSpacing: '5px',
-        marginBottom: '12px',
+        marginBottom: '6px',
     },
 
     newsletterSubtitle: {
@@ -312,27 +341,33 @@ const styles = {
     },
 
     linksSection: {
-        padding: '50px 0',
+        padding: '54px 0 44px',
 
         position: "relative",   // ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ FIX
         zIndex: 9999,
     },
 
     container: {
-        maxWidth: '1200px',
+        maxWidth: '1320px',
         margin: '0 auto',
         padding: '0 40px',
     },
 
     grid: {
         display: 'grid',
-        gridTemplateColumns: 'repeat(3, 1fr)',
-        gap: '24px',
+        gridTemplateColumns: 'repeat(4, minmax(0, 1fr))',
+        gap: '40px',
+    },
+
+    col: {
+        minWidth: 0,
     },
 
     colHeading: {
-        marginBottom: '20px',
-        fontSize: '20px',
+        marginBottom: '22px',
+        fontSize: '19px',
+        letterSpacing: '0.5px',
+        color: '#0b1b63',
     },
 
     linkList: {
@@ -344,9 +379,9 @@ const styles = {
         color: '#6b6560',
         textDecoration: 'none',
         display: 'block',
-        marginBottom: '10px',
-        fontSize: '17px',
-        lineHeight: '1.8',
+        marginBottom: '12px',
+        fontSize: '16px',
+        lineHeight: '1.75',
 
         cursor: "pointer",   // ÃƒÂ¢Ã…â€œÃ¢â‚¬Â¦ FIX
     },
