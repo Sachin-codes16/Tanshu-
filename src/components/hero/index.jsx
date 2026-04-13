@@ -1,7 +1,5 @@
 import React from "react";
-import himg from '../../images/blog/Sachin2.png'
-import himg2 from '../../images/blog/img-1.jpg'
-import himg3 from '../../images/blog/img-2.jpg'
+import himg from '../../images/blog/1.webp'
 
 const Hero = () => {
     return (
@@ -16,13 +14,13 @@ const Hero = () => {
         }}>
             <img 
                 src={himg} 
-                               alt="hero"
-                               style={{
-                                   width: '100%',
-                                //    height: '100%',
-                                   objectFit: 'cover',
-                                   objectPosition: 'center',
-                                   display: 'block',
+                alt="hero"
+                style={{
+                    width: '100%',
+                    // height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'center',
+                    display: 'block',
                 }}
             />
         </section>

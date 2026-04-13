@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from 'react-router-dom'
-import himg from '../../images/blog/Sachin5.png'
+import himg from '../../images/blog/2.webp'
 
 const Hero = () => {
     return (
