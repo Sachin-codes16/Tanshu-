@@ -1,5 +1,5 @@
 import React from "react";
-import himg from '../../images/blog/1.webp'
+import himg from '../../images/blog/2.webp'
 
 const Hero = () => {
     return (
