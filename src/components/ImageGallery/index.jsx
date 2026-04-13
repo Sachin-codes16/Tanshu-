@@ -1,6 +1,6 @@
 import React from "react";
-import img1 from "../../images/blog/4.webp";
-import img2 from "../../images/blog/3.webp";
+import img1 from "../../images/blog/2.webp";
+import img2 from "../../images/blog/4.webp";
 import img3 from "../../images/blog/5.webp";
 
 const ImageGallery = () => {
