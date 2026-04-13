@@ -271,7 +271,7 @@ const Footer = (props) => {
                             }}
                             style={styles.brandLink}
                         >
-                            Techqrt
+                            TechQRT
                         </a>
                         . All Rights Reserved.
                     </p>
